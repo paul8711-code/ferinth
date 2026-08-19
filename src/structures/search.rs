@@ -51,7 +51,10 @@ impl Serialize for Facet {
     {
         let output = match self {
             Facet::ProjectType(project_type) => {
-                format!("project_type: {project_type:?}",)
+                format!(
+                    "project_type: {}",
+                    serde_json::to_value(project_type).unwrap()
+                )
             }
             Facet::Categories(category) => format!("categories: {category}"),
             Facet::Versions(version) => format!("versions: {version}"),
