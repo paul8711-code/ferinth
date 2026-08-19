@@ -30,7 +30,7 @@ impl<T> Ferinth<T> {
     pub async fn project_get(&self, project_id: &str) -> Result<Project> {
         check_id_slug(&[project_id])?;
         self.client
-            .get(API_BASE_URL.join_all(vec!["project", project_id]))
+            .get(self.url.join_all(vec!["project", project_id]))
             .custom_send_json()
             .await
     }
@@ -57,7 +57,7 @@ impl<T> Ferinth<T> {
         check_id_slug(project_ids)?;
         self.client
             .get(
-                API_BASE_URL
+                self.url
                     .join_all(vec!["projects"])
                     .with_query_json("ids", project_ids)?,
             )
@@ -85,7 +85,7 @@ impl<T> Ferinth<T> {
     pub async fn project_get_random(&self, count: Int) -> Result<Vec<Project>> {
         self.client
             .get(
-                API_BASE_URL
+                self.url
                     .join_all(vec!["projects_random"])
                     .with_query("count", count),
             )
@@ -114,7 +114,7 @@ impl<T> Ferinth<T> {
         check_id_slug(&[project_id])?;
         let res: Response = self
             .client
-            .get(API_BASE_URL.join_all(vec!["project", project_id, "check"]))
+            .get(self.url.join_all(vec!["project", project_id, "check"]))
             .custom_send_json()
             .await?;
         Ok(res.id)
@@ -136,7 +136,10 @@ impl<T> Ferinth<T> {
     pub async fn project_get_dependencies(&self, project_id: &str) -> Result<ProjectDependencies> {
         check_id_slug(&[project_id])?;
         self.client
-            .get(API_BASE_URL.join_all(vec!["project", project_id, "dependencies"]))
+            .get(
+                self.url
+                    .join_all(vec!["project", project_id, "dependencies"]),
+            )
             .custom_send_json()
             .await
     }
@@ -147,7 +150,7 @@ impl Ferinth<Authenticated> {
     pub async fn project_delete(&self, project_id: &str) -> Result<()> {
         check_id_slug(&[project_id])?;
         self.client
-            .delete(API_BASE_URL.join_all(vec!["project", project_id]))
+            .delete(self.url.join_all(vec!["project", project_id]))
             .custom_send()
             .await?;
         Ok(())
@@ -161,7 +164,7 @@ impl Ferinth<Authenticated> {
     ) -> Result<()> {
         check_id_slug(project_ids)?;
         self.client
-            .patch(API_BASE_URL.join_all(vec!["projects"]))
+            .patch(self.url.join_all(vec!["projects"]))
             .json(&edits)
             .custom_send()
             .await?;
@@ -178,7 +181,7 @@ impl Ferinth<Authenticated> {
         check_id_slug(&[project_id])?;
         self.client
             .patch(
-                API_BASE_URL
+                self.url
                     .join_all(vec!["project", project_id, "icon"])
                     .with_query("ext", ext),
             )
@@ -193,7 +196,7 @@ impl Ferinth<Authenticated> {
     pub async fn project_delete_icon(&self, project_id: &str) -> Result<()> {
         check_id_slug(&[project_id])?;
         self.client
-            .delete(API_BASE_URL.join_all(vec!["project", project_id, "icon"]))
+            .delete(self.url.join_all(vec!["project", project_id, "icon"]))
             .custom_send()
             .await?;
         Ok(())
@@ -215,7 +218,8 @@ impl Ferinth<Authenticated> {
         description: Option<String>,
     ) -> Result<()> {
         check_id_slug(&[project_id])?;
-        let mut url = API_BASE_URL
+        let mut url = self
+            .url
             .join_all(vec!["project", project_id, "gallery"])
             .with_query("ext", ext)
             .with_query("featured", featured);
@@ -248,7 +252,8 @@ impl Ferinth<Authenticated> {
         ordering: Option<Int>,
     ) -> Result<()> {
         check_id_slug(&[project_id])?;
-        let mut url = API_BASE_URL
+        let mut url = self
+            .url
             .join_all(vec!["project", project_id, "gallery"])
             .with_query("url", url.into_url()?);
         if let Some(featured) = featured {
@@ -276,7 +281,7 @@ impl Ferinth<Authenticated> {
         check_id_slug(&[project_id])?;
         self.client
             .delete(
-                API_BASE_URL
+                self.url
                     .join_all(vec!["project", project_id, "gallery"])
                     .with_query("url", image_url.into_url()?),
             )
@@ -289,7 +294,7 @@ impl Ferinth<Authenticated> {
     pub async fn project_follow(&self, project_id: &str) -> Result<()> {
         check_id_slug(&[project_id])?;
         self.client
-            .post(API_BASE_URL.join_all(vec!["project", project_id, "follow"]))
+            .post(self.url.join_all(vec!["project", project_id, "follow"]))
             .custom_send()
             .await?;
         Ok(())
@@ -299,7 +304,7 @@ impl Ferinth<Authenticated> {
     pub async fn project_unfollow(&self, project_id: &str) -> Result<()> {
         check_id_slug(&[project_id])?;
         self.client
-            .delete(API_BASE_URL.join_all(vec!["project", project_id, "follow"]))
+            .delete(self.url.join_all(vec!["project", project_id, "follow"]))
             .custom_send()
             .await?;
         Ok(())
@@ -334,132 +339,13 @@ impl Ferinth<Authenticated> {
         check_id_slug(&[project_id])?;
         self.client
             .post(
-                API_BASE_URL
+                self.url
                     .join_all(vec!["project", project_id, "schedule"])
                     .with_query_json("time", time)?
                     .with_query_json("requested_status", status)?,
             )
             .custom_send()
             .await?;
-        Ok(())
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[tokio::test]
-    async fn follow() -> Result<()> {
-        let modrinth = Ferinth::<Authenticated>::new(
-            env!("CARGO_CRATE_NAME"),
-            Some(env!("CARGO_PKG_VERSION")),
-            None,
-            env!("MODRINTH_TOKEN"),
-        )?;
-        let project_id = env!("TEST_PROJECT_ID");
-        let user_id = modrinth.user_get_current().await?.id;
-
-        match modrinth.project_follow(project_id).await {
-            Ok(_) => {}
-            Err(Error::ReqwestError(e)) => {
-                if !(e.is_status() && e.status().unwrap() == 400) {
-                    return Err(Error::ReqwestError(e));
-                }
-            }
-            Err(e) => return Err(e),
-        }
-        let followed_projects = modrinth.user_list_followed_projects(&user_id).await?;
-        assert!(followed_projects
-            .iter()
-            .map(|p| &p.id)
-            .any(|id| id == project_id));
-
-        modrinth.project_unfollow(project_id).await?;
-        let followed_projects = modrinth.user_list_followed_projects(&user_id).await?;
-        assert!(followed_projects
-            .iter()
-            .map(|p| &p.id)
-            .all(|id| id != project_id));
-
-        Ok(())
-    }
-
-    #[tokio::test]
-    async fn gallery() -> Result<()> {
-        let modrinth = Ferinth::<Authenticated>::new(
-            env!("CARGO_CRATE_NAME"),
-            Some(env!("CARGO_PKG_VERSION")),
-            None,
-            env!("MODRINTH_TOKEN"),
-        )?;
-        let project_id = env!("TEST_PROJECT_ID");
-
-        let project = modrinth.project_get(project_id).await?;
-        if !project.gallery.is_empty() {
-            assert_ne!(project.gallery[0].title, Some("Modified test image".into()));
-            modrinth
-                .project_edit_gallery_image(
-                    project_id,
-                    project.gallery[0].url.clone(),
-                    Some(false),
-                    Some("Modified test image"),
-                    None,
-                    None,
-                )
-                .await?;
-            let project = modrinth.project_get(project_id).await?;
-            assert_eq!(project.gallery[0].title, Some("Modified test image".into()));
-            assert!(!project.gallery[0].featured);
-
-            modrinth
-                .project_delete_gallery_image(project_id, project.gallery[0].url.clone())
-                .await?;
-            let project = modrinth.project_get(project_id).await?;
-            assert!(project.gallery.is_empty());
-        }
-
-        let image_data = std::fs::read("test_image.png").expect("Failed to read test image");
-        modrinth
-            .project_add_gallery_image(
-                project_id,
-                image_data,
-                &project::ImageFileExt::PNG,
-                true,
-                Some("Test image, do not delete".to_string()),
-                Some(chrono::offset::Local::now().to_string()),
-            )
-            .await?;
-        let project = modrinth.project_get(project_id).await?;
-        assert_eq!(
-            project.gallery[0].title,
-            Some("Test image, do not delete".into())
-        );
-
-        Ok(())
-    }
-
-    #[tokio::test]
-    async fn project_icon() -> Result<()> {
-        let modrinth = Ferinth::<Authenticated>::new(
-            env!("CARGO_CRATE_NAME"),
-            Some(env!("CARGO_PKG_VERSION")),
-            None,
-            env!("MODRINTH_TOKEN"),
-        )?;
-        let project_id = env!("TEST_PROJECT_ID");
-
-        modrinth.project_delete_icon(project_id).await?;
-        let project = modrinth.project_get(project_id).await?;
-        assert!(project.icon_url.is_none());
-
-        let image = std::fs::read("test_image.png").expect("Cannot read test image");
-        modrinth
-            .project_edit_icon(project_id, image, project::ImageFileExt::PNG)
-            .await?;
-        let project = modrinth.project_get(project_id).await?;
-        assert!(project.icon_url.is_some());
-
         Ok(())
     }
 }

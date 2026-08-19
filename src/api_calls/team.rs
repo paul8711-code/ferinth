@@ -21,7 +21,7 @@ impl<T> Ferinth<T> {
     pub async fn team_list_project_members(&self, project_id: &str) -> Result<Vec<TeamMember>> {
         check_id_slug(&[project_id])?;
         self.client
-            .get(API_BASE_URL.join_all(vec!["project", project_id, "members"]))
+            .get(self.url.join_all(vec!["project", project_id, "members"]))
             .custom_send_json()
             .await
     }
@@ -41,7 +41,7 @@ impl<T> Ferinth<T> {
     pub async fn team_list_members(&self, team_id: &str) -> Result<Vec<TeamMember>> {
         check_id_slug(&[team_id])?;
         self.client
-            .get(API_BASE_URL.join_all(vec!["team", team_id, "members"]))
+            .get(self.url.join_all(vec!["team", team_id, "members"]))
             .custom_send_json()
             .await
     }
@@ -70,7 +70,7 @@ impl<T> Ferinth<T> {
         check_id_slug(team_ids)?;
         self.client
             .get(
-                API_BASE_URL
+                self.url
                     .join_all(vec!["teams"])
                     .with_query_json("ids", team_ids)?,
             )
@@ -102,7 +102,7 @@ impl Ferinth<Authenticated> {
         }
 
         self.client
-            .post(API_BASE_URL.join_all(vec!["team", team_id, "members"]))
+            .post(self.url.join_all(vec!["team", team_id, "members"]))
             .json(&Body { user_id })
             .custom_send()
             .await?;
@@ -126,7 +126,7 @@ impl Ferinth<Authenticated> {
     */
     pub async fn team_join(&self, team_id: &str) -> Result<()> {
         self.client
-            .post(API_BASE_URL.join_all(vec!["team", team_id, "join"]))
+            .post(self.url.join_all(vec!["team", team_id, "join"]))
             .custom_send()
             .await?;
         Ok(())
@@ -149,7 +149,7 @@ impl Ferinth<Authenticated> {
     */
     pub async fn team_remove_member(&self, team_id: &str, user_id: &str) -> Result<()> {
         self.client
-            .delete(API_BASE_URL.join_all(vec!["team", team_id, "members", user_id]))
+            .delete(self.url.join_all(vec!["team", team_id, "members", user_id]))
             .custom_send()
             .await?;
         Ok(())
@@ -177,7 +177,7 @@ impl Ferinth<Authenticated> {
         }
 
         self.client
-            .post(API_BASE_URL.join_all(vec!["team", team_id, "owner"]))
+            .post(self.url.join_all(vec!["team", team_id, "owner"]))
             .json(&Body { user_id })
             .custom_send()
             .await?;

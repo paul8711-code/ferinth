@@ -35,7 +35,8 @@ impl<T> Ferinth<T> {
         offset: Int,
         mut facets: Vec<Vec<Facet>>,
     ) -> Result<Response> {
-        let mut url = API_BASE_URL
+        let mut url = self
+            .url
             .join_all(vec!["search"])
             .with_query("query", query)
             .with_query("index", sort)
@@ -78,7 +79,8 @@ impl<T> Ferinth<T> {
         sort: &Sort,
         mut facets: Vec<Vec<Facet>>,
     ) -> Result<Response> {
-        let mut url = API_BASE_URL
+        let mut url = self
+            .url
             .join_all(vec!["search"])
             .with_query("query", query)
             .with_query("index", sort);

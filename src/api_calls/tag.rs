@@ -19,7 +19,7 @@ impl<T> Ferinth<T> {
     */
     pub async fn tag_list_categories(&self) -> Result<Vec<Category>> {
         self.client
-            .get(API_BASE_URL.join_all(vec!["tag", "category"]))
+            .get(self.url.join_all(vec!["tag", "category"]))
             .custom_send_json()
             .await
     }
@@ -37,7 +37,7 @@ impl<T> Ferinth<T> {
     */
     pub async fn tag_list_loaders(&self) -> Result<Vec<Loader>> {
         self.client
-            .get(API_BASE_URL.join_all(vec!["tag", "loader"]))
+            .get(self.url.join_all(vec!["tag", "loader"]))
             .custom_send_json()
             .await
     }
@@ -55,7 +55,7 @@ impl<T> Ferinth<T> {
     */
     pub async fn tag_list_game_versions(&self) -> Result<Vec<GameVersion>> {
         self.client
-            .get(API_BASE_URL.join_all(vec!["tag", "game_version"]))
+            .get(self.url.join_all(vec!["tag", "game_version"]))
             .custom_send_json()
             .await
     }
@@ -75,7 +75,7 @@ impl<T> Ferinth<T> {
     */
     pub async fn tag_license_text_and_title(&self, id: &str) -> Result<License> {
         self.client
-            .get(API_BASE_URL.join_all(vec!["tag", "license", id]))
+            .get(self.url.join_all(vec!["tag", "license", id]))
             .custom_send_json()
             .await
     }
@@ -93,7 +93,7 @@ impl<T> Ferinth<T> {
     */
     pub async fn tag_list_donation_platforms(&self) -> Result<Vec<DonationPlatform>> {
         self.client
-            .get(API_BASE_URL.join_all(vec!["tag", "donation_platform"]))
+            .get(self.url.join_all(vec!["tag", "donation_platform"]))
             .custom_send_json()
             .await
     }
@@ -111,7 +111,7 @@ impl<T> Ferinth<T> {
     */
     pub async fn tag_list_report_types(&self) -> Result<Vec<String>> {
         self.client
-            .get(API_BASE_URL.join_all(vec!["tag", "report_type"]))
+            .get(self.url.join_all(vec!["tag", "report_type"]))
             .custom_send_json()
             .await
     }
@@ -129,7 +129,7 @@ impl<T> Ferinth<T> {
     */
     pub async fn tag_list_project_types(&self) -> Result<Vec<String>> {
         self.client
-            .get(API_BASE_URL.join_all(vec!["tag", "project_type"]))
+            .get(self.url.join_all(vec!["tag", "project_type"]))
             .custom_send_json()
             .await
     }
@@ -147,7 +147,7 @@ impl<T> Ferinth<T> {
     */
     pub async fn tag_list_side_types(&self) -> Result<Vec<String>> {
         self.client
-            .get(API_BASE_URL.join_all(vec!["tag", "side_type"]))
+            .get(self.url.join_all(vec!["tag", "side_type"]))
             .custom_send_json()
             .await
     }

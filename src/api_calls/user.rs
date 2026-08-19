@@ -24,7 +24,7 @@ impl<T> Ferinth<T> {
     pub async fn user_get(&self, user_id: &str) -> Result<User> {
         check_id_slug(&[user_id])?;
         self.client
-            .get(API_BASE_URL.join_all(vec!["user", user_id]))
+            .get(self.url.join_all(vec!["user", user_id]))
             .custom_send_json()
             .await
     }
@@ -46,7 +46,7 @@ impl<T> Ferinth<T> {
         check_id_slug(user_ids)?;
         self.client
             .get(
-                API_BASE_URL
+                self.url
                     .join_all(vec!["users"])
                     .with_query_json("ids", user_ids)?,
             )
@@ -69,7 +69,7 @@ impl<T> Ferinth<T> {
     pub async fn user_list_projects(&self, user_id: &str) -> Result<Vec<Project>> {
         check_id_slug(&[user_id])?;
         self.client
-            .get(API_BASE_URL.join_all(vec!["user", user_id, "projects"]))
+            .get(self.url.join_all(vec!["user", user_id, "projects"]))
             .custom_send_json()
             .await
     }
@@ -96,7 +96,7 @@ impl Ferinth<Authenticated> {
     pub async fn user_list_notifications(&self, user_id: &str) -> Result<Vec<Notification>> {
         check_id_slug(&[user_id])?;
         self.client
-            .get(API_BASE_URL.join_all(vec!["user", user_id, "notifications"]))
+            .get(self.url.join_all(vec!["user", user_id, "notifications"]))
             .custom_send_json()
             .await
     }
@@ -121,7 +121,7 @@ impl Ferinth<Authenticated> {
     pub async fn user_list_followed_projects(&self, user_id: &str) -> Result<Vec<Project>> {
         check_id_slug(&[user_id])?;
         self.client
-            .get(API_BASE_URL.join_all(vec!["user", user_id, "follows"]))
+            .get(self.url.join_all(vec!["user", user_id, "follows"]))
             .custom_send_json()
             .await
     }
@@ -144,7 +144,7 @@ impl Ferinth<Authenticated> {
     pub async fn user_delete(&self, user_id: &str) -> Result<()> {
         check_id_slug(&[user_id])?;
         self.client
-            .delete(API_BASE_URL.join_all(vec!["user", user_id]))
+            .delete(self.url.join_all(vec!["user", user_id]))
             .custom_send()
             .await?;
         Ok(())
@@ -170,7 +170,7 @@ impl Ferinth<Authenticated> {
     */
     pub async fn user_get_current(&self) -> Result<User> {
         self.client
-            .get(API_BASE_URL.join_all(vec!["user"]))
+            .get(self.url.join_all(vec!["user"]))
             .custom_send_json()
             .await
     }

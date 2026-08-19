@@ -86,6 +86,7 @@ let modrinth = ferinth::Ferinth::new(
 pub struct Ferinth<Auth> {
     client: Client,
     auth: PhantomData<Auth>,
+    url: Url,
 }
 pub struct Authenticated;
 
@@ -101,6 +102,7 @@ impl Default for Ferinth<()> {
                 .build()
                 .expect("Failed to initialise TLS backend"),
             auth: PhantomData,
+            url: API_BASE_URL.clone(),
         }
     }
 }
@@ -133,6 +135,7 @@ impl Ferinth<()> {
             client: Self::client_builder(name, version, contact)
                 .build()
                 .expect("Failed to initialise TLS backend"),
+            url: API_BASE_URL.clone(),
         }
     }
 }
@@ -166,6 +169,32 @@ impl Ferinth<Authenticated> {
                 )]))
                 .build()
                 .expect("Failed to initialise TLS backend"),
+            url: API_BASE_URL.clone(),
+        })
+    }
+
+    #[cfg(feature = "test")]
+    pub fn new_with_base_url<V>(
+        name: &str,
+        version: Option<&str>,
+        contact: Option<&str>,
+        token: V,
+        base_url: Url,
+    ) -> Result<Self>
+    where
+        V: TryInto<HeaderValue>,
+        Error: From<V::Error>,
+    {
+        Ok(Self {
+            auth: PhantomData,
+            client: Self::client_builder(name, version, contact)
+                .default_headers(HeaderMap::from_iter([(
+                    reqwest::header::AUTHORIZATION,
+                    token.try_into()?,
+                )]))
+                .build()
+                .expect("Failed to initialise TLS backend"),
+            url: base_url,
         })
     }
 }
