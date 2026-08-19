@@ -17,7 +17,7 @@ impl Ferinth<Authenticated> {
     #     env!("CARGO_CRATE_NAME"),
     #     Some(env!("CARGO_PKG_VERSION")),
     #     None,
-    #     env!("MODRINTH_TOKEN"),
+    #     "token",
     # )?;
     let report = modrinth.submit_report(&ferinth::structures::misc::ReportSubmission {
         report_type: "other".to_string(),
@@ -31,7 +31,7 @@ impl Ferinth<Authenticated> {
     pub async fn submit_report(&self, report: &ReportSubmission) -> Result<Report> {
         check_id_slug(&[&report.item_id])?;
         self.client
-            .post(API_BASE_URL.join_all(vec!["report"]))
+            .post(self.url.join_all(vec!["report"]))
             .json(report)
             .custom_send_json()
             .await
@@ -52,7 +52,7 @@ impl<T> Ferinth<T> {
     */
     pub async fn instance_statistics(&self) -> Result<Statistics> {
         self.client
-            .get(API_BASE_URL.join_all(vec!["statistics"]))
+            .get(self.url.join_all(vec!["statistics"]))
             .custom_send_json()
             .await
     }

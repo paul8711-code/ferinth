@@ -15,7 +15,7 @@ impl Ferinth<Authenticated> {
     #     env!("CARGO_CRATE_NAME"),
     #     Some(env!("CARGO_PKG_VERSION")),
     #     None,
-    #     env!("MODRINTH_TOKEN"),
+    #     "token",
     # )?;
     modrinth.version_file_delete_from_hash("795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf", None).await?;
     # Ok::<_, ferinth::Error>(()) }).unwrap()
@@ -27,7 +27,7 @@ impl Ferinth<Authenticated> {
         version_id: Option<&str>,
     ) -> Result<()> {
         check_sha1_hash(&[hash])?;
-        let mut url = API_BASE_URL.join_all(vec!["version_file", hash]);
+        let mut url = self.url.join_all(vec!["version_file", hash]);
         if let Some(version_id) = version_id {
             check_id_slug(&[version_id])?;
             url = url.with_query("version_id", version_id);
@@ -55,7 +55,7 @@ impl<T> Ferinth<T> {
     pub async fn version_get_from_hash(&self, hash: &str) -> Result<Version> {
         check_sha1_hash(&[hash])?;
         self.client
-            .get(API_BASE_URL.join_all(vec!["version_file", hash]))
+            .get(self.url.join_all(vec!["version_file", hash]))
             .custom_send_json()
             .await
     }
@@ -92,7 +92,7 @@ impl<T> Ferinth<T> {
 
         check_sha1_hash(&hashes)?;
         self.client
-            .post(API_BASE_URL.join_all(vec!["version_files"]))
+            .post(self.url.join_all(vec!["version_files"]))
             .json(&HashesBody {
                 hashes,
                 algorithm: HashAlgorithm::SHA1,
@@ -111,7 +111,7 @@ impl<T> Ferinth<T> {
         check_sha1_hash(&[hash])?;
         self.client
             .post(
-                API_BASE_URL
+                self.url
                     .join_all(vec!["version_file", hash, "update"])
                     .with_query_json("algorithm", HashAlgorithm::SHA1)?,
             )
@@ -129,7 +129,7 @@ impl<T> Ferinth<T> {
     ) -> Result<HashMap<String, Version>> {
         check_sha1_hash(&hashes)?;
         self.client
-            .post(API_BASE_URL.join_all(vec!["version_files", "update"]))
+            .post(self.url.join_all(vec!["version_files", "update"]))
             .json(&LatestVersionsBody {
                 hashes,
                 algorithm: HashAlgorithm::SHA1,

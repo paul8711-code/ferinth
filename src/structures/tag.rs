@@ -32,7 +32,7 @@ pub struct GameVersion {
     /// When the game version released
     pub date: UtcTime,
     /// Whether this game version was considered a major version
-    /// 
+    ///
     /// This is used for featured versions.
     pub major: bool,
 }

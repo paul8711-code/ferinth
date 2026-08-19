@@ -136,5 +136,5 @@ pub enum AdditionalFileType {
     JavadocJar,
     Signature,
     #[serde(other)]
-    Unknown
+    Unknown,
 }

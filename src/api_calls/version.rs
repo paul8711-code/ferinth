@@ -15,7 +15,7 @@ impl Ferinth<Authenticated> {
     #     env!("CARGO_CRATE_NAME"),
     #     Some(env!("CARGO_PKG_VERSION")),
     #     None,
-    #     env!("MODRINTH_TOKEN"),
+    #     "token",
     # )?;
     modrinth.version_delete("XXXXXXXX").await?;
     # Ok::<_, ferinth::Error>(()) }).unwrap()
@@ -24,7 +24,7 @@ impl Ferinth<Authenticated> {
     pub async fn version_delete(&self, version_id: &str) -> Result<()> {
         check_id_slug(&[version_id])?;
         self.client
-            .delete(API_BASE_URL.join_all(vec!["version", version_id]))
+            .delete(self.url.join_all(vec!["version", version_id]))
             .custom_send()
             .await?;
         Ok(())
@@ -41,7 +41,7 @@ impl Ferinth<Authenticated> {
     #     env!("CARGO_CRATE_NAME"),
     #     Some(env!("CARGO_PKG_VERSION")),
     #     None,
-    #     env!("MODRINTH_TOKEN"),
+    #     "token",
     # )?;
     // Release the version of ID `xuWxRZPd` to the public in three hours
     modrinth.version_schedule(
@@ -61,7 +61,7 @@ impl Ferinth<Authenticated> {
         check_id_slug(&[version_id])?;
         self.client
             .post(
-                API_BASE_URL
+                self.url
                     .join_all(vec!["version", version_id, "schedule"])
                     .with_query_json("time", time)?
                     .with_query_json("requested_status", status)?,
@@ -88,7 +88,7 @@ impl<T> Ferinth<T> {
     pub async fn version_list(&self, project_id: &str) -> Result<Vec<Version>> {
         check_id_slug(&[project_id])?;
         self.client
-            .get(API_BASE_URL.join_all(vec!["project", project_id, "version"]))
+            .get(self.url.join_all(vec!["project", project_id, "version"]))
             .custom_send_json()
             .await
     }
@@ -120,7 +120,7 @@ impl<T> Ferinth<T> {
         featured: Option<bool>,
     ) -> Result<Vec<Version>> {
         check_id_slug(&[project_id])?;
-        let mut url = API_BASE_URL.join_all(vec!["project", project_id, "version"]);
+        let mut url = self.url.join_all(vec!["project", project_id, "version"]);
         if let Some(loaders) = loaders {
             url = url.with_query_json("loaders", loaders)?;
         }
@@ -148,7 +148,7 @@ impl<T> Ferinth<T> {
     pub async fn version_get(&self, version_id: &str) -> Result<Version> {
         check_id_slug(&[version_id])?;
         self.client
-            .get(API_BASE_URL.join_all(vec!["version", version_id]))
+            .get(self.url.join_all(vec!["version", version_id]))
             .custom_send_json()
             .await
     }
@@ -168,7 +168,10 @@ impl<T> Ferinth<T> {
     pub async fn version_get_from_number(&self, project_id: &str, number: &str) -> Result<Version> {
         check_id_slug(&[project_id])?;
         self.client
-            .get(API_BASE_URL.join_all(vec!["project", project_id, "version", number]))
+            .get(
+                self.url
+                    .join_all(vec!["project", project_id, "version", number]),
+            )
             .custom_send_json()
             .await
     }
@@ -192,7 +195,7 @@ impl<T> Ferinth<T> {
         check_id_slug(version_ids)?;
         self.client
             .get(
-                API_BASE_URL
+                self.url
                     .join_all(vec!["versions"])
                     .with_query_json("ids", version_ids)?,
             )
