@@ -51,7 +51,7 @@ impl Serialize for Facet {
     {
         let output = match self {
             Facet::ProjectType(project_type) => {
-                format!("project_type:{project_type:?}",)
+                format!("project_type: {project_type:?}",)
             }
             Facet::Categories(category) => format!("categories: {category}"),
             Facet::Versions(version) => format!("versions: {version}"),
