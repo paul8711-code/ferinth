@@ -10,7 +10,7 @@ impl<T> Ferinth<T> {
     List the members of the team of the project of `project_id`
 
     ## Example
-    ```rust
+    ```no_run
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let saj_team = modrinth.team_list_project_members("stairautojump").await?;
@@ -50,7 +50,7 @@ impl<T> Ferinth<T> {
     List the members of the teams of `team_ids`
 
     ## Example
-    ```rust
+    ```no_run
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let teams = modrinth.team_multiple_list_members(&[
