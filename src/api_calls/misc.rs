@@ -17,7 +17,7 @@ impl Ferinth<Authenticated> {
     #     env!("CARGO_CRATE_NAME"),
     #     Some(env!("CARGO_PKG_VERSION")),
     #     None,
-    #     env!("MODRINTH_TOKEN"),
+    #     "token",
     # )?;
     let report = modrinth.submit_report(&ferinth::structures::misc::ReportSubmission {
         report_type: "other".to_string(),

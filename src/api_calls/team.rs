@@ -89,7 +89,7 @@ impl Ferinth<Authenticated> {
     #     env!("CARGO_CRATE_NAME"),
     #     Some(env!("CARGO_PKG_VERSION")),
     #     None,
-    #     env!("MODRINTH_TOKEN"),
+    #     "token",
     # )?;
     modrinth.team_add_user("XXXXXXXX", "YYYYYYYY").await?;
     # Ok::<_, ferinth::Error>(()) }).unwrap()
@@ -118,7 +118,7 @@ impl Ferinth<Authenticated> {
     #     env!("CARGO_CRATE_NAME"),
     #     Some(env!("CARGO_PKG_VERSION")),
     #     None,
-    #     env!("MODRINTH_TOKEN"),
+    #     "token",
     # )?;
     modrinth.team_join("XXXXXXXX").await?;
     # Ok::<_, ferinth::Error>(()) }).unwrap()
@@ -141,7 +141,7 @@ impl Ferinth<Authenticated> {
     #     env!("CARGO_CRATE_NAME"),
     #     Some(env!("CARGO_PKG_VERSION")),
     #     None,
-    #     env!("MODRINTH_TOKEN"),
+    #     "token",
     # )?;
     modrinth.team_remove_member("XXXXXXXX", "YYYYYYYY").await?;
     # Ok::<_, ferinth::Error>(()) }).unwrap()
@@ -164,7 +164,7 @@ impl Ferinth<Authenticated> {
     #     env!("CARGO_CRATE_NAME"),
     #     Some(env!("CARGO_PKG_VERSION")),
     #     None,
-    #     env!("MODRINTH_TOKEN"),
+    #     "token",
     # )?;
     modrinth.team_transfer_ownership("XXXXXXXX", "YYYYYYYY").await?;
     # Ok::<_, ferinth::Error>(()) }).unwrap()

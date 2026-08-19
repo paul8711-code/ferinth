@@ -10,7 +10,7 @@ impl<T> Ferinth<T> {
     Get the user of `user_id`
 
     ## Example
-    ```rust
+    ```no_run
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let theRookieCoder = modrinth.user_get("7Azq6eD8").await?;
@@ -80,13 +80,13 @@ impl Ferinth<Authenticated> {
     Get the notifications of the user of `user_id`
 
     ## Example
-    ```rust
+    ```no_run
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
     #     env!("CARGO_CRATE_NAME"),
     #     Some(env!("CARGO_PKG_VERSION")),
     #     None,
-    #     env!("MODRINTH_TOKEN"),
+    #     "token",
     # )?;
     # let user_id = modrinth.user_get_current().await?.id;
     let notifications = modrinth.user_list_notifications(&user_id).await?;
@@ -105,13 +105,13 @@ impl Ferinth<Authenticated> {
     Get the projects that the user of `user_id` has followed
 
     ## Example
-    ```rust
+    ```no_run
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
     #     env!("CARGO_CRATE_NAME"),
     #     Some(env!("CARGO_PKG_VERSION")),
     #     None,
-    #     env!("MODRINTH_TOKEN"),
+    #     "token",
     # )?;
     # let user_id = modrinth.user_get_current().await?.id;
     let projects = modrinth.user_list_followed_projects(&user_id).await?;
@@ -135,7 +135,7 @@ impl Ferinth<Authenticated> {
     #     env!("CARGO_CRATE_NAME"),
     #     Some(env!("CARGO_PKG_VERSION")),
     #     None,
-    #     env!("MODRINTH_TOKEN"),
+    #     "token",
     # )?;
     modrinth.user_delete("XXXXXXXX").await?;
     # Ok::<_, ferinth::Error>(()) }).unwrap()
@@ -154,13 +154,13 @@ impl Ferinth<Authenticated> {
     Get the user from the current authorisation header
 
     ## Example
-    ```rust
+    ```no_run
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
     #     env!("CARGO_CRATE_NAME"),
     #     Some(env!("CARGO_PKG_VERSION")),
     #     None,
-    #     env!("MODRINTH_TOKEN"),
+    #     "token",
     # )?;
     let current_user = modrinth.user_get_current().await?;
     // The email should be visible as we are authorised

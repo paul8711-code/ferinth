@@ -15,7 +15,7 @@ impl Ferinth<Authenticated> {
     #     env!("CARGO_CRATE_NAME"),
     #     Some(env!("CARGO_PKG_VERSION")),
     #     None,
-    #     env!("MODRINTH_TOKEN"),
+    #     "token",
     # )?;
     modrinth.version_delete("XXXXXXXX").await?;
     # Ok::<_, ferinth::Error>(()) }).unwrap()
@@ -41,7 +41,7 @@ impl Ferinth<Authenticated> {
     #     env!("CARGO_CRATE_NAME"),
     #     Some(env!("CARGO_PKG_VERSION")),
     #     None,
-    #     env!("MODRINTH_TOKEN"),
+    #     "token",
     # )?;
     // Release the version of ID `xuWxRZPd` to the public in three hours
     modrinth.version_schedule(

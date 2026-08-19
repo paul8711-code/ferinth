@@ -319,7 +319,7 @@ impl Ferinth<Authenticated> {
     #     env!("CARGO_CRATE_NAME"),
     #     Some(env!("CARGO_PKG_VERSION")),
     #     None,
-    #     env!("MODRINTH_TOKEN"),
+    #     "token",
     # )?;
     // Release the project of ID `XXXXXXXX` in three hours to the public
     modrinth.project_schedule(
