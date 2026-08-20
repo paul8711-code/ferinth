@@ -8,6 +8,34 @@ use wiremock::matchers::{body_json, header, method, path, query_param};
 use wiremock::{Mock, MockServer, ResponseTemplate};
 
 #[tokio::test]
+async fn delete_project() -> anyhow::Result<()> {
+    let mock_server = MockServer::start().await;
+    let base_url = Url::parse(&mock_server.uri())?;
+
+    let project_id = "test_project";
+
+    Mock::given(method("DELETE"))
+        .and(path(format!("/project/{}", project_id)))
+        .and(header("Authorization", "token"))
+        .respond_with(ResponseTemplate::new(204))
+        .expect(1)
+        .mount(&mock_server)
+        .await;
+
+    let modrinth = Ferinth::new_with_base_url(
+        env!("CARGO_CRATE_NAME"),
+        Some(env!("CARGO_PKG_VERSION")),
+        None,
+        "token",
+        base_url,
+    )?;
+
+    modrinth.project_delete(project_id).await?;
+
+    Ok(())
+}
+
+#[tokio::test]
 async fn delete_project_icon() -> anyhow::Result<()> {
     let mock_server = MockServer::start().await;
     let base_url = Url::parse(&mock_server.uri())?;
