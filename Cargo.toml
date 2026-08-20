@@ -22,7 +22,6 @@ thiserror = "2.0"
 
 [dev-dependencies]
 anyhow = "1.0.104"
-ferinth = { path = ".", features = ["test"], package = "paul8711-ferinth" }
 tokio = { version = "1.52", features = ["macros"] }
 tokio-test = "0.4"
 wiremock = "0.6.5"
@@ -30,3 +29,6 @@ wiremock = "0.6.5"
 [features]
 default = []
 test = []
+
+[[test]]
+required-features = ["test"]

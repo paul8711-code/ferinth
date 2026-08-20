@@ -1,3 +1,5 @@
+use paul8711_ferinth as ferinth;
+
 use ferinth::structures::project;
 use ferinth::Ferinth;
 use url::Url;

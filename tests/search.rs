@@ -1,3 +1,5 @@
+use paul8711_ferinth as ferinth;
+
 use ferinth::structures::project::ProjectType;
 use ferinth::structures::search::{Facet, Sort};
 use ferinth::Ferinth;
