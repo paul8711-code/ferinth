@@ -68,6 +68,35 @@ async fn change_project_icon() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
+async fn check_validity() -> anyhow::Result<()> {
+    let mock_server = MockServer::start().await;
+    let base_url = Url::parse(&mock_server.uri())?;
+
+    let project_id = "AABBCCDD";
+
+    Mock::given(method("GET"))
+        .and(path(format!("/project/{}/check", project_id)))
+        .respond_with(ResponseTemplate::new(200).set_body_json(json!({
+            "id": project_id,
+        })))
+        .expect(1)
+        .mount(&mock_server)
+        .await;
+
+    let modrinth = Ferinth::new_with_base_url(
+        env!("CARGO_CRATE_NAME"),
+        Some(env!("CARGO_PKG_VERSION")),
+        None,
+        "token",
+        base_url,
+    )?;
+
+    modrinth.project_check_validity(project_id).await?;
+
+    Ok(())
+}
+
+#[tokio::test]
 async fn add_gallery_image() -> anyhow::Result<()> {
     let mock_server = MockServer::start().await;
     let base_url = Url::parse(&mock_server.uri())?;
