@@ -68,13 +68,13 @@ Use the `Default` implementation to set the user agent based on the crate name a
 This container will not have authentication.
 
 ```ignore
-let modrinth = ferinth::Ferinth::default();
+let modrinth = paul8711_ferinth::Ferinth::default();
 ```
 
 Use the `new()` function to set a custom user agent and authentication token.
 
 ```ignore
-let modrinth = ferinth::Ferinth::new(
+let modrinth = paul8711_ferinth::Ferinth::new(
     env!("CARGO_CRATE_NAME"),
     Some(env!("CARGO_PKG_VERSION")),
     Some("contact@program.com"),

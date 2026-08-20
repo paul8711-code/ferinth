@@ -11,6 +11,7 @@ impl<T> Ferinth<T> {
 
     ## Example
     ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let saj_team = modrinth.team_list_project_members("stairautojump").await?;
@@ -30,7 +31,8 @@ impl<T> Ferinth<T> {
     List the members of the team of `team_id`
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let saj_team = modrinth.team_list_members("zftNHDXi").await?;
@@ -51,6 +53,7 @@ impl<T> Ferinth<T> {
 
     ## Example
     ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let teams = modrinth.team_multiple_list_members(&[
@@ -84,6 +87,7 @@ impl Ferinth<Authenticated> {
     Send an invite to the user of `user_id` to join the team of `team_id`
 
     ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
     #     env!("CARGO_CRATE_NAME"),
@@ -113,6 +117,7 @@ impl Ferinth<Authenticated> {
     Accept an invite to join the team of `team_id`
 
     ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
     #     env!("CARGO_CRATE_NAME"),
@@ -136,6 +141,7 @@ impl Ferinth<Authenticated> {
     Remove the member of `user_id` from the team of `team_id`
 
     ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
     #     env!("CARGO_CRATE_NAME"),
@@ -159,6 +165,7 @@ impl Ferinth<Authenticated> {
     Transfer ownership of the team of `team_id` to the user of `user_id`
 
     ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
     #     env!("CARGO_CRATE_NAME"),

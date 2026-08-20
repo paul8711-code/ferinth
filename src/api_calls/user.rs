@@ -11,6 +11,7 @@ impl<T> Ferinth<T> {
 
     ## Example
     ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let theRookieCoder = modrinth.user_get("7Azq6eD8").await?;
@@ -33,7 +34,8 @@ impl<T> Ferinth<T> {
     Get the users of `user_ids`
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # use ferinth::structures::user::UserRole;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
@@ -58,7 +60,8 @@ impl<T> Ferinth<T> {
     Get the projects of the user of `user_id`
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let jellysquid_projects = modrinth.user_list_projects("TEZXhE2U").await?;
@@ -81,6 +84,7 @@ impl Ferinth<Authenticated> {
 
     ## Example
     ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
     #     env!("CARGO_CRATE_NAME"),
@@ -106,6 +110,7 @@ impl Ferinth<Authenticated> {
 
     ## Example
     ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
     #     env!("CARGO_CRATE_NAME"),
@@ -130,6 +135,7 @@ impl Ferinth<Authenticated> {
     Delete the user of `user_id`
 
     ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
     #     env!("CARGO_CRATE_NAME"),
@@ -155,6 +161,7 @@ impl Ferinth<Authenticated> {
 
     ## Example
     ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
     #     env!("CARGO_CRATE_NAME"),

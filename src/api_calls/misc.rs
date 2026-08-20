@@ -12,6 +12,7 @@ impl Ferinth<Authenticated> {
     Valid report types can be found using [`Ferinth::list_report_types`]
 
     ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
     #     env!("CARGO_CRATE_NAME"),
@@ -19,10 +20,10 @@ impl Ferinth<Authenticated> {
     #     None,
     #     "token",
     # )?;
-    let report = modrinth.submit_report(&ferinth::structures::misc::ReportSubmission {
+    let report = modrinth.submit_report(&paul8711_ferinth::structures::misc::ReportSubmission {
         report_type: "other".to_string(),
         item_id: "XXXXXXXX".to_string(),
-        item_type: ferinth::structures::misc::ReportItemType::User,
+        item_type: paul8711_ferinth::structures::misc::ReportItemType::User,
         body: "This is an example report".to_string(),
     }).await?;
     # Ok::<_, ferinth::Error>(()) }).unwrap()
@@ -43,7 +44,8 @@ impl<T> Ferinth<T> {
     Get various statistics about this Modrinth instance
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let statistics = modrinth.instance_statistics().await?;

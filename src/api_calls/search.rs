@@ -10,7 +10,8 @@ impl<T> Ferinth<T> {
     In `facets`, only non-empty vectors will be used.
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # use ferinth::structures::search::{Sort, Facet};
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
@@ -58,7 +59,8 @@ impl<T> Ferinth<T> {
     In `facets`, only non-empty vectors will be used.
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # use ferinth::structures::search::{Sort, Facet};
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();

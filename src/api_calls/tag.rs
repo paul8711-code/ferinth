@@ -10,7 +10,8 @@ impl<T> Ferinth<T> {
     List the categories, their icons, and applicable project types
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let categories = modrinth.tag_list_categories().await?;
@@ -28,7 +29,8 @@ impl<T> Ferinth<T> {
     List the loaders, their icons, and supported project types
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let loaders = modrinth.tag_list_loaders().await?;
@@ -46,7 +48,8 @@ impl<T> Ferinth<T> {
     List the game versions and information about them
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let game_versions = modrinth.tag_list_game_versions().await?;
@@ -64,7 +67,8 @@ impl<T> Ferinth<T> {
     Get the text and title of a license
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let license = modrinth.tag_license_text_and_title("MIT").await?;
@@ -84,7 +88,8 @@ impl<T> Ferinth<T> {
     List donation platforms and information about them
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let donation_platforms = modrinth.tag_list_donation_platforms().await?;
@@ -102,7 +107,8 @@ impl<T> Ferinth<T> {
     List valid report types
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let report_types = modrinth.tag_list_report_types().await?;
@@ -120,7 +126,8 @@ impl<T> Ferinth<T> {
     List valid project types
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let report_types = modrinth.tag_list_project_types().await?;
@@ -138,7 +145,8 @@ impl<T> Ferinth<T> {
     List valid side types
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let report_types = modrinth.tag_list_side_types().await?;

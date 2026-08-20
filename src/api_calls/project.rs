@@ -14,7 +14,8 @@ impl<T> Ferinth<T> {
     Get the project of `project_id`
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     // Get a mod using its project ID
@@ -39,7 +40,8 @@ impl<T> Ferinth<T> {
     Get the projects of `project_ids`
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     // You can use both IDs and slugs
@@ -72,7 +74,8 @@ impl<T> Ferinth<T> {
     the amount of projects returned will most likely be less than `count`.
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let random_projects = modrinth.project_get_random(5).await?;
@@ -98,7 +101,8 @@ impl<T> Ferinth<T> {
     if so the ID of the project will be returned
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let project_id = modrinth.project_check_validity("sodium").await?;
@@ -124,7 +128,8 @@ impl<T> Ferinth<T> {
     Get the dependencies of the project of `project_id`
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let fabric_api = modrinth.project_get_dependencies("fabric-api").await?;
@@ -314,6 +319,7 @@ impl Ferinth<Authenticated> {
     Schedule a change of `status` at `time` to the project of `project_id`
 
     ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
     #     env!("CARGO_CRATE_NAME"),

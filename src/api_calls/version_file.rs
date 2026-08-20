@@ -10,6 +10,7 @@ impl Ferinth<Authenticated> {
     Optionally specify the version ID to delete the version file from, if multiple files of the same hash exist.
 
     ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
     #     env!("CARGO_CRATE_NAME"),
@@ -43,7 +44,8 @@ impl<T> Ferinth<T> {
     Only supports SHA1 hashes for now.
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     // If a mod file has the hash `795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf`, we can get the version it belongs to
@@ -66,7 +68,8 @@ impl<T> Ferinth<T> {
     Returns a map where the keys are the hashes given.
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let sodium_hash = "795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf";

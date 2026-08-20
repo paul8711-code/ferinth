@@ -10,6 +10,7 @@ impl Ferinth<Authenticated> {
     Delete the version of `version_id`
 
     ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
     #     env!("CARGO_CRATE_NAME"),
@@ -34,6 +35,7 @@ impl Ferinth<Authenticated> {
     Schedule changing the status of version of `version_id` to `requested_status` at `time`
 
     ```no_run
+    # use paul8711_ferinth as ferinth;
     # use ferinth::structures::version::RequestedStatus;
     # use chrono::{Duration, offset::Utc};
     # tokio_test::block_on(async {
@@ -77,7 +79,8 @@ impl<T> Ferinth<T> {
     Get the versions of the project of `project_id`
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let sodium_versions = modrinth.version_list("AANobbMI").await?;
@@ -98,7 +101,8 @@ impl<T> Ferinth<T> {
     mod `loaders`, `game_versions`, and whether the version is `featured`
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let sodium_forge_versions = modrinth.version_list_filtered(
@@ -137,7 +141,8 @@ impl<T> Ferinth<T> {
     Get the version of `version_id`
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let sodium_version = modrinth.version_get("xuWxRZPd").await?;
@@ -157,7 +162,8 @@ impl<T> Ferinth<T> {
     Get the version of the version `number` from the project of `project_id`
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let version = modrinth.version_get_from_number("sodium", "mc1.17.1-0.3.2").await?;
@@ -180,7 +186,8 @@ impl<T> Ferinth<T> {
     Get the versions of `version_ids`
 
     ## Example
-    ```rust
+    ```no_run
+    # use paul8711_ferinth as ferinth;
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let versions = modrinth.version_get_multiple(&[
