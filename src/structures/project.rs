@@ -13,8 +13,7 @@ pub struct Project {
     /// A short description of the project
     pub description: String,
     pub categories: Vec<String>,
-    pub client_side: SideType,
-    pub server_side: SideType,
+    pub environment: Vec<EnvironmentType>,
     /// A long form description of the project
     pub body: String,
     pub status: ProjectStatus,
@@ -180,17 +179,29 @@ pub enum MonetizationStatus {
     Other,
 }
 
-pub type ProjectSupportRange = SideType;
+pub type ProjectSupportRange = EnvironmentType;
 #[derive(Deserialize, Serialize, Debug, Clone, Copy, PartialEq, Eq)]
-#[serde(rename_all = "lowercase")]
-pub enum SideType {
-    /// The mod is required on this side to function
-    Required,
-    /// The mod is not required on this side to function.
-    /// However, functionality might be enhanced if it is present.
-    Optional,
-    /// The mod will not run on this side
-    Unsupported,
+#[serde(rename_all = "snake_case")]
+pub enum EnvironmentType {
+    /// The mod is required on the client side
+    ClientOnly,
+    /// The mod is required on the server side
+    ServerOnly,
+    /// The mod only runs on a dedicated server, not Singleplayer
+    DedicatedServerOnly,
+    /// The mod is required on both the server and the client
+    ClientAndServer,
+    /// The mod must be on the server, can be on the client for enhanced functionality
+    ServerOnlyClientOptional,
+    /// The mod must be on the client, can be on the server for enhanced functionality
+    ClientOnlyServerOptional,
+    /// The mod can be installed on just the client or just the server, but functionality is
+    /// enhanced when on both
+    ClientOrServerPrefersBoth,
+    /// The mod can be installed on just the client or just the server and functionality is the same
+    ClientOrServer,
+    /// The mod only works in Singleplayer, does not in Multiplayer
+    SingleplayerOnly,
     /// It is unknown if the project will run on this side
     Unknown,
 }
