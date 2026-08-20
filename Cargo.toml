@@ -1,11 +1,11 @@
 [package]
-name = "ferinth"
+name = "paul8711-ferinth"
 # The major version specifies which version of the Modrinth API this supports
 version = "2.13.1"
 edition = "2021"
-authors = ["Ilesh Thiada (theRookieCoder) <ileshkt@gmail.com>", "4JX"]
-description = "A simple Rust wrapper for the official Modrinth API"
-repository = "https://github.com/gorilla-devs/ferinth"
+authors = ["Paul8711 <contact@paul8711.com>", "Ilesh Thiada (theRookieCoder) <ileshkt@gmail.com>", "4JX"]
+description = "A more maintained and well-tested fork of Ferinth, a Rust wrapper for the official Modrinth API"
+repository = "https://github.com/paul8711-code/ferinth"
 license = "MIT"
 publish = ["crates-io"]
 keywords = ["modrinth", "minecraft", "modding"]
@@ -22,7 +22,7 @@ thiserror = "2.0"
 
 [dev-dependencies]
 anyhow = "1.0.104"
-ferinth = { path = ".", features = ["test"] }
+ferinth = { path = ".", features = ["test"], package = "paul8711-ferinth" }
 tokio = { version = "1.52", features = ["macros"] }
 tokio-test = "0.4"
 wiremock = "0.6.5"
