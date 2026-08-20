@@ -1,16 +1,8 @@
-use paul8711_ferinth as ferinth;
-
-use ferinth::structures::{project, UtcTime};
-use ferinth::Ferinth;
-use serde_json::json;
-use url::Url;
-use wiremock::matchers::{body_json, header, method, path, query_param};
-use wiremock::{Mock, MockServer, ResponseTemplate};
+use crate::*;
 
 #[tokio::test]
 async fn delete_project() -> anyhow::Result<()> {
-    let mock_server = MockServer::start().await;
-    let base_url = Url::parse(&mock_server.uri())?;
+    let ctx = TestContext::new().await?;
 
     let project_id = "test_project";
 
@@ -19,26 +11,17 @@ async fn delete_project() -> anyhow::Result<()> {
         .and(header("Authorization", "token"))
         .respond_with(ResponseTemplate::new(204))
         .expect(1)
-        .mount(&mock_server)
+        .mount(&ctx.mock_server)
         .await;
 
-    let modrinth = Ferinth::new_with_base_url(
-        env!("CARGO_CRATE_NAME"),
-        Some(env!("CARGO_PKG_VERSION")),
-        None,
-        "token",
-        base_url,
-    )?;
-
-    modrinth.project_delete(project_id).await?;
+    ctx.modrinth.project_delete(project_id).await?;
 
     Ok(())
 }
 
 #[tokio::test]
 async fn delete_project_icon() -> anyhow::Result<()> {
-    let mock_server = MockServer::start().await;
-    let base_url = Url::parse(&mock_server.uri())?;
+    let ctx = TestContext::new().await?;
 
     let project_id = "test_project";
 
@@ -47,26 +30,17 @@ async fn delete_project_icon() -> anyhow::Result<()> {
         .and(header("Authorization", "token"))
         .respond_with(ResponseTemplate::new(204))
         .expect(1)
-        .mount(&mock_server)
+        .mount(&ctx.mock_server)
         .await;
 
-    let modrinth = Ferinth::new_with_base_url(
-        env!("CARGO_CRATE_NAME"),
-        Some(env!("CARGO_PKG_VERSION")),
-        None,
-        "token",
-        base_url,
-    )?;
-
-    modrinth.project_delete_icon(project_id).await?;
+    ctx.modrinth.project_delete_icon(project_id).await?;
 
     Ok(())
 }
 
 #[tokio::test]
 async fn change_project_icon() -> anyhow::Result<()> {
-    let mock_server = MockServer::start().await;
-    let base_url = Url::parse(&mock_server.uri())?;
+    let ctx = TestContext::new().await?;
 
     let project_id = "test_project";
 
@@ -76,19 +50,11 @@ async fn change_project_icon() -> anyhow::Result<()> {
         .and(query_param("ext", "png"))
         .respond_with(ResponseTemplate::new(204))
         .expect(1)
-        .mount(&mock_server)
+        .mount(&ctx.mock_server)
         .await;
 
-    let modrinth = Ferinth::new_with_base_url(
-        env!("CARGO_CRATE_NAME"),
-        Some(env!("CARGO_PKG_VERSION")),
-        None,
-        "token",
-        base_url,
-    )?;
-
     let image = std::fs::read("test_image.png").expect("Cannot read test image");
-    modrinth
+    ctx.modrinth
         .project_edit_icon(project_id, image, project::ImageFileExt::PNG)
         .await?;
 
@@ -97,8 +63,7 @@ async fn change_project_icon() -> anyhow::Result<()> {
 
 #[tokio::test]
 async fn check_validity() -> anyhow::Result<()> {
-    let mock_server = MockServer::start().await;
-    let base_url = Url::parse(&mock_server.uri())?;
+    let ctx = TestContext::new().await?;
 
     let project_id = "AABBCCDD";
 
@@ -108,26 +73,17 @@ async fn check_validity() -> anyhow::Result<()> {
             "id": project_id,
         })))
         .expect(1)
-        .mount(&mock_server)
+        .mount(&ctx.mock_server)
         .await;
 
-    let modrinth = Ferinth::new_with_base_url(
-        env!("CARGO_CRATE_NAME"),
-        Some(env!("CARGO_PKG_VERSION")),
-        None,
-        "token",
-        base_url,
-    )?;
-
-    modrinth.project_check_validity(project_id).await?;
+    ctx.modrinth.project_check_validity(project_id).await?;
 
     Ok(())
 }
 
 #[tokio::test]
 async fn add_gallery_image() -> anyhow::Result<()> {
-    let mock_server = MockServer::start().await;
-    let base_url = Url::parse(&mock_server.uri())?;
+    let ctx = TestContext::new().await?;
 
     let project_id = "test_project";
 
@@ -140,19 +96,11 @@ async fn add_gallery_image() -> anyhow::Result<()> {
         .and(query_param("description", "test image"))
         .respond_with(ResponseTemplate::new(204))
         .expect(1)
-        .mount(&mock_server)
+        .mount(&ctx.mock_server)
         .await;
 
-    let modrinth = Ferinth::new_with_base_url(
-        env!("CARGO_CRATE_NAME"),
-        Some(env!("CARGO_PKG_VERSION")),
-        None,
-        "token",
-        base_url,
-    )?;
-
     let image_data = std::fs::read("test_image.png").expect("Failed to read test image");
-    modrinth
+    ctx.modrinth
         .project_add_gallery_image(
             project_id,
             image_data,
@@ -168,8 +116,7 @@ async fn add_gallery_image() -> anyhow::Result<()> {
 
 #[tokio::test]
 async fn delete_gallery_image() -> anyhow::Result<()> {
-    let mock_server = MockServer::start().await;
-    let base_url = Url::parse(&mock_server.uri())?;
+    let ctx = TestContext::new().await?;
 
     let project_id = "test_project";
 
@@ -179,18 +126,10 @@ async fn delete_gallery_image() -> anyhow::Result<()> {
         .and(query_param("url", "https://example.com/"))
         .respond_with(ResponseTemplate::new(204))
         .expect(1)
-        .mount(&mock_server)
+        .mount(&ctx.mock_server)
         .await;
 
-    let modrinth = Ferinth::new_with_base_url(
-        env!("CARGO_CRATE_NAME"),
-        Some(env!("CARGO_PKG_VERSION")),
-        None,
-        "token",
-        base_url,
-    )?;
-
-    modrinth
+    ctx.modrinth
         .project_delete_gallery_image(project_id, "https://example.com/")
         .await?;
 
@@ -199,8 +138,7 @@ async fn delete_gallery_image() -> anyhow::Result<()> {
 
 #[tokio::test]
 async fn modify_gallery_image() -> anyhow::Result<()> {
-    let mock_server = MockServer::start().await;
-    let base_url = Url::parse(&mock_server.uri())?;
+    let ctx = TestContext::new().await?;
 
     let project_id = "test_project";
 
@@ -212,18 +150,10 @@ async fn modify_gallery_image() -> anyhow::Result<()> {
         .and(query_param("title", "modified_test_image"))
         .respond_with(ResponseTemplate::new(204))
         .expect(1)
-        .mount(&mock_server)
+        .mount(&ctx.mock_server)
         .await;
 
-    let modrinth = Ferinth::new_with_base_url(
-        env!("CARGO_CRATE_NAME"),
-        Some(env!("CARGO_PKG_VERSION")),
-        None,
-        "token",
-        base_url,
-    )?;
-
-    modrinth
+    ctx.modrinth
         .project_edit_gallery_image(
             project_id,
             "https://example.com/",
@@ -239,8 +169,7 @@ async fn modify_gallery_image() -> anyhow::Result<()> {
 
 #[tokio::test]
 async fn follow() -> anyhow::Result<()> {
-    let mock_server = MockServer::start().await;
-    let base_url = Url::parse(&mock_server.uri())?;
+    let ctx = TestContext::new().await?;
 
     let project_id = "test_project";
 
@@ -249,26 +178,17 @@ async fn follow() -> anyhow::Result<()> {
         .and(header("Authorization", "token"))
         .respond_with(ResponseTemplate::new(204))
         .expect(1)
-        .mount(&mock_server)
+        .mount(&ctx.mock_server)
         .await;
 
-    let modrinth = Ferinth::new_with_base_url(
-        env!("CARGO_CRATE_NAME"),
-        Some(env!("CARGO_PKG_VERSION")),
-        None,
-        "token",
-        base_url,
-    )?;
-
-    modrinth.project_follow(project_id).await?;
+    ctx.modrinth.project_follow(project_id).await?;
 
     Ok(())
 }
 
 #[tokio::test]
 async fn unfollow() -> anyhow::Result<()> {
-    let mock_server = MockServer::start().await;
-    let base_url = Url::parse(&mock_server.uri())?;
+    let ctx = TestContext::new().await?;
 
     let project_id = "test_project";
 
@@ -277,26 +197,17 @@ async fn unfollow() -> anyhow::Result<()> {
         .and(header("Authorization", "token"))
         .respond_with(ResponseTemplate::new(204))
         .expect(1)
-        .mount(&mock_server)
+        .mount(&ctx.mock_server)
         .await;
 
-    let modrinth = Ferinth::new_with_base_url(
-        env!("CARGO_CRATE_NAME"),
-        Some(env!("CARGO_PKG_VERSION")),
-        None,
-        "token",
-        base_url,
-    )?;
-
-    modrinth.project_unfollow(project_id).await?;
+    ctx.modrinth.project_unfollow(project_id).await?;
 
     Ok(())
 }
 
 #[tokio::test]
 async fn schedule() -> anyhow::Result<()> {
-    let mock_server = MockServer::start().await;
-    let base_url = Url::parse(&mock_server.uri())?;
+    let ctx = TestContext::new().await?;
 
     let project_id = "test_project";
 
@@ -310,18 +221,10 @@ async fn schedule() -> anyhow::Result<()> {
         })))
         .respond_with(ResponseTemplate::new(204))
         .expect(1)
-        .mount(&mock_server)
+        .mount(&ctx.mock_server)
         .await;
 
-    let modrinth = Ferinth::new_with_base_url(
-        env!("CARGO_CRATE_NAME"),
-        Some(env!("CARGO_PKG_VERSION")),
-        None,
-        "token",
-        base_url,
-    )?;
-
-    modrinth
+    ctx.modrinth
         .project_schedule(
             project_id,
             &time.parse::<UtcTime>().expect("parsing should not fail"),
