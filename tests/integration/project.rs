@@ -1,9 +1,10 @@
 use paul8711_ferinth as ferinth;
 
-use ferinth::structures::project;
+use ferinth::structures::{project, UtcTime};
 use ferinth::Ferinth;
+use serde_json::json;
 use url::Url;
-use wiremock::matchers::{header, method, path, query_param};
+use wiremock::matchers::{body_json, header, method, path, query_param};
 use wiremock::{Mock, MockServer, ResponseTemplate};
 
 #[tokio::test]
@@ -231,6 +232,45 @@ async fn unfollow() -> anyhow::Result<()> {
     )?;
 
     modrinth.project_unfollow(project_id).await?;
+
+    Ok(())
+}
+
+#[tokio::test]
+async fn schedule() -> anyhow::Result<()> {
+    let mock_server = MockServer::start().await;
+    let base_url = Url::parse(&mock_server.uri())?;
+
+    let project_id = "test_project";
+
+    let time = "2023-02-05T19:39:55.551839Z";
+
+    Mock::given(method("POST"))
+        .and(path(format!("/project/{}/schedule", project_id)))
+        .and(body_json(json!({
+            "time": time,
+            "requested_status": "approved",
+        })))
+        .respond_with(ResponseTemplate::new(204))
+        .expect(1)
+        .mount(&mock_server)
+        .await;
+
+    let modrinth = Ferinth::new_with_base_url(
+        env!("CARGO_CRATE_NAME"),
+        Some(env!("CARGO_PKG_VERSION")),
+        None,
+        "token",
+        base_url,
+    )?;
+
+    modrinth
+        .project_schedule(
+            project_id,
+            &time.parse::<UtcTime>().expect("parsing should not fail"),
+            &project::RequestedStatus::Approved,
+        )
+        .await?;
 
     Ok(())
 }
