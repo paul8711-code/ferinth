@@ -1,6 +1,73 @@
 use crate::*;
 
 #[tokio::test]
+async fn get_project() -> anyhow::Result<()> {
+    let ctx = TestContext::new().await?;
+
+    let project_id = "test_project";
+
+    let body_json = json!({
+        "id": "AABBCCDD",
+        "team": "MMNNOOPP",
+        "title": project_id,
+        "description": "test project",
+        "body": "A long Test project",
+        "status": "archived",
+        "project_type": "mod",
+        "categories": [
+            "technology",
+            "adventure",
+            "fabric"
+        ],
+        "additional_categories": [
+            "technology",
+            "adventure",
+            "fabric"
+        ],
+        "environment": ["client_and_server"],
+        "game_versions": ["1.19"],
+        "loaders": ["neoforge", "fabric"],
+        "versions": ["IIJJKKLL"],
+        "license": {
+            "id": "LGPL-3.0-or-later",
+            "name": "GNU Lesser General Public License v3 or later",
+            "url": None::<String>
+        },
+        "published": "2026-08-19T22:00:00.000Z",
+        "updated": "2026-08-19T22:00:00.000Z",
+        "downloads": 3,
+        "followers": 1,
+        "gallery": [],
+        "thread_id": "",
+        "monetization_status": "force-demonetized",
+        "slug": String::new(),
+        "organization": None::<String>,
+        "requested_status": None::<String>,
+        "approved": "2026-08-19T22:00:00.000Z",
+        "queued": None::<String>,
+        "icon_url": None::<String>,
+        "raw_icon_url": None::<String>,
+        "color": 8703084,
+        "issues_url": None::<String>,
+        "source_url": None::<String>,
+        "wiki_url": None::<String>,
+        "discord_url": None::<String>,
+        "donation_urls": Vec::<String>::new(),
+    });
+
+    Mock::given(method("GET"))
+        .and(path(format!("/project/{}", project_id)))
+        .respond_with(ResponseTemplate::new(200).set_body_json(body_json))
+        .expect(1)
+        .mount(&ctx.mock_server)
+        .await;
+
+    ctx.modrinth.project_get(project_id).await?;
+
+    Ok(())
+}
+
+#[tokio::test]
 async fn delete_project() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 
