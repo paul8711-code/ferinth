@@ -8,7 +8,6 @@ use wiremock::matchers::{body_json, header, method, path, query_param};
 use wiremock::{Mock, MockServer, ResponseTemplate};
 mod integration {
     mod project;
-    mod search;
 }
 
 struct TestContext {
