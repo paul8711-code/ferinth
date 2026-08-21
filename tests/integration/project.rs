@@ -1,7 +1,7 @@
 use crate::*;
 
 #[tokio::test]
-async fn get_project() -> anyhow::Result<()> {
+async fn get() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 
     let project_id = "test_project";
@@ -68,7 +68,7 @@ async fn get_project() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-async fn delete_project() -> anyhow::Result<()> {
+async fn delete() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 
     let project_id = "test_project";
@@ -87,7 +87,7 @@ async fn delete_project() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-async fn delete_project_icon() -> anyhow::Result<()> {
+async fn delete_icon() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 
     let project_id = "test_project";
@@ -106,7 +106,7 @@ async fn delete_project_icon() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-async fn change_project_icon() -> anyhow::Result<()> {
+async fn edit_icon() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 
     let project_id = "test_project";
@@ -204,7 +204,7 @@ async fn delete_gallery_image() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-async fn modify_gallery_image() -> anyhow::Result<()> {
+async fn edit_gallery_image() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 
     let project_id = "test_project";
