@@ -1,6 +1,6 @@
 //! API calls related to projects
 //!
-//! [documentation](https://docs.modrinth.com/api-spec/#tag/projects)
+//! [documentation](https://docs.modrinth.com/api/operations/tags/projects/)
 
 use super::*;
 use reqwest::{

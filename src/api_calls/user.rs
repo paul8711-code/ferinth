@@ -1,6 +1,6 @@
 //! API calls related to users
 //!
-//! [documentation](https://docs.modrinth.com/api-spec/#tag/users)
+//! [documentation](https://docs.modrinth.com/api/operations/tags/users/)
 
 use super::*;
 use crate::structures::{project::Project, user::*};

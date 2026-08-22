@@ -1,6 +1,6 @@
 //! API calls related to versions
 //!
-//! [documentation](https://docs.modrinth.com/api-spec/#tag/versions)
+//! [documentation](https://docs.modrinth.com/api/operations/tags/versions/)
 
 use super::*;
 use crate::structures::{version::*, UtcTime};

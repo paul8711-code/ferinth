@@ -1,6 +1,4 @@
 //! Miscellaneous API calls
-//!
-//! [documentation](https://docs.modrinth.com/api-spec/#tag/misc)
 
 use super::*;
 use crate::structures::misc::*;

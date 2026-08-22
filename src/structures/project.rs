@@ -1,6 +1,4 @@
 //! Models related to projects
-//!
-//! [documentation](https://docs.modrinth.com/api-spec/#tag/project_model)
 
 use super::*;
 

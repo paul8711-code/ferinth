@@ -1,6 +1,6 @@
 //! API calls related to teams
 //!
-//! [documentation](https://docs.modrinth.com/api-spec/#tag/teams)
+//! [documentation](https://docs.modrinth.com/api/operations/tags/teams/)
 
 use super::*;
 use crate::structures::user::*;

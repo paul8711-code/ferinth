@@ -1,3 +1,7 @@
+//! API calls related to version files
+//!
+//! [documentation](https://docs.modrinth.com/api/operations/tags/version-files/)
+
 use super::*;
 use crate::structures::version::*;
 use serde::{Deserialize, Serialize};

@@ -1,6 +1,6 @@
 //! API calls related to tags
 //!
-//! [documentation](https://docs.modrinth.com/api-spec/#tag/tags)
+//! [documentation](https://docs.modrinth.com/api/operations/tags/tags/)
 
 use super::*;
 use crate::structures::tag::*;
