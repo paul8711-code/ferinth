@@ -1,0 +1,15 @@
+{
+    "request": {
+        "method": "DELETE",
+        "urlPath": "/project/test_project/gallery",
+        "queryParameters": {
+            "url": "https://example.com/"
+        },
+        "headers": {
+            "Authorization": "token"
+        }
+    },
+    "response": {
+        "status": 204
+    }
+}

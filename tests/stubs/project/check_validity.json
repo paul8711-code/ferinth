@@ -1,0 +1,12 @@
+{
+    "request": {
+        "method": "GET",
+        "urlPath": "/project/AABBCCDD/check"
+    },
+    "response": {
+        "status": 200,
+        "jsonBody": {
+            "id": "AABBCCDD"
+        }
+    }
+}

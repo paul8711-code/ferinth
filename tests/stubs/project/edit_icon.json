@@ -1,0 +1,20 @@
+{
+    "request": {
+        "method": "PATCH",
+        "urlPath": "/project/test_project/icon",
+        "queryParameters": {
+            "ext": "png"
+        },
+        "headers": {
+            "Authorization": "token"
+        },
+        "bodyPatterns": [
+            {
+                "equalTo": "image data"
+            }
+        ]
+    },
+    "response": {
+        "status": 204
+    }
+}
