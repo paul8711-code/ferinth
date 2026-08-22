@@ -8,5 +8,4 @@ async fn delete() -> anyhow::Result<()> {
     ctx.modrinth.version_delete("IIJJKKLL").await?;
 
     Ok(())
-
 }
