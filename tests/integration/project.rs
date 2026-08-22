@@ -5,9 +5,7 @@ use crate::*;
 async fn get() -> anyhow::Result<()> {
     let ctx = TestContext::new(&stubr.uri()).await?;
 
-    let project_id = "create";
-
-    ctx.modrinth.project_get(project_id).await?;
+    ctx.modrinth.project_get("create").await?;
 
     Ok(())
 }
@@ -17,9 +15,7 @@ async fn get() -> anyhow::Result<()> {
 async fn delete() -> anyhow::Result<()> {
     let ctx = TestContext::new(&stubr.uri()).await?;
 
-    let project_id = "test_project";
-
-    ctx.modrinth.project_delete(project_id).await?;
+    ctx.modrinth.project_delete("test_project").await?;
 
     Ok(())
 }
@@ -29,9 +25,7 @@ async fn delete() -> anyhow::Result<()> {
 async fn delete_icon() -> anyhow::Result<()> {
     let ctx = TestContext::new(&stubr.uri()).await?;
 
-    let project_id = "test_project";
-
-    ctx.modrinth.project_delete_icon(project_id).await?;
+    ctx.modrinth.project_delete_icon("test_project").await?;
 
     Ok(())
 }
@@ -41,10 +35,8 @@ async fn delete_icon() -> anyhow::Result<()> {
 async fn edit_icon() -> anyhow::Result<()> {
     let ctx = TestContext::new(&stubr.uri()).await?;
 
-    let project_id = "test_project";
-
     ctx.modrinth
-        .project_edit_icon(project_id, "image data", project::ImageFileExt::PNG)
+        .project_edit_icon("test_project", "image data", project::ImageFileExt::PNG)
         .await?;
 
     Ok(())
@@ -55,9 +47,7 @@ async fn edit_icon() -> anyhow::Result<()> {
 async fn check_validity() -> anyhow::Result<()> {
     let ctx = TestContext::new(&stubr.uri()).await?;
 
-    let project_id = "AABBCCDD";
-
-    ctx.modrinth.project_check_validity(project_id).await?;
+    ctx.modrinth.project_check_validity("AABBCCDD").await?;
 
     Ok(())
 }
@@ -67,11 +57,9 @@ async fn check_validity() -> anyhow::Result<()> {
 async fn add_gallery_image() -> anyhow::Result<()> {
     let ctx = TestContext::new(&stubr.uri()).await?;
 
-    let project_id = "test_project";
-
     ctx.modrinth
         .project_add_gallery_image(
-            project_id,
+            "test_project",
             "image data",
             &project::ImageFileExt::PNG,
             true,
@@ -88,10 +76,8 @@ async fn add_gallery_image() -> anyhow::Result<()> {
 async fn delete_gallery_image() -> anyhow::Result<()> {
     let ctx = TestContext::new(&stubr.uri()).await?;
 
-    let project_id = "test_project";
-
     ctx.modrinth
-        .project_delete_gallery_image(project_id, "https://example.com/")
+        .project_delete_gallery_image("test_project", "https://example.com/")
         .await?;
 
     Ok(())
@@ -102,11 +88,9 @@ async fn delete_gallery_image() -> anyhow::Result<()> {
 async fn edit_gallery_image() -> anyhow::Result<()> {
     let ctx = TestContext::new(&stubr.uri()).await?;
 
-    let project_id = "test_project";
-
     ctx.modrinth
         .project_edit_gallery_image(
-            project_id,
+            "test_project",
             "https://example.com/",
             Some(false),
             Some("modified_test_image"),
@@ -123,9 +107,7 @@ async fn edit_gallery_image() -> anyhow::Result<()> {
 async fn follow() -> anyhow::Result<()> {
     let ctx = TestContext::new(&stubr.uri()).await?;
 
-    let project_id = "test_project";
-
-    ctx.modrinth.project_follow(project_id).await?;
+    ctx.modrinth.project_follow("test_project").await?;
 
     Ok(())
 }
@@ -135,9 +117,7 @@ async fn follow() -> anyhow::Result<()> {
 async fn unfollow() -> anyhow::Result<()> {
     let ctx = TestContext::new(&stubr.uri()).await?;
 
-    let project_id = "test_project";
-
-    ctx.modrinth.project_unfollow(project_id).await?;
+    ctx.modrinth.project_unfollow("test_project").await?;
 
     Ok(())
 }
@@ -147,13 +127,11 @@ async fn unfollow() -> anyhow::Result<()> {
 async fn schedule() -> anyhow::Result<()> {
     let ctx = TestContext::new(&stubr.uri()).await?;
 
-    let project_id = "test_project";
-
     let time = "2023-02-05T19:39:55.551839Z";
 
     ctx.modrinth
         .project_schedule(
-            project_id,
+            "test_project",
             &time.parse::<UtcTime>().expect("parsing should not fail"),
             &project::RequestedStatus::Approved,
         )
