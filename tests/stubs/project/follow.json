@@ -1,0 +1,12 @@
+{
+    "request": {
+        "method": "POST",
+        "urlPath": "/project/test_project/follow",
+        "headers": {
+            "Authorization": "token"
+        }
+    },
+    "response": {
+        "status": 204
+    }
+}
