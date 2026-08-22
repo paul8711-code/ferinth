@@ -4,7 +4,9 @@ use ferinth::structures::{project, UtcTime};
 use ferinth::{Authenticated, Ferinth};
 use url::Url;
 mod integration {
+    mod misc;
     mod project;
+    mod version;
 }
 
 struct TestContext {
