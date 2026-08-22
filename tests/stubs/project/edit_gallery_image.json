@@ -1,0 +1,17 @@
+{
+    "request": {
+        "method": "PATCH",
+        "urlPath": "/project/test_project/gallery",
+        "queryParameters": {
+            "url": "https://example.com/",
+            "featured": false,
+            "title": "modified_test_image"
+        },
+        "headers": {
+            "Authorization": "token"
+        }
+    },
+    "response": {
+        "status": 204
+    }
+}
