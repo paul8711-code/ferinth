@@ -132,31 +132,6 @@ impl Ferinth<Authenticated> {
     }
 
     /**
-    Delete the user of `user_id`
-
-    ```no_run
-    # use paul8711_ferinth as ferinth;
-    # tokio_test::block_on(async {
-    # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
-    #     env!("CARGO_CRATE_NAME"),
-    #     Some(env!("CARGO_PKG_VERSION")),
-    #     None,
-    #     "token",
-    # )?;
-    modrinth.user_delete("XXXXXXXX").await?;
-    # Ok::<_, ferinth::Error>(()) }).unwrap()
-    ```
-    */
-    pub async fn user_delete(&self, user_id: &str) -> Result<()> {
-        check_id_slug(&[user_id])?;
-        self.client
-            .delete(self.url.join_all(vec!["user", user_id]))
-            .custom_send()
-            .await?;
-        Ok(())
-    }
-
-    /**
     Get the user from the current authorisation header
 
     ## Example
