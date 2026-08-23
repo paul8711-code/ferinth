@@ -124,7 +124,7 @@ impl<T> Ferinth<T> {
 impl Ferinth<()> {
     /**
     Instantiate the container with the provided
-    [user agent](https://docs.modrinth.com/api-spec/#section/User-Agents) details.
+    [user agent](https://docs.modrinth.com/api/#user-agents) details.
 
     The program `name` is required; `version` and `contact` are optional but recommended.
     */
@@ -142,7 +142,7 @@ impl Ferinth<()> {
 impl Ferinth<Authenticated> {
     /*
     Instantiate the container with the provided
-    [user agent](https://docs.modrinth.com/api-spec/#section/User-Agents) details,
+    [user agent](https://docs.modrinth.com/api/#user-agents) details,
     and authentication `token`.
 
     The program `name` is required; `version` and `contact` are optional but recommended.
