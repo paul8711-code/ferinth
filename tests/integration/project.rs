@@ -1,4 +1,5 @@
 use crate::*;
+use ferinth::structures::project;
 
 #[tokio::test]
 #[stubr::mock("project/get.json")]

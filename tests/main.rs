@@ -1,11 +1,12 @@
 use paul8711_ferinth as ferinth;
 
-use ferinth::structures::{project, UtcTime};
+use ferinth::structures::UtcTime;
 use ferinth::{Authenticated, Ferinth};
 use url::Url;
 mod integration {
     mod misc;
     mod project;
+    mod thread;
     mod version;
 }
 
