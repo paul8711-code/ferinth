@@ -32,6 +32,7 @@ pub struct ReportSubmission {
 }
 
 #[derive(Deserialize, Serialize, Debug, Clone, Copy, PartialEq, Eq)]
+#[serde(rename_all = "lowercase")]
 pub enum ReportItemType {
     Project,
     User,
