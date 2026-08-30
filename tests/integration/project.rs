@@ -22,6 +22,16 @@ async fn delete() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
+#[stubr::mock("project/get_random.json")]
+async fn get_random() -> anyhow::Result<()> {
+    let ctx = TestContext::new(&stubr.uri()).await?;
+
+    ctx.modrinth.project_get_random(2).await?;
+
+    Ok(())
+}
+
+#[tokio::test]
 #[stubr::mock("project/delete_icon.json")]
 async fn delete_icon() -> anyhow::Result<()> {
     let ctx = TestContext::new(&stubr.uri()).await?;

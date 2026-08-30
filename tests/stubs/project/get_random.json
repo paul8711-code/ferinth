@@ -1,0 +1,144 @@
+{
+    "request": {
+        "method": "GET",
+        "urlPath": "/projects_random",
+        "queryParameters": {
+            "count": 2
+        }
+    },
+    "response": {
+        "status": 200,
+        "jsonBody": [
+            {
+                "client_side": "required",
+                "server_side": "unsupported",
+                "game_versions": [
+                    "1.21.8"
+                ],
+                "environment": [
+                    "client_only"
+                ],
+                "id": "SgY1slb8",
+                "slug": "vanilla_std",
+                "project_type": "modpack",
+                "team": "aDn92a7i",
+                "organization": null,
+                "title": "Vanilla STD",
+                "description": "Optimisation and nice pack of vanilla for default servers and games. \n\nUpdates every release",
+                "body": "Modpack for standard servers or single player. Added optimization and minor improvements to visuals and animations.\n\nVanilla STD is optimized to ensure smooth, responsive gameplay on systems with 2 to 3.5 GB of RAM recommended. This fine-tuning allows you to enjoy the modpack's enhancements without compromising on performance, making it accessible to a wide audience.\n\n**Modpack is updated for the latest current version of Minecraft**\n\nFeatures:\n- Shaders\n- New Animation\n- Optimization\n- New decorations\n- New particles",
+                "body_url": null,
+                "published": "2025-08-26T08:58:06.141779Z",
+                "updated": "2025-08-26T10:03:26.237894Z",
+                "approved": "2025-09-09T16:15:07.847219Z",
+                "queued": "2025-08-26T09:09:37.823425Z",
+                "status": "approved",
+                "requested_status": "approved",
+                "moderator_message": null,
+                "license": {
+                    "id": "LicenseRef-All-Rights-Reserved",
+                    "name": "",
+                    "url": null
+                },
+                "downloads": 92,
+                "followers": 0,
+                "categories": [
+                    "lightweight",
+                    "multiplayer",
+                    "optimization"
+                ],
+                "additional_categories": [],
+                "loaders": [
+                    "fabric"
+                ],
+                "versions": [
+                    "6Z3a6eZ2",
+                    "npEstPUU"
+                ],
+                "icon_url": "https://cdn.modrinth.com/data/SgY1slb8/66bbfb527ece65e8169f6548b7aa49c8e2de6fc8_96.webp",
+                "raw_icon_url": "https://cdn.modrinth.com/data/SgY1slb8/66bbfb527ece65e8169f6548b7aa49c8e2de6fc8.png",
+                "issues_url": null,
+                "source_url": null,
+                "wiki_url": null,
+                "discord_url": null,
+                "donation_urls": [],
+                "gallery": [],
+                "color": 3021584,
+                "thread_id": "WhmRt2Ud",
+                "monetization_status": "monetized"
+            },
+            {
+                "client_side": "required",
+                "server_side": "unsupported",
+                "game_versions": [
+                    "b1.7.3"
+                ],
+                "environment": [],
+                "id": "SgXasWhn",
+                "slug": "dark-mojang-logo-(bta)",
+                "project_type": "resourcepack",
+                "team": "mjEbyLpF",
+                "organization": null,
+                "title": "Dark Mojang Logo (BTA)",
+                "description": "Makes the Mojang logo(s) have a black background, and an adjusted color palette. Made for \"Better Than Adventure!\"",
+                "body": "This is a Texture Pack, designed for \"[Better Than Adventure!](https://www.betterthanadventure.net/)\", that makes the Mojang Logo(s) have a black background, and an adjusted color palette that makes the logo colors slightly more vibrant, and with a shadow that fits them.\n\n![Dark Mojang Logo](https://cdn.modrinth.com/data/cached_images/640dbc9b9ed15de72334e7f88eed8726333a935e.png)\n\n# CREDITS\n\n- Made by AndreWharn.\n- Do not use the assets without permission, please!\n\n# Thanks for using this pack! :D",
+                "body_url": null,
+                "published": "2025-06-01T13:11:33.624691Z",
+                "updated": "2025-06-01T13:12:24.656083Z",
+                "approved": "2025-06-04T05:54:49.130730Z",
+                "queued": "2025-06-01T13:16:26.597388Z",
+                "status": "approved",
+                "requested_status": "approved",
+                "moderator_message": null,
+                "license": {
+                    "id": "LicenseRef-AndreWharn",
+                    "name": "",
+                    "url": "https://andrewharn.carrd.co/#tou"
+                },
+                "downloads": 524,
+                "followers": 4,
+                "categories": [
+                    "gui",
+                    "tweaks",
+                    "vanilla-like"
+                ],
+                "additional_categories": [
+                    "16x",
+                    "simplistic"
+                ],
+                "loaders": [
+                    "minecraft"
+                ],
+                "versions": [
+                    "8P5OrcvH"
+                ],
+                "icon_url": "https://cdn.modrinth.com/data/SgXasWhn/640dbc9b9ed15de72334e7f88eed8726333a935e.png",
+                "raw_icon_url": "https://cdn.modrinth.com/data/SgXasWhn/640dbc9b9ed15de72334e7f88eed8726333a935e.png",
+                "issues_url": null,
+                "source_url": null,
+                "wiki_url": null,
+                "discord_url": "https://discord.com/invite/ydtYmPTstG",
+                "donation_urls": [
+                    {
+                        "id": "ko-fi",
+                        "platform": "Ko-fi",
+                        "url": "https://andrewharn.carrd.co/"
+                    }
+                ],
+                "gallery": [
+                    {
+                        "url": "https://cdn.modrinth.com/data/SgXasWhn/images/640dbc9b9ed15de72334e7f88eed8726333a935e.png",
+                        "raw_url": "https://cdn.modrinth.com/data/SgXasWhn/images/640dbc9b9ed15de72334e7f88eed8726333a935e.png",
+                        "featured": true,
+                        "title": "Dark Mojang Logo",
+                        "description": null,
+                        "created": "2025-06-01T13:13:01.604371Z",
+                        "ordering": 0
+                    }
+                ],
+                "color": 16536644,
+                "thread_id": "Ml56H5m8",
+                "monetization_status": "monetized"
+            }
+        ]
+    }
+}
