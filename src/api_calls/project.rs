@@ -68,7 +68,7 @@ impl<T> Ferinth<T> {
     # let modrinth = ferinth::Ferinth::default();
     let results = modrinth.project_search_paged(
         "sodium",
-        Sort::Relevance,
+        &Sort::Relevance,
         // Limit the number of hits to 12
         12,
         0,
@@ -82,7 +82,7 @@ impl<T> Ferinth<T> {
     pub async fn project_search_paged(
         &self,
         query: impl ToString,
-        sort: Sort,
+        sort: &Sort,
         limit: Int,
         offset: Int,
         mut facets: Vec<Vec<Facet>>,
