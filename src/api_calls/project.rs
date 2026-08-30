@@ -20,7 +20,7 @@ impl<T> Ferinth<T> {
     ## Example
     ```no_run
     # use paul8711_ferinth as ferinth;
-    # use ferinth::structures::search::{Sort, Facet};
+    # use ferinth::structures::project::{Sort, Facet};
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     let results = modrinth.search_paged(
@@ -69,7 +69,7 @@ impl<T> Ferinth<T> {
     ## Example
     ```no_run
     # use paul8711_ferinth as ferinth;
-    # use ferinth::structures::search::{Sort, Facet};
+    # use ferinth::structures::project::{Sort, Facet};
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     // When searching for 'sodium' and filtering by NeoForge mods
