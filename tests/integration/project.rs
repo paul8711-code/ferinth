@@ -104,6 +104,16 @@ async fn edit_gallery_image() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
+#[stubr::mock("project/get_dependencies.json")]
+async fn get_dependencies() -> anyhow::Result<()> {
+    let ctx = TestContext::new(&stubr.uri()).await?;
+
+    ctx.modrinth.project_get_dependencies("create").await?;
+
+    Ok(())
+}
+
+#[tokio::test]
 #[stubr::mock("project/follow.json")]
 async fn follow() -> anyhow::Result<()> {
     let ctx = TestContext::new(&stubr.uri()).await?;
