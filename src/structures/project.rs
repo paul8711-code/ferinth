@@ -1,6 +1,7 @@
 //! Models related to projects
 
 use super::*;
+use std::fmt;
 
 #[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct Project {
@@ -218,6 +219,22 @@ pub enum ProjectType {
     Other,
 }
 
+impl fmt::Display for ProjectType {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let s = match self {
+            ProjectType::Mod => "mod",
+            ProjectType::Modpack => "modpack",
+            ProjectType::Resourcepack => "resourcepack",
+            ProjectType::Shader => "shader",
+            ProjectType::Plugin => "plugin",
+            ProjectType::Datapack => "datapack",
+            ProjectType::MinecraftJavaServer => "minecraft_java_server",
+            ProjectType::Other => "other",
+        };
+        write!(f, "{s}")
+    }
+}
+
 /// File extensions for images
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum ImageFileExt {
@@ -298,15 +315,12 @@ impl Serialize for Facet {
     {
         let output = match self {
             Facet::ProjectType(project_type) => {
-                format!(
-                    "project_type: {}",
-                    serde_json::to_value(project_type).unwrap()
-                )
+                format!("project_type:{project_type}")
             }
-            Facet::Categories(category) => format!("categories: {category}"),
-            Facet::Versions(version) => format!("versions: {version}"),
-            Facet::OpenSource(bool) => format!("open_source: {bool}"),
-            Facet::License(license_id) => format!("license: {license_id}"),
+            Facet::Categories(category) => format!("categories:{category}"),
+            Facet::Versions(version) => format!("versions:{version}"),
+            Facet::OpenSource(bool) => format!("open_source:{bool}"),
+            Facet::License(license_id) => format!("license:{license_id}"),
             Facet::Custom {
                 _type,
                 operation,
