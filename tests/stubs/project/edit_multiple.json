@@ -1,0 +1,37 @@
+{
+    "request": {
+        "method": "PATCH",
+        "urlPath": "/projects",
+        "queryParameters": {
+            "ids": "[\"AABBCCDD\", \"EEFFGGHH\"]"
+        },
+        "bodyPatterns": [
+            {
+                "equalToJson": {
+                    "categories": ["fabric", "decoration"],
+                    "add_categories": [],
+                    "remove_categories": [],
+                    "additional_categories": [],
+                    "add_additional_categories": ["forge", "adventure"],
+                    "remove_additional_categories": [],
+                    "donation_urls": [],
+                    "add_donation_urls": [],
+                    "remove_donation_urls": [
+                        {
+                            "id": "patreon",
+                            "platform": "Patreon",
+                            "url": "https://www.patreon.com/my_user"
+                        }
+                    ],
+                    "issues_url": null,
+                    "source_url": null,
+                    "wiki_url": "https://example.com",
+                    "discord_url": null
+                }
+            }
+        ]
+    },
+    "response": {
+        "status": 204
+    }
+}
