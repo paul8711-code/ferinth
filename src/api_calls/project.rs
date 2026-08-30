@@ -23,7 +23,7 @@ impl<T> Ferinth<T> {
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     // When searching for 'sodium' and filtering by NeoForge mods
-    let results = modrinth.search(
+    let results = modrinth.project_search(
         "sodium",
         &Sort::Downloads,
         vec![vec![ Facet::Categories("neoforge".into()) ]],
@@ -66,7 +66,7 @@ impl<T> Ferinth<T> {
     # use ferinth::structures::project::{Sort, Facet};
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
-    let results = modrinth.search_paged(
+    let results = modrinth.project_search_paged(
         "sodium",
         Sort::Relevance,
         // Limit the number of hits to 12
