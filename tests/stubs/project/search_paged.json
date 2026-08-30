@@ -1,0 +1,90 @@
+{
+    "request": {
+        "method": "GET",
+        "urlPath": "/search",
+        "queryParameters": {
+            "query": "create fabric",
+            "index": "downloads",
+            "facets": "[[\"project_type:mod\"],[\"categories:fabric\"],[\"versions:1.20.1\"],[\"open_source:true\",\"license:MIT\"]]",
+            "offset": 1,
+            "limit": 1
+        }
+    },
+    "response": {
+        "status": 200,
+        "jsonBody": {
+            "hits": [
+                {
+                    "project_id": "gJ5afkVv",
+                    "project_type": "mod",
+                    "all_project_types": [
+                        "mod"
+                    ],
+                    "slug": "bellsandwhistles",
+                    "author": "a0ax",
+                    "author_id": "5EJHGHt2",
+                    "organization": null,
+                    "organization_id": null,
+                    "title": "Create: Bells & Whistles",
+                    "description": "Additions and adornments for the modern Create engineer. Available for both Fabric & Forge!",
+                    "categories": [
+                        "decoration",
+                        "equipment",
+                        "fabric",
+                        "forge",
+                        "neoforge",
+                        "quilt",
+                        "technology",
+                        "transportation",
+                        "utility"
+                    ],
+                    "display_categories": [
+                        "decoration",
+                        "fabric",
+                        "forge",
+                        "neoforge",
+                        "quilt",
+                        "utility"
+                    ],
+                    "versions": [
+                        "1.18.2",
+                        "1.19",
+                        "1.19.1",
+                        "1.19.2",
+                        "1.19.3",
+                        "1.19.4",
+                        "1.20",
+                        "1.20.1",
+                        "1.20.2",
+                        "1.21.1"
+                    ],
+                    "downloads": 4492629,
+                    "follows": 823,
+                    "icon_url": "https://cdn.modrinth.com/data/gJ5afkVv/56ec1e3caca241855a19b65ad391aa20a79259f5_96.webp",
+                    "date_created": "2023-08-30T02:04:53.425960+00:00",
+                    "date_modified": "2025-03-13T14:13:00.225043+00:00",
+                    "latest_version": "m0GUubvz",
+                    "license": "GPL-3.0-or-later",
+                    "client_side": "required",
+                    "server_side": "required",
+                    "environment": [
+                        "client_and_server"
+                    ],
+                    "disclosure_types": [],
+                    "gallery": [
+                        "https://cdn.modrinth.com/data/gJ5afkVv/images/6e2659763ee685fbd2e32182f4c6a5050dafb45b_350.webp",
+                        "https://cdn.modrinth.com/data/gJ5afkVv/images/1c4e5f05f9d32eff2bb6a15dfcd1e8f7a1db5156_350.webp",
+                        "https://cdn.modrinth.com/data/gJ5afkVv/images/ebd493ce3e075ee40447033b40fdf56d7e88c042_350.webp",
+                        "https://cdn.modrinth.com/data/gJ5afkVv/images/6d913b4eac41dcffaefcb2319f0d1b2f7ff84c24.png",
+                        "https://cdn.modrinth.com/data/gJ5afkVv/images/84ba11aa8ad101c1cc00d441c6a4946528c1438a_350.webp"
+                    ],
+                    "featured_gallery": "https://cdn.modrinth.com/data/gJ5afkVv/images/3843db2c2d0c81420740c98f2dee382199d9b938_350.webp",
+                    "color": 4276288
+                }
+            ],
+            "offset": 1,
+            "limit": 1,
+            "total_hits": 43
+        }
+    }
+}

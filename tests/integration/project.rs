@@ -23,6 +23,27 @@ async fn search() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
+#[stubr::mock("project/search_paged.json")]
+async fn search_paged() -> anyhow::Result<()> {
+    use project::{Facet, ProjectType};
+
+    let ctx = TestContext::new(&stubr.uri()).await?;
+
+    let facets = vec![
+        vec![Facet::ProjectType(ProjectType::Mod)],
+        vec![Facet::Categories("fabric".to_string())],
+        vec![Facet::Versions("1.20.1".to_string())],
+        vec![Facet::OpenSource(true), Facet::License("MIT".to_string())],
+    ];
+
+    ctx.modrinth
+        .project_search_paged("create fabric", &project::Sort::Downloads, 1, 1, facets)
+        .await?;
+
+    Ok(())
+}
+
+#[tokio::test]
 #[stubr::mock("project/get.json")]
 async fn get() -> anyhow::Result<()> {
     let ctx = TestContext::new(&stubr.uri()).await?;
