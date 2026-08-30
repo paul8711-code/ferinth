@@ -2,6 +2,27 @@ use crate::*;
 use ferinth::structures::project;
 
 #[tokio::test]
+#[stubr::mock("project/search.json")]
+async fn search() -> anyhow::Result<()> {
+    use project::{Facet, ProjectType};
+
+    let ctx = TestContext::new(&stubr.uri()).await?;
+
+    let facets = vec![
+        vec![Facet::ProjectType(ProjectType::Mod)],
+        vec![Facet::Categories("fabric".to_string())],
+        vec![Facet::Versions("1.20.1".to_string())],
+        vec![Facet::OpenSource(true), Facet::License("MIT".to_string())],
+    ];
+
+    ctx.modrinth
+        .project_search("create fabric", &project::Sort::Downloads, facets)
+        .await?;
+
+    Ok(())
+}
+
+#[tokio::test]
 #[stubr::mock("project/get.json")]
 async fn get() -> anyhow::Result<()> {
     let ctx = TestContext::new(&stubr.uri()).await?;
