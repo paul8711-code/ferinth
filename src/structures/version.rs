@@ -52,6 +52,12 @@ pub struct Hash {
 }
 
 #[derive(Deserialize, Serialize, Debug, Clone)]
+pub struct HashesBody {
+    pub hashes: Vec<String>,
+    pub algorithm: HashAlgorithm,
+}
+
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct LatestVersionBody {
     pub loaders: Vec<String>,
     pub game_versions: Vec<String>,
