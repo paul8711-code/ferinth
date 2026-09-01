@@ -10,6 +10,15 @@ async fn list_project_members() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
+async fn list_members() -> anyhow::Result<()> {
+    let ctx = TestContext::new().await?;
+
+    ctx.modrinth.team_list_members("zftNHDXi").await?;
+
+    Ok(())
+}
+
+#[tokio::test]
 async fn add_user() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 

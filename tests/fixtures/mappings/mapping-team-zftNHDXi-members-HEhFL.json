@@ -1,0 +1,31 @@
+{
+  "id" : "ebbbfb49-7b13-3120-a75e-c0b4efe3300d",
+  "request" : {
+    "url" : "/team/zftNHDXi/members",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-team-zftNHDXi-members-HEhFL.json",
+    "headers" : {
+      "CF-RAY" : "a345d908aebcc291-VIE",
+      "Server" : "cloudflare",
+      "Access-Control-Allow-Origin" : "*",
+      "X-Ratelimit-Remaining" : "300",
+      "X-Content-Type-Options" : "nosniff",
+      "cf-cache-status" : "DYNAMIC",
+      "Access-Control-Allow-Headers" : "*",
+      "Date" : "Tue, 01 Sep 2026 17:03:20 GMT",
+      "Allow" : "*",
+      "X-Frame-Options" : "DENY",
+      "X-Ratelimit-Reset" : "0",
+      "X-Ratelimit-Limit" : "300",
+      "Strict-Transport-Security" : "max-age=15552000; includeSubDomains; preload",
+      "Vary" : [ "Accept-Encoding", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers", "accept-encoding" ],
+      "alt-svc" : "h3=\":443\"; ma=86400",
+      "Access-Control-Max-Age" : "86400",
+      "Content-Type" : "application/json"
+    }
+  },
+  "uuid" : "ebbbfb49-7b13-3120-a75e-c0b4efe3300d"
+}
