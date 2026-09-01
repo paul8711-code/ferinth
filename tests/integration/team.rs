@@ -28,6 +28,17 @@ async fn add_user() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
+async fn multiple_list_members() -> anyhow::Result<()> {
+    let ctx = TestContext::new().await?;
+
+    ctx.modrinth
+        .team_multiple_list_members(&["4reLOAKe", "zftNHDXi"])
+        .await?;
+
+    Ok(())
+}
+
+#[tokio::test]
 async fn join() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 
