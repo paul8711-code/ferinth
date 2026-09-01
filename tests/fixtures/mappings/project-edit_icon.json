@@ -4,7 +4,9 @@
         "method": "PATCH",
         "urlPath": "/project/test_project/icon",
         "queryParameters": {
-            "ext": "png"
+            "ext": {
+                "equalTo": "png"
+            }
         },
         "headers": {
             "Authorization": {

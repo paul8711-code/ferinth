@@ -4,7 +4,9 @@
         "method": "PATCH",
         "urlPath": "/projects",
         "queryParameters": {
-            "ids": "[\"AABBCCDD\", \"EEFFGGHH\"]"
+            "ids": {
+                "equalTo": "[\"AABBCCDD\", \"EEFFGGHH\"]"
+            }
         },
         "headers": {
             "Authorization": {
@@ -14,11 +16,17 @@
         "bodyPatterns": [
             {
                 "equalToJson": {
-                    "categories": ["fabric", "decoration"],
+                    "categories": [
+                        "fabric",
+                        "decoration"
+                    ],
                     "add_categories": [],
                     "remove_categories": [],
                     "additional_categories": [],
-                    "add_additional_categories": ["forge", "adventure"],
+                    "add_additional_categories": [
+                        "forge",
+                        "adventure"
+                    ],
                     "remove_additional_categories": [],
                     "donation_urls": [],
                     "add_donation_urls": [],

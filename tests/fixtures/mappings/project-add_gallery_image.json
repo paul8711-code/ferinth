@@ -4,10 +4,16 @@
         "method": "POST",
         "urlPath": "/project/test_project/gallery",
         "queryParameters": {
-            "ext": "png",
+            "ext": {
+                "equalTo": "png"
+            },
             "featured": true,
-            "title": "test_image",
-            "description": "test image"
+            "title": {
+                "equalTo": "test_image"
+            },
+            "description": {
+                "equalTo": "test image"
+            }
         },
         "headers": {
             "Authorization": {

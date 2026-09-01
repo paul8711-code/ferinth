@@ -4,9 +4,13 @@
         "method": "PATCH",
         "urlPath": "/project/test_project/gallery",
         "queryParameters": {
-            "url": "https://example.com/",
+            "url": {
+                "equalTo": "https://example.com/"
+            },
             "featured": false,
-            "title": "modified_test_image"
+            "title": {
+                "equalTo": "modified_test_image"
+            }
         },
         "headers": {
             "Authorization": {

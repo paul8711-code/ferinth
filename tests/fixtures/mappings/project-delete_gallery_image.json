@@ -4,7 +4,9 @@
         "method": "DELETE",
         "urlPath": "/project/test_project/gallery",
         "queryParameters": {
-            "url": "https://example.com/"
+            "url": {
+                "equalTo": "https://example.com/"
+            }
         },
         "headers": {
             "Authorization": {
