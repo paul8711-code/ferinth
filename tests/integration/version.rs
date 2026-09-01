@@ -10,6 +10,17 @@ async fn list() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
+async fn list_filtered() -> anyhow::Result<()> {
+    let ctx = TestContext::new().await?;
+
+    ctx.modrinth
+        .version_list_filtered("create", Some(&["neoforge"]), Some(&["1.20.1"]), None)
+        .await?;
+
+    Ok(())
+}
+
+#[tokio::test]
 async fn get() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 
