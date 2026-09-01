@@ -8,6 +8,7 @@ mod integration {
     mod notification;
     mod project;
     mod tag;
+    mod team;
     mod thread;
     mod user;
     mod version;
