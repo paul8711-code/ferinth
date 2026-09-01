@@ -49,7 +49,7 @@ impl Ferinth<Authenticated> {
     modrinth.version_schedule(
         "xuWxRZPd",
         &(Utc::now() + Duration::hours(3)),
-        &RequestedStatus::Listed
+        &RequestedStatus::Approved
     ).await?;
     # Ok::<_, ferinth::Error>(()) }).unwrap()
     ```

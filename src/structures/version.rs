@@ -116,12 +116,10 @@ pub enum Status {
 #[derive(Serialize, Deserialize, Clone, Copy, Debug, PartialEq, Eq)]
 #[serde(rename_all = "lowercase")]
 pub enum RequestedStatus {
-    Listed,
+    Approved,
     Archived,
-    Draft,
     Unlisted,
-    #[serde(other)]
-    Other,
+    Draft,
 }
 
 #[derive(Serialize, Deserialize, Clone, Copy, Debug, PartialEq, Eq)]
