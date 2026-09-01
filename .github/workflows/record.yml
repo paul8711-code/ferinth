@@ -27,6 +27,7 @@ jobs:
       - name: Run WireMock Proxy & Recorder
         run: |
           docker run -d --name wiremock-recorder \
+            --user 1001:127 \
             -p 8080:8080 \
             -v ${{ github.workspace }}/tests/fixtures:/home/wiremock \
             wiremock/wiremock:latest \

@@ -24,6 +24,7 @@ jobs:
     services:
       wiremock:
         image: wiremock/wiremock:latest
+        options: --user 1001:127
         ports:
           - 8080:8080
         volumes:
