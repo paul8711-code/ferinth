@@ -184,7 +184,7 @@ impl Ferinth<Authenticated> {
         }
 
         self.client
-            .post(self.url.join_all(vec!["team", team_id, "owner"]))
+            .patch(self.url.join_all(vec!["team", team_id, "owner"]))
             .json(&Body { user_id })
             .custom_send()
             .await?;
