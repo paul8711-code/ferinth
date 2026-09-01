@@ -28,6 +28,17 @@ async fn join() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
+async fn remove_member() -> anyhow::Result<()> {
+    let ctx = TestContext::new().await?;
+
+    ctx.modrinth
+        .team_remove_member("MMNNOOPP", "my_user")
+        .await?;
+
+    Ok(())
+}
+
+#[tokio::test]
 async fn transfer_ownership() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 

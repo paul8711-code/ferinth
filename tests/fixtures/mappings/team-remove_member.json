@@ -1,0 +1,15 @@
+{
+    "priority": 1,
+    "request": {
+        "method": "DELETE",
+        "urlPath": "/team/MMNNOOPP/members/my_user",
+        "headers": {
+            "Authorization": {
+                "equalTo": "token"
+            }
+        }
+    },
+    "response": {
+        "status": 204
+    }
+}
