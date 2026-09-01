@@ -32,13 +32,6 @@ jobs:
             -v ${{ github.workspace }}/tests/fixtures:/home/wiremock \
             wiremock/wiremock:latest
 
-      - name: Wait for WireMock
-        run: |
-          until curl -s http://localhost:8080/__admin/ping > /dev/null; do
-            echo "Waiting for WireMock"
-            sleep 1
-          done
-
       - name: Setup Rust toolchain
         uses: dtolnay/rust-toolchain@stable
 

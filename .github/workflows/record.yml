@@ -34,13 +34,6 @@ jobs:
             --proxy-all="https://api.modrinth.com/v2" \
             --record-mappings
 
-      - name: Wait for WireMock
-        run: |
-          until curl -s http://localhost:8080/__admin/mappings > /dev/null; do
-            echo "Waiting for WireMock proxy"
-            sleep 1
-          done
-
       - name: Generate stubs
         run: cargo test
 
