@@ -7,8 +7,8 @@ async fn get_from_hash() -> anyhow::Result<()> {
 
     ctx.modrinth
         .version_get_from_hash(
-            "619e250c133106bacc3e3b560839bd4b324dfda8",
-            version::ValidHashAlgorithm::SHA1,
+            "ea0f38408102e4d2efd53c2cc11b88b711996b48d8922f76ea6abf731219c5bd1efe39ddf9cce77c54d49a62ff10fb685c00d2e4c524ab99d20f6296677ab2c4",
+            version::ValidHashAlgorithm::SHA512,
         )
         .await?;
 
@@ -21,8 +21,8 @@ async fn file_delete_from_hash() -> anyhow::Result<()> {
 
     ctx.modrinth
         .version_file_delete_from_hash(
-            "619e250c133106bacc3e3b560839bd4b324dfda8",
-            version::ValidHashAlgorithm::SHA1,
+            "ea0f38408102e4d2efd53c2cc11b88b711996b48d8922f76ea6abf731219c5bd1efe39ddf9cce77c54d49a62ff10fb685c00d2e4c524ab99d20f6296677ab2c4",
+            version::ValidHashAlgorithm::SHA512,
             None,
         )
         .await?;

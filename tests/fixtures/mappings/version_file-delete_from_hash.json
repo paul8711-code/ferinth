@@ -1,10 +1,15 @@
 {
     "request": {
         "method": "DELETE",
-        "urlPath": "/version_file/619e250c133106bacc3e3b560839bd4b324dfda8",
+        "urlPath": "/version_file/ea0f38408102e4d2efd53c2cc11b88b711996b48d8922f76ea6abf731219c5bd1efe39ddf9cce77c54d49a62ff10fb685c00d2e4c524ab99d20f6296677ab2c4",
         "headers": {
             "Authorization": {
                 "equalTo": "token"
+            }
+        },
+        "queryParameters": {
+            "algorithm": {
+                "equalTo": "sha512"
             }
         }
     },
