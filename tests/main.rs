@@ -8,6 +8,7 @@ mod integration {
     mod project;
     mod thread;
     mod version;
+    mod version_file;
 }
 
 struct TestContext {

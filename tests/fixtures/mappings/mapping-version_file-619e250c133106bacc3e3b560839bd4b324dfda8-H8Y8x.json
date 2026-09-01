@@ -1,0 +1,31 @@
+{
+  "id" : "6dbbe1be-7f61-3b9f-91aa-7f14ebc8465a",
+  "request" : {
+    "url" : "/version_file/619e250c133106bacc3e3b560839bd4b324dfda8",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-version_file-619e250c133106bacc3e3b560839bd4b324dfda8-H8Y8x.json",
+    "headers" : {
+      "CF-RAY" : "a3449e583a675a8c-VIE",
+      "Server" : "cloudflare",
+      "Access-Control-Allow-Origin" : "*",
+      "X-Ratelimit-Remaining" : "300",
+      "X-Content-Type-Options" : "nosniff",
+      "cf-cache-status" : "DYNAMIC",
+      "Access-Control-Allow-Headers" : "*",
+      "Date" : "Tue, 01 Sep 2026 13:28:30 GMT",
+      "Allow" : "*",
+      "X-Frame-Options" : "DENY",
+      "X-Ratelimit-Reset" : "0",
+      "X-Ratelimit-Limit" : "300",
+      "Strict-Transport-Security" : "max-age=15552000; includeSubDomains; preload",
+      "Vary" : [ "Accept-Encoding", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers", "accept-encoding" ],
+      "alt-svc" : "h3=\":443\"; ma=86400",
+      "Access-Control-Max-Age" : "86400",
+      "Content-Type" : "application/json"
+    }
+  },
+  "uuid" : "6dbbe1be-7f61-3b9f-91aa-7f14ebc8465a"
+}
