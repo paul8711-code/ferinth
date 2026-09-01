@@ -44,5 +44,8 @@ jobs:
       - name: Clippy Check
         run: cargo clippy --all-targets --all-features --workspace -- -D warnings
 
+      - name: check wiremock logs
+        run: docker logs wiremock
+
       - name: Run Tests
         run: cargo test --all-features --workspace
