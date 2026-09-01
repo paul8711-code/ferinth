@@ -37,3 +37,12 @@ async fn list_projects() -> anyhow::Result<()> {
 
     Ok(())
 }
+
+#[tokio::test]
+async fn list_followed_projects() -> anyhow::Result<()> {
+    let ctx = TestContext::new().await?;
+
+    ctx.modrinth.user_list_followed_projects("my_user").await?;
+
+    Ok(())
+}
