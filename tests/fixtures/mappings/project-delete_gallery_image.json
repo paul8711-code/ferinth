@@ -7,7 +7,9 @@
             "url": "https://example.com/"
         },
         "headers": {
-            "Authorization": "token"
+            "Authorization": {
+                "equalTo": "token"
+            }
         }
     },
     "response": {

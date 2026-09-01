@@ -6,6 +6,11 @@
         "queryParameters": {
             "ids": "[\"AABBCCDD\", \"EEFFGGHH\"]"
         },
+        "headers": {
+            "Authorization": {
+                "equalTo": "token"
+            }
+        },
         "bodyPatterns": [
             {
                 "equalToJson": {

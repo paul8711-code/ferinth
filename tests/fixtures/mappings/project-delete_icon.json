@@ -4,7 +4,9 @@
         "method": "DELETE",
         "urlPath": "/project/test_project/icon",
         "headers": {
-            "Authorization": "token"
+            "Authorization": {
+                "equalTo": "token"
+            }
         }
     },
     "response": {

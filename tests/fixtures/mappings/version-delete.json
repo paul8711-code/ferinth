@@ -4,7 +4,9 @@
         "method": "DELETE",
         "urlPath": "/version/IIJJKKLL",
         "headers": {
-            "Authorization": "token"
+            "Authorization": {
+                "equalTo": "token"
+            }
         }
     },
     "response": {

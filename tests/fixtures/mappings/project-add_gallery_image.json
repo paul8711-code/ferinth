@@ -10,7 +10,9 @@
             "description": "test image"
         },
         "headers": {
-            "Authorization": "token"
+            "Authorization": {
+                "equalTo": "token"
+            }
         },
         "bodyPatterns": [
             {
