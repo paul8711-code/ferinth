@@ -8,6 +8,7 @@ mod integration {
     mod project;
     mod tag;
     mod thread;
+    mod user;
     mod version;
     mod version_file;
 }
