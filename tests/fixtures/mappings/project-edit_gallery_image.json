@@ -7,7 +7,9 @@
             "url": {
                 "equalTo": "https://example.com/"
             },
-            "featured": false,
+            "featured": {
+                "equalTo": "false"
+            },
             "title": {
                 "equalTo": "modified_test_image"
             }

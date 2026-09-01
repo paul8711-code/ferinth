@@ -7,7 +7,9 @@
             "ext": {
                 "equalTo": "png"
             },
-            "featured": true,
+            "featured": {
+                "equalTo": "true"
+            },
             "title": {
                 "equalTo": "test_image"
             },
