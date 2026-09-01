@@ -5,7 +5,7 @@
         "urlPath": "/projects",
         "queryParameters": {
             "ids": {
-                "equalTo": "[\"AABBCCDD\", \"EEFFGGHH\"]"
+                "equalTo": "[\"AABBCCDD\",\"EEFFGGHH\"]"
             }
         },
         "headers": {

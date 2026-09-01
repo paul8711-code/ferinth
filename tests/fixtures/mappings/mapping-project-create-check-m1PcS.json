@@ -1,24 +1,24 @@
 {
-  "id" : "053705bf-912f-3846-aea9-91708bea88a1",
+  "id" : "1becdd74-8dbf-3361-b96b-6a217313c6aa",
   "request" : {
-    "url" : "/project/create/dependencies",
+    "url" : "/project/create/check",
     "method" : "GET"
   },
   "response" : {
     "status" : 200,
-    "bodyFileName" : "body-project-create-dependencies-CP2Kg.json",
+    "bodyFileName" : "body-project-create-check-m1PcS.json",
     "headers" : {
-      "CF-RAY" : "a343bd8fa92d24ed-VIE",
+      "CF-RAY" : "a343dbd47842d8e2-VIE",
       "Server" : "cloudflare",
       "Access-Control-Allow-Origin" : "*",
-      "X-Ratelimit-Remaining" : "292",
+      "X-Ratelimit-Remaining" : "297",
       "X-Content-Type-Options" : "nosniff",
       "cf-cache-status" : "DYNAMIC",
       "Access-Control-Allow-Headers" : "*",
-      "Date" : "Tue, 01 Sep 2026 10:55:03 GMT",
+      "Date" : "Tue, 01 Sep 2026 11:15:43 GMT",
       "Allow" : "*",
       "X-Frame-Options" : "DENY",
-      "X-Ratelimit-Reset" : "1",
+      "X-Ratelimit-Reset" : "0",
       "X-Ratelimit-Limit" : "300",
       "Strict-Transport-Security" : "max-age=15552000; includeSubDomains; preload",
       "Vary" : [ "Accept-Encoding", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers", "accept-encoding" ],
@@ -27,5 +27,5 @@
       "Content-Type" : "application/json"
     }
   },
-  "uuid" : "053705bf-912f-3846-aea9-91708bea88a1"
+  "uuid" : "1becdd74-8dbf-3361-b96b-6a217313c6aa"
 }

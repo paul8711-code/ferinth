@@ -1,21 +1,21 @@
 {
-  "id" : "4fe25ffe-2c5c-384a-a82a-f3ada272cc85",
+  "id" : "6e11f3ae-817e-39f4-a3aa-08e37bf3d434",
   "request" : {
-    "url" : "/statistics",
+    "url" : "/search?query=create+fabric&index=downloads&facets=%5B%5B%22project_type%3Amod%22%5D%2C%5B%22categories%3Afabric%22%5D%2C%5B%22versions%3A1.20.1%22%5D%2C%5B%22open_source%3Atrue%22%2C%22license%3AMIT%22%5D%5D",
     "method" : "GET"
   },
   "response" : {
     "status" : 200,
-    "bodyFileName" : "body-statistics-I81Uy.json",
+    "bodyFileName" : "body-search-oFEju.json",
     "headers" : {
-      "CF-RAY" : "a343bd8f992190c5-VIE",
+      "CF-RAY" : "a343dbd47e69c2b6-VIE",
       "Server" : "cloudflare",
       "Access-Control-Allow-Origin" : "*",
-      "X-Ratelimit-Remaining" : "298",
+      "X-Ratelimit-Remaining" : "296",
       "X-Content-Type-Options" : "nosniff",
       "cf-cache-status" : "DYNAMIC",
       "Access-Control-Allow-Headers" : "*",
-      "Date" : "Tue, 01 Sep 2026 10:55:06 GMT",
+      "Date" : "Tue, 01 Sep 2026 11:15:43 GMT",
       "Allow" : "*",
       "X-Frame-Options" : "DENY",
       "X-Ratelimit-Reset" : "0",
@@ -27,5 +27,5 @@
       "Content-Type" : "application/json"
     }
   },
-  "uuid" : "4fe25ffe-2c5c-384a-a82a-f3ada272cc85"
+  "uuid" : "6e11f3ae-817e-39f4-a3aa-08e37bf3d434"
 }
