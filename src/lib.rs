@@ -48,6 +48,8 @@ pub enum Error {
     InvalidIDorSlug,
     #[error("Invalid SHA1 hash")]
     InvalidSHA1,
+    #[error("Invalid SHA512 hash")]
+    InvalidSHA512,
     #[error("You have been rate limited, please wait for {0} seconds")]
     RateLimitExceeded(usize),
     #[error("The API at {} is deprecated", *API_BASE_URL)]

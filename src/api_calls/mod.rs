@@ -37,3 +37,13 @@ pub fn check_sha1_hash<S: AsRef<str>>(inputs: &[S]) -> Result<()> {
     }
     Ok(())
 }
+
+/// Verify that the given `inputs` are SHA512 compliant
+pub fn check_sha512_hash<S: AsRef<str>>(inputs: &[S]) -> Result<()> {
+    for input in inputs {
+        if !lazy_regex::regex_is_match!("^[a-f0-9]{128}$", input.as_ref()) {
+            return Err(Error::InvalidSHA512);
+        }
+    }
+    Ok(())
+}
