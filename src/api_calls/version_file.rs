@@ -9,7 +9,6 @@ use std::collections::HashMap;
 impl Ferinth<Authenticated> {
     /**
     Delete the version file with the `hash`.
-    Only supports SHA1 hashes for now.
     Optionally specify the version ID to delete the version file from, if multiple files of the same hash exist.
 
     ```no_run
@@ -21,17 +20,24 @@ impl Ferinth<Authenticated> {
     #     None,
     #     "token",
     # )?;
-    modrinth.version_file_delete_from_hash("795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf", None).await?;
+    modrinth.version_file_delete_from_hash("795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf", ferinth::structures::version::ValidHashAlgorithm::SHA1, None).await?;
     # Ok::<_, ferinth::Error>(()) }).unwrap()
     ```
     */
     pub async fn version_file_delete_from_hash(
         &self,
         hash: &str,
+        hash_algorithm: ValidHashAlgorithm,
         version_id: Option<&str>,
     ) -> Result<()> {
-        check_sha1_hash(&[hash])?;
-        let mut url = self.url.join_all(vec!["version_file", hash]);
+        match hash_algorithm {
+            ValidHashAlgorithm::SHA1 => check_sha1_hash(&[hash])?,
+            ValidHashAlgorithm::SHA512 => check_sha512_hash(&[hash])?,
+        }
+        let mut url = self
+            .url
+            .join_all(vec!["version_file", hash])
+            .with_query("algorithm", hash_algorithm);
         if let Some(version_id) = version_id {
             check_id_slug(&[version_id])?;
             url = url.with_query("version_id", version_id);
@@ -44,7 +50,6 @@ impl Ferinth<Authenticated> {
 impl<T> Ferinth<T> {
     /**
     Get the version of the version file with `hash`.
-    Only supports SHA1 hashes for now.
 
     ## Example
     ```no_run
@@ -52,21 +57,32 @@ impl<T> Ferinth<T> {
     # tokio_test::block_on(async {
     # let modrinth = ferinth::Ferinth::default();
     // If a mod file has the hash `795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf`, we can get the version it belongs to
-    let sodium_version = modrinth.version_get_from_hash("795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf").await?;
+    let sodium_version = modrinth.version_get_from_hash("795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf", ferinth::structures::version::ValidHashAlgorithm::SHA1).await?;
     assert_eq!(sodium_version.project_id, "AANobbMI");
     # Ok::<_, ferinth::Error>(()) }).unwrap()
     ```
     */
-    pub async fn version_get_from_hash(&self, hash: &str) -> Result<Version> {
-        check_sha1_hash(&[hash])?;
+    pub async fn version_get_from_hash(
+        &self,
+        hash: &str,
+        hash_algorithm: ValidHashAlgorithm,
+    ) -> Result<Version> {
+        match hash_algorithm {
+            ValidHashAlgorithm::SHA1 => check_sha1_hash(&[hash])?,
+            ValidHashAlgorithm::SHA512 => check_sha512_hash(&[hash])?,
+        }
         self.client
-            .get(self.url.join_all(vec!["version_file", hash]))
+            .get(
+                self.url
+                    .join_all(vec!["version_file", hash])
+                    .with_query("algorithm", hash_algorithm),
+            )
             .custom_send_json()
             .await
     }
 
     /**
-    Get the versions of the version files with `hashes`, only supports SHA1 hashes for now
+    Get the versions of the version files with `hashes`
 
     Returns a map where the keys are the hashes given.
 
@@ -80,7 +96,8 @@ impl<T> Ferinth<T> {
     let versions = modrinth.version_get_from_multiple_hashes(&[
         sodium_hash,
         snwylvspls_hash,
-    ]).await?;
+    ],
+    ferinth::structures::version::ValidHashAlgorithm::SHA1).await?;
     assert_eq!(versions[sodium_hash].project_id, "AANobbMI");
     assert_eq!(versions[snwylvspls_hash].project_id, "of7wIinq");
     # Ok::<_, ferinth::Error>(()) }).unwrap()
@@ -89,10 +106,18 @@ impl<T> Ferinth<T> {
     pub async fn version_get_from_multiple_hashes(
         &self,
         hashes: &[&str],
+        hash_algorithm: ValidHashAlgorithm,
     ) -> Result<HashMap<String, Version>> {
-        check_sha1_hash(hashes)?;
+        match hash_algorithm {
+            ValidHashAlgorithm::SHA1 => check_sha1_hash(hashes)?,
+            ValidHashAlgorithm::SHA512 => check_sha512_hash(hashes)?,
+        }
         self.client
-            .post(self.url.join_all(vec!["version_files"]))
+            .post(
+                self.url
+                    .join_all(vec!["version_files"])
+                    .with_query("algorithm", hash_algorithm),
+            )
             .json(&HashesBody {
                 hashes: hashes.iter().map(|h| h.to_string()).collect(),
                 algorithm: HashAlgorithm::SHA1,
@@ -102,18 +127,21 @@ impl<T> Ferinth<T> {
     }
 
     /// Get the latest version for the project of the version file with `hash` based on some `filters`.
-    /// Only supports SHA1 hashes for now.
     pub async fn version_get_latest_from_hash(
         &self,
         hash: &str,
+        hash_algorithm: ValidHashAlgorithm,
         filters: &LatestVersionBody,
     ) -> Result<Version> {
-        check_sha1_hash(&[hash])?;
+        match hash_algorithm {
+            ValidHashAlgorithm::SHA1 => check_sha1_hash(&[hash])?,
+            ValidHashAlgorithm::SHA512 => check_sha512_hash(&[hash])?,
+        }
         self.client
             .post(
                 self.url
                     .join_all(vec!["version_file", hash, "update"])
-                    .with_query("algorithm", HashAlgorithm::SHA1.to_string()),
+                    .with_query("algorithm", hash_algorithm),
             )
             .json(filters)
             .custom_send_json()
@@ -121,15 +149,22 @@ impl<T> Ferinth<T> {
     }
 
     /// Get the latest versions of the projects of the version files with hashes based on some `filters`.
-    /// Only supports SHA1 hashes for now.
     pub async fn version_get_latest_from_multiple_hashes(
         &self,
         hashes: &[&str],
+        hash_algorithm: ValidHashAlgorithm,
         filters: &LatestVersionBody,
     ) -> Result<HashMap<String, Version>> {
-        check_sha1_hash(hashes)?;
+        match hash_algorithm {
+            ValidHashAlgorithm::SHA1 => check_sha1_hash(hashes)?,
+            ValidHashAlgorithm::SHA512 => check_sha512_hash(hashes)?,
+        }
         self.client
-            .post(self.url.join_all(vec!["version_files", "update"]))
+            .post(
+                self.url
+                    .join_all(vec!["version_files", "update"])
+                    .with_query("algorithm", hash_algorithm),
+            )
             .json(&LatestVersionsBody {
                 hashes: hashes.iter().map(|h| h.to_string()).collect(),
                 algorithm: HashAlgorithm::SHA1,

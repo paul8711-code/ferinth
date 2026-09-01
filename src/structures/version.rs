@@ -98,6 +98,33 @@ impl std::fmt::Display for HashAlgorithm {
     }
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ValidHashAlgorithm {
+    SHA512,
+    SHA1,
+}
+
+impl std::fmt::Display for ValidHashAlgorithm {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::SHA1 => write!(f, "sha1"),
+            Self::SHA512 => write!(f, "sha512"),
+        }
+    }
+}
+
+impl TryFrom<HashAlgorithm> for ValidHashAlgorithm {
+    type Error = &'static str;
+
+    fn try_from(alg: HashAlgorithm) -> Result<Self, Self::Error> {
+        match alg {
+            HashAlgorithm::SHA512 => Ok(Self::SHA512),
+            HashAlgorithm::SHA1 => Ok(Self::SHA1),
+            HashAlgorithm::Other => Err("Unsupported hash algorithm"),
+        }
+    }
+}
+
 #[derive(Deserialize, Serialize, Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
 #[serde(rename_all = "lowercase")]
 pub enum VersionType {

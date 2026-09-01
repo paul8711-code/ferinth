@@ -6,7 +6,10 @@ async fn get_from_hash() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 
     ctx.modrinth
-        .version_get_from_hash("619e250c133106bacc3e3b560839bd4b324dfda8")
+        .version_get_from_hash(
+            "619e250c133106bacc3e3b560839bd4b324dfda8",
+            version::ValidHashAlgorithm::SHA1,
+        )
         .await?;
 
     Ok(())
@@ -17,7 +20,11 @@ async fn file_delete_from_hash() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 
     ctx.modrinth
-        .version_file_delete_from_hash("619e250c133106bacc3e3b560839bd4b324dfda8", None)
+        .version_file_delete_from_hash(
+            "619e250c133106bacc3e3b560839bd4b324dfda8",
+            version::ValidHashAlgorithm::SHA1,
+            None,
+        )
         .await?;
 
     Ok(())
@@ -33,7 +40,11 @@ async fn get_latest_from_hash() -> anyhow::Result<()> {
     };
 
     ctx.modrinth
-        .version_get_latest_from_hash("380e4a7aa7c746db8bd908991823c9f38b5569a4", &filters)
+        .version_get_latest_from_hash(
+            "380e4a7aa7c746db8bd908991823c9f38b5569a4",
+            version::ValidHashAlgorithm::SHA1,
+            &filters,
+        )
         .await?;
 
     Ok(())
@@ -44,10 +55,13 @@ async fn get_from_multiple_hashes() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 
     ctx.modrinth
-        .version_get_from_multiple_hashes(&[
-            "619e250c133106bacc3e3b560839bd4b324dfda8",
-            "380e4a7aa7c746db8bd908991823c9f38b5569a4",
-        ])
+        .version_get_from_multiple_hashes(
+            &[
+                "619e250c133106bacc3e3b560839bd4b324dfda8",
+                "380e4a7aa7c746db8bd908991823c9f38b5569a4",
+            ],
+            version::ValidHashAlgorithm::SHA1,
+        )
         .await?;
 
     Ok(())
@@ -68,6 +82,7 @@ async fn get_latest_from_multiple_hashes() -> anyhow::Result<()> {
                 "619e250c133106bacc3e3b560839bd4b324dfda8",
                 "380e4a7aa7c746db8bd908991823c9f38b5569a4",
             ],
+            version::ValidHashAlgorithm::SHA1,
             &filters,
         )
         .await?;
