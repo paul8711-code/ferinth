@@ -20,22 +20,24 @@ jobs:
     name: Checks
     runs-on: ubuntu-latest
 
-    # wiremock playback
-    services:
-      wiremock:
-        image: wiremock/wiremock:latest
-        options: --user 1001:127
-        ports:
-          - 8080:8080
-        volumes:
-          - ${{ github.workspace }}/tests/fixtures:/home/wiremock
-
     steps:
-      - name: Fix permissions
-        run: sudo chown -R $USER:$USER ${{ github.workspace }}/tests/fixtures
-
       - name: Checkout
         uses: actions/checkout@v7
+
+      - name: Run WireMock Proxy & Recorder
+        run: |
+          docker run -d --name wiremock \
+            --user 1001:127 \
+            -p 8080:8080 \
+            -v ${{ github.workspace }}/tests/fixtures:/home/wiremock \
+            wiremock/wiremock:latest
+
+      - name: Wait for WireMock
+        run: |
+          until curl -s http://localhost:8080/__admin/mappings > /dev/null; do
+            echo "Waiting for WireMock proxy"
+            sleep 1
+          done
 
       - name: Setup Rust toolchain
         uses: dtolnay/rust-toolchain@stable
