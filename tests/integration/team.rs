@@ -19,6 +19,15 @@ async fn add_user() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
+async fn join() -> anyhow::Result<()> {
+    let ctx = TestContext::new().await?;
+
+    ctx.modrinth.team_join("MMNNOOPP").await?;
+
+    Ok(())
+}
+
+#[tokio::test]
 async fn transfer_ownership() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 

@@ -1,0 +1,15 @@
+{
+    "priority": 1,
+    "request": {
+        "method": "POST",
+        "urlPath": "/team/MMNNOOPP/join",
+        "headers": {
+            "Authorization": {
+                "equalTo": "token"
+            }
+        }
+    },
+    "response": {
+        "status": 204
+    }
+}
