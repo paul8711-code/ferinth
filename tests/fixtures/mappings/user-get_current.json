@@ -1,0 +1,36 @@
+{
+    "priority": 1,
+    "request": {
+        "method": "GET",
+        "urlPath": "/user",
+        "headers": {
+            "Authorization": {
+                "equalTo": "token"
+            }
+        }
+    },
+    "response": {
+        "status": 200,
+        "jsonBody": {
+            "username": "my_user",
+            "name": "My User",
+            "email": "user@email.com",
+            "bio": "i am a user",
+            "payout_data": {
+                "balance": 10.11223344556678,
+                "payout_wallet": "paypal",
+                "payout_wallet_type": "email",
+                "payout_address": "support@modrinth.com"
+            },
+            "id": "EEFFGGHH",
+            "avatar_url": "https://avatars.githubusercontent.com/u/11223344?v=1",
+            "created": "2026-01-01T00:00:00.000Z",
+            "role": "developer",
+            "badges": 63,
+            "auth_providers": null,
+            "email_verified": true,
+            "has_password": true,
+            "has_totp": false
+        }
+    }
+}

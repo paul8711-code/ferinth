@@ -10,6 +10,15 @@ async fn get() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
+async fn get_current() -> anyhow::Result<()> {
+    let ctx = TestContext::new().await?;
+
+    ctx.modrinth.user_get_current().await?;
+
+    Ok(())
+}
+
+#[tokio::test]
 async fn get_multiple() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 
