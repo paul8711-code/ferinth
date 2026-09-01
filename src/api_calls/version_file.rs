@@ -113,7 +113,7 @@ impl<T> Ferinth<T> {
             .post(
                 self.url
                     .join_all(vec!["version_file", hash, "update"])
-                    .with_query_json("algorithm", HashAlgorithm::SHA1)?,
+                    .with_query("algorithm", HashAlgorithm::SHA1.to_string()),
             )
             .json(filters)
             .custom_send_json()

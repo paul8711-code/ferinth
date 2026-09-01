@@ -88,6 +88,16 @@ pub enum HashAlgorithm {
     Other,
 }
 
+impl std::fmt::Display for HashAlgorithm {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::SHA1 => write!(f, "sha1"),
+            Self::SHA512 => write!(f, "sha512"),
+            Self::Other => write!(f, "other"),
+        }
+    }
+}
+
 #[derive(Deserialize, Serialize, Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
 #[serde(rename_all = "lowercase")]
 pub enum VersionType {
