@@ -1,0 +1,31 @@
+{
+  "id" : "816e7ae4-020d-3f37-8779-e41d466f3652",
+  "request" : {
+    "url" : "/project/create/version",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-project-create-version-4gZLt.json",
+    "headers" : {
+      "CF-RAY" : "a346323fa91734c2-VIE",
+      "Server" : "cloudflare",
+      "Access-Control-Allow-Origin" : "*",
+      "X-Ratelimit-Remaining" : "282",
+      "X-Content-Type-Options" : "nosniff",
+      "cf-cache-status" : "DYNAMIC",
+      "Access-Control-Allow-Headers" : "*",
+      "Date" : "Tue, 01 Sep 2026 18:04:14 GMT",
+      "Allow" : "*",
+      "X-Frame-Options" : "DENY",
+      "X-Ratelimit-Reset" : "3",
+      "X-Ratelimit-Limit" : "300",
+      "Strict-Transport-Security" : "max-age=15552000; includeSubDomains; preload",
+      "Vary" : [ "Accept-Encoding", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers", "accept-encoding" ],
+      "alt-svc" : "h3=\":443\"; ma=86400",
+      "Access-Control-Max-Age" : "86400",
+      "Content-Type" : "application/json"
+    }
+  },
+  "uuid" : "816e7ae4-020d-3f37-8779-e41d466f3652"
+}

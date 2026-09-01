@@ -1,0 +1,31 @@
+{
+  "id" : "458202ef-9faf-3ebf-9f55-bd2caf027415",
+  "request" : {
+    "url" : "/tag/loader",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-tag-loader-M33C1.json",
+    "headers" : {
+      "CF-RAY" : "a346323d6f5ac25b-VIE",
+      "Server" : "cloudflare",
+      "Access-Control-Allow-Origin" : "*",
+      "X-Ratelimit-Remaining" : "294",
+      "X-Content-Type-Options" : "nosniff",
+      "cf-cache-status" : "DYNAMIC",
+      "Access-Control-Allow-Headers" : "*",
+      "Date" : "Tue, 01 Sep 2026 18:04:14 GMT",
+      "Allow" : "*",
+      "X-Frame-Options" : "DENY",
+      "X-Ratelimit-Reset" : "1",
+      "X-Ratelimit-Limit" : "300",
+      "Strict-Transport-Security" : "max-age=15552000; includeSubDomains; preload",
+      "Vary" : [ "Accept-Encoding", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers", "accept-encoding" ],
+      "alt-svc" : "h3=\":443\"; ma=86400",
+      "Access-Control-Max-Age" : "86400",
+      "Content-Type" : "application/json"
+    }
+  },
+  "uuid" : "458202ef-9faf-3ebf-9f55-bd2caf027415"
+}

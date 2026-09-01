@@ -1,0 +1,31 @@
+{
+  "id" : "fe37412b-8b51-3ec0-a079-6f673cc1fe77",
+  "request" : {
+    "url" : "/search?query=create+fabric&index=downloads&facets=%5B%5B%22project_type%3Amod%22%5D%2C%5B%22categories%3Afabric%22%5D%2C%5B%22versions%3A1.20.1%22%5D%2C%5B%22open_source%3Atrue%22%2C%22license%3AMIT%22%5D%5D",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-search-egM5d.json",
+    "headers" : {
+      "CF-RAY" : "a346323d6a2f5a78-VIE",
+      "Server" : "cloudflare",
+      "Access-Control-Allow-Origin" : "*",
+      "X-Ratelimit-Remaining" : "297",
+      "X-Content-Type-Options" : "nosniff",
+      "cf-cache-status" : "DYNAMIC",
+      "Access-Control-Allow-Headers" : "*",
+      "Date" : "Tue, 01 Sep 2026 18:04:14 GMT",
+      "Allow" : "*",
+      "X-Frame-Options" : "DENY",
+      "X-Ratelimit-Reset" : "0",
+      "X-Ratelimit-Limit" : "300",
+      "Strict-Transport-Security" : "max-age=15552000; includeSubDomains; preload",
+      "Vary" : [ "Accept-Encoding", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers", "accept-encoding" ],
+      "alt-svc" : "h3=\":443\"; ma=86400",
+      "Access-Control-Max-Age" : "86400",
+      "Content-Type" : "application/json"
+    }
+  },
+  "uuid" : "fe37412b-8b51-3ec0-a079-6f673cc1fe77"
+}
