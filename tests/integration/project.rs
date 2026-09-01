@@ -134,7 +134,7 @@ async fn edit_icon() -> anyhow::Result<()> {
 async fn check_validity() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 
-    ctx.modrinth.project_check_validity("AABBCCDD").await?;
+    ctx.modrinth.project_check_validity("create").await?;
 
     Ok(())
 }
