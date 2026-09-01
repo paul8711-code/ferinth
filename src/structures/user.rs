@@ -31,9 +31,24 @@ pub struct User {
 #[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct PayoutData {
     pub balance: f64,
-    pub paypal_address: Option<String>,
-    pub paypal_country: Option<String>,
-    pub venmo_handle: Option<String>,
+    pub payout_wallet: Option<Wallet>,
+    pub payout_wallet_type: Option<WalletType>,
+    pub payout_address: Option<String>,
+}
+
+#[derive(Deserialize, Serialize, Debug, Clone)]
+#[serde(rename_all = "lowercase")]
+pub enum Wallet {
+    PayPal,
+    Venmo,
+}
+
+#[derive(Deserialize, Serialize, Debug, Clone)]
+#[serde(rename_all = "snake_case")]
+pub enum WalletType {
+    Email,
+    Phone,
+    UserHandle,
 }
 
 #[derive(Deserialize, Serialize, Debug, Clone)]
