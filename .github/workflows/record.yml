@@ -15,6 +15,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Fix permissions
+        run: sudo chown -R $USER:$USER ${{ github.workspace }}/tests/fixtures
+
       - name: Checkout repository
         uses: actions/checkout@v7
 

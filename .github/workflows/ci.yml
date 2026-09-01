@@ -31,6 +31,9 @@ jobs:
           - ${{ github.workspace }}/tests/fixtures:/home/wiremock
 
     steps:
+      - name: Fix permissions
+        run: sudo chown -R $USER:$USER ${{ github.workspace }}/tests/fixtures
+
       - name: Checkout
         uses: actions/checkout@v7
 
