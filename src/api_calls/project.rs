@@ -262,7 +262,11 @@ impl Ferinth<Authenticated> {
     ) -> Result<()> {
         check_id_slug(project_ids)?;
         self.client
-            .patch(self.url.join_all(vec!["projects"]))
+            .patch(
+                self.url
+                    .join_all(vec!["projects"])
+                    .with_query("ids", &serde_json::to_string(project_ids)?),
+            )
             .json(&edits)
             .custom_send()
             .await?;
