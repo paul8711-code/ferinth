@@ -1,7 +1,8 @@
 {
+    "priority": 1,
     "request": {
         "method": "DELETE",
-        "urlPath": "/project/test_project",
+        "urlPath": "/version/IIJJKKLL",
         "headers": {
             "Authorization": "token"
         }

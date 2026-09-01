@@ -15,8 +15,8 @@ struct TestContext {
 }
 
 impl TestContext {
-    async fn new(base_url: &str) -> anyhow::Result<Self> {
-        let base_url = Url::parse(base_url)?;
+    async fn new() -> anyhow::Result<Self> {
+        let base_url = Url::parse("http://localhost:8080")?;
 
         let modrinth = Ferinth::new_with_base_url(
             env!("CARGO_CRATE_NAME"),

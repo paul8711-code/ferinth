@@ -1,7 +1,8 @@
 {
+    "priority": 1,
     "request": {
-        "method": "DELETE",
-        "urlPath": "/version/IIJJKKLL",
+        "method": "POST",
+        "urlPath": "/project/test_project/follow",
         "headers": {
             "Authorization": "token"
         }

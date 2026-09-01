@@ -1,11 +1,10 @@
 {
+    "priority": 1,
     "request": {
-        "method": "PATCH",
+        "method": "DELETE",
         "urlPath": "/project/test_project/gallery",
         "queryParameters": {
-            "url": "https://example.com/",
-            "featured": false,
-            "title": "modified_test_image"
+            "url": "https://example.com/"
         },
         "headers": {
             "Authorization": "token"

@@ -2,11 +2,10 @@ use crate::*;
 use ferinth::structures::project;
 
 #[tokio::test]
-#[stubr::mock("project/search.json")]
 async fn search() -> anyhow::Result<()> {
     use project::{Facet, ProjectType};
 
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     let facets = vec![
         vec![Facet::ProjectType(ProjectType::Mod)],
@@ -23,11 +22,10 @@ async fn search() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-#[stubr::mock("project/search_paged.json")]
 async fn search_paged() -> anyhow::Result<()> {
     use project::{Facet, ProjectType};
 
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     let facets = vec![
         vec![Facet::ProjectType(ProjectType::Mod)],
@@ -44,9 +42,8 @@ async fn search_paged() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-#[stubr::mock("project/get.json")]
 async fn get() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     ctx.modrinth.project_get("create").await?;
 
@@ -54,9 +51,8 @@ async fn get() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-#[stubr::mock("project/delete.json")]
 async fn delete() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     ctx.modrinth.project_delete("test_project").await?;
 
@@ -64,9 +60,8 @@ async fn delete() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-#[stubr::mock("project/get_multiple.json")]
 async fn get_multiple() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     ctx.modrinth
         .project_get_multiple(&["create", "farmers-delight"])
@@ -76,9 +71,8 @@ async fn get_multiple() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-#[stubr::mock("project/edit_multiple.json")]
 async fn edit_multiple() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     let body = project::EditMultipleProjectsBody {
         categories: vec!["fabric".to_string(), "decoration".to_string()],
@@ -108,9 +102,8 @@ async fn edit_multiple() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-#[stubr::mock("project/get_random.json")]
 async fn get_random() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     ctx.modrinth.project_get_random(2).await?;
 
@@ -118,9 +111,8 @@ async fn get_random() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-#[stubr::mock("project/delete_icon.json")]
 async fn delete_icon() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     ctx.modrinth.project_delete_icon("test_project").await?;
 
@@ -128,9 +120,8 @@ async fn delete_icon() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-#[stubr::mock("project/edit_icon.json")]
 async fn edit_icon() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     ctx.modrinth
         .project_edit_icon("test_project", "image data", project::ImageFileExt::PNG)
@@ -140,9 +131,8 @@ async fn edit_icon() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-#[stubr::mock("project/check_validity.json")]
 async fn check_validity() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     ctx.modrinth.project_check_validity("AABBCCDD").await?;
 
@@ -150,9 +140,8 @@ async fn check_validity() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-#[stubr::mock("project/add_gallery_image.json")]
 async fn add_gallery_image() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     ctx.modrinth
         .project_add_gallery_image(
@@ -169,9 +158,8 @@ async fn add_gallery_image() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-#[stubr::mock("project/delete_gallery_image.json")]
 async fn delete_gallery_image() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     ctx.modrinth
         .project_delete_gallery_image("test_project", "https://example.com/")
@@ -181,9 +169,8 @@ async fn delete_gallery_image() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-#[stubr::mock("project/edit_gallery_image.json")]
 async fn edit_gallery_image() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     ctx.modrinth
         .project_edit_gallery_image(
@@ -200,9 +187,8 @@ async fn edit_gallery_image() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-#[stubr::mock("project/get_dependencies.json")]
 async fn get_dependencies() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     ctx.modrinth.project_get_dependencies("create").await?;
 
@@ -210,9 +196,8 @@ async fn get_dependencies() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-#[stubr::mock("project/follow.json")]
 async fn follow() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     ctx.modrinth.project_follow("test_project").await?;
 
@@ -220,9 +205,8 @@ async fn follow() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-#[stubr::mock("project/unfollow.json")]
 async fn unfollow() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     ctx.modrinth.project_unfollow("test_project").await?;
 
@@ -230,9 +214,8 @@ async fn unfollow() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
-#[stubr::mock("project/schedule.json")]
 async fn schedule() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     let time = "2023-02-05T19:39:55.551839Z";
 

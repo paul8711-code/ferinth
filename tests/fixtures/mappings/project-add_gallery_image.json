@@ -1,9 +1,13 @@
 {
+    "priority": 1,
     "request": {
-        "method": "PATCH",
-        "urlPath": "/project/test_project/icon",
+        "method": "POST",
+        "urlPath": "/project/test_project/gallery",
         "queryParameters": {
-            "ext": "png"
+            "ext": "png",
+            "featured": true,
+            "title": "test_image",
+            "description": "test image"
         },
         "headers": {
             "Authorization": "token"

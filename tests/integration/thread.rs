@@ -2,9 +2,8 @@ use crate::*;
 use ferinth::structures::thread;
 
 #[tokio::test]
-#[stubr::mock("thread/submit_report.json")]
 async fn submit_report() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     ctx.modrinth
         .submit_report(&thread::ReportSubmission {

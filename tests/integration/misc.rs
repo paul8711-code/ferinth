@@ -1,9 +1,8 @@
 use crate::*;
 
 #[tokio::test]
-#[stubr::mock("misc/instance_statistics.json")]
 async fn instance_statistics() -> anyhow::Result<()> {
-    let ctx = TestContext::new(&stubr.uri()).await?;
+    let ctx = TestContext::new().await?;
 
     ctx.modrinth.instance_statistics().await?;
 
