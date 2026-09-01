@@ -37,3 +37,14 @@ async fn delete() -> anyhow::Result<()> {
 
     Ok(())
 }
+
+#[tokio::test]
+async fn get_multiple() -> anyhow::Result<()> {
+    let ctx = TestContext::new().await?;
+
+    ctx.modrinth
+        .version_get_multiple(&["UjX6dr61", "XTVZDOol"])
+        .await?;
+
+    Ok(())
+}
