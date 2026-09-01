@@ -14,6 +14,10 @@ The major version of this crate's version directly corresponds to the Modrinth A
 If you want to use the Modrinth API version 2, which is the latest one currently, specify this crate's major version as `2`.
 
 Due to this feature, there will be breaking changes in minor version bumps too!
+
+### Testing
+
+Documentation examples are not tested because they require a live Modrinth account. Instead, all functions are verified using up-to-date mock server integration tests.
 */
 
 mod api_calls;
