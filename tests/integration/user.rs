@@ -8,3 +8,12 @@ async fn get() -> anyhow::Result<()> {
 
     Ok(())
 }
+
+#[tokio::test]
+async fn list_projects() -> anyhow::Result<()> {
+    let ctx = TestContext::new().await?;
+
+    ctx.modrinth.user_list_projects("simibubi").await?;
+
+    Ok(())
+}
