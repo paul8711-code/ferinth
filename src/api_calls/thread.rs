@@ -9,7 +9,7 @@ impl Ferinth<Authenticated> {
     /**
     Submit a report to the moderators
 
-    Valid report types can be found using [`Ferinth::list_report_types`]
+    Valid report types can be found using [`Ferinth::tag_list_report_types`]
 
     ```no_run
     # use paul8711_ferinth as ferinth;
