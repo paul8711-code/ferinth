@@ -10,6 +10,17 @@ async fn get() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
+async fn get_multiple() -> anyhow::Result<()> {
+    let ctx = TestContext::new().await?;
+
+    ctx.modrinth
+        .user_get_multiple(&["modrinth", "simibubi"])
+        .await?;
+
+    Ok(())
+}
+
+#[tokio::test]
 async fn list_projects() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 
