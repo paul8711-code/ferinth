@@ -6,6 +6,7 @@ use url::Url;
 mod integration {
     mod misc;
     mod project;
+    mod tag;
     mod thread;
     mod version;
     mod version_file;
