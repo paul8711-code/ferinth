@@ -164,8 +164,6 @@ pub enum RequestedStatus {
     Unlisted,
     Private,
     Draft,
-    #[serde(other)]
-    Other,
 }
 
 #[derive(Deserialize, Serialize, Debug, Clone, Copy, PartialEq, Eq)]
