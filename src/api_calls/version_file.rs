@@ -124,17 +124,17 @@ impl<T> Ferinth<T> {
     /// Only supports SHA1 hashes for now.
     pub async fn version_get_latest_from_multiple_hashes(
         &self,
-        hashes: Vec<String>,
-        filters: LatestVersionBody,
+        hashes: &[&str],
+        filters: &LatestVersionBody,
     ) -> Result<HashMap<String, Version>> {
-        check_sha1_hash(&hashes)?;
+        check_sha1_hash(hashes)?;
         self.client
             .post(self.url.join_all(vec!["version_files", "update"]))
             .json(&LatestVersionsBody {
-                hashes,
+                hashes: hashes.iter().map(|h| h.to_string()).collect(),
                 algorithm: HashAlgorithm::SHA1,
-                loaders: filters.loaders,
-                game_versions: filters.game_versions,
+                loaders: filters.loaders.clone(),
+                game_versions: filters.game_versions.clone(),
             })
             .custom_send_json()
             .await
