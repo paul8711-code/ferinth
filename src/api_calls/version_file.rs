@@ -4,7 +4,6 @@
 
 use super::*;
 use crate::structures::version::*;
-use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
 impl Ferinth<Authenticated> {
@@ -78,9 +77,9 @@ impl<T> Ferinth<T> {
     # let modrinth = ferinth::Ferinth::default();
     let sodium_hash = "795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf";
     let snwylvspls_hash = "994ee99d172a5950a51ec2d08c158d270722d871";
-    let versions = modrinth.version_get_from_multiple_hashes(vec![
-        sodium_hash.into(),
-        snwylvspls_hash.into(),
+    let versions = modrinth.version_get_from_multiple_hashes(&[
+        sodium_hash,
+        snwylvspls_hash,
     ]).await?;
     assert_eq!(versions[sodium_hash].project_id, "AANobbMI");
     assert_eq!(versions[snwylvspls_hash].project_id, "of7wIinq");
@@ -89,19 +88,13 @@ impl<T> Ferinth<T> {
     */
     pub async fn version_get_from_multiple_hashes(
         &self,
-        hashes: Vec<String>,
+        hashes: &[&str],
     ) -> Result<HashMap<String, Version>> {
-        #[derive(Deserialize, Serialize, Debug, Clone)]
-        pub struct HashesBody {
-            pub hashes: Vec<String>,
-            pub algorithm: HashAlgorithm,
-        }
-
-        check_sha1_hash(&hashes)?;
+        check_sha1_hash(hashes)?;
         self.client
             .post(self.url.join_all(vec!["version_files"]))
             .json(&HashesBody {
-                hashes,
+                hashes: hashes.iter().map(|h| h.to_string()).collect(),
                 algorithm: HashAlgorithm::SHA1,
             })
             .custom_send_json()
@@ -120,7 +113,7 @@ impl<T> Ferinth<T> {
             .post(
                 self.url
                     .join_all(vec!["version_file", hash, "update"])
-                    .with_query_json("algorithm", HashAlgorithm::SHA1)?,
+                    .with_query("algorithm", HashAlgorithm::SHA1.to_string()),
             )
             .json(filters)
             .custom_send_json()
@@ -131,17 +124,17 @@ impl<T> Ferinth<T> {
     /// Only supports SHA1 hashes for now.
     pub async fn version_get_latest_from_multiple_hashes(
         &self,
-        hashes: Vec<String>,
-        filters: LatestVersionBody,
+        hashes: &[&str],
+        filters: &LatestVersionBody,
     ) -> Result<HashMap<String, Version>> {
-        check_sha1_hash(&hashes)?;
+        check_sha1_hash(hashes)?;
         self.client
             .post(self.url.join_all(vec!["version_files", "update"]))
             .json(&LatestVersionsBody {
-                hashes,
+                hashes: hashes.iter().map(|h| h.to_string()).collect(),
                 algorithm: HashAlgorithm::SHA1,
-                loaders: filters.loaders,
-                game_versions: filters.game_versions,
+                loaders: filters.loaders.clone(),
+                game_versions: filters.game_versions.clone(),
             })
             .custom_send_json()
             .await

@@ -1,0 +1,25 @@
+{
+    "priority": 1,
+    "request": {
+        "method": "POST",
+        "urlPath": "/project/test_project/schedule",
+        "headers": {
+            "Authorization": {
+                "equalTo": "token"
+            }
+        },
+        "bodyPatterns": [
+            {
+                "equalToJson": {
+                    "time": "2023-02-05T19:39:55.551839Z",
+                    "requested_status": "approved"
+                },
+                "ignoreExtraElements": true,
+                "ignoreArrayOrder": true
+            }
+        ]
+    },
+    "response": {
+        "status": 204
+    }
+}

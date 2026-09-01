@@ -1,0 +1,36 @@
+{
+    "priority": 1,
+    "request": {
+        "method": "POST",
+        "urlPath": "/report",
+        "headers": {
+            "Authorization": {
+                "equalTo": "token"
+            }
+        },
+        "bodyPatterns": [
+            {
+                "equalToJson": {
+                    "report_type": "copyright",
+                    "item_id": "EEFFGGHH",
+                    "item_type": "project",
+                    "body": "This is a reupload of my mod, AABBCCDD!"
+                }
+            }
+        ]
+    },
+    "response": {
+        "status": 200,
+        "jsonBody": {
+            "report_type": "copyright",
+            "item_id": "EEFFGGHH",
+            "item_type": "project",
+            "body": "This is a reupload of my mod, AABBCCDD!",
+            "id": "VVWWXXYY",
+            "reporter": "UUVVWWXX",
+            "created": "2026-01-01T00:00:00.000Z",
+            "closed": false,
+            "thread_id": "TTUUVVWW"
+        }
+    }
+}

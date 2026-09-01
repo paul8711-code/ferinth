@@ -1,6 +1,7 @@
 //! [documentation](https://docs.modrinth.com/api-spec)
 
 pub mod misc;
+pub mod notification;
 pub mod project;
 pub mod tag;
 pub mod team;

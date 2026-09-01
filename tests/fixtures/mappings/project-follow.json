@@ -1,0 +1,15 @@
+{
+    "priority": 1,
+    "request": {
+        "method": "POST",
+        "urlPath": "/project/test_project/follow",
+        "headers": {
+            "Authorization": {
+                "equalTo": "token"
+            }
+        }
+    },
+    "response": {
+        "status": 204
+    }
+}

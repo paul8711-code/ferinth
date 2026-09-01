@@ -52,6 +52,12 @@ pub struct Hash {
 }
 
 #[derive(Deserialize, Serialize, Debug, Clone)]
+pub struct HashesBody {
+    pub hashes: Vec<String>,
+    pub algorithm: HashAlgorithm,
+}
+
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct LatestVersionBody {
     pub loaders: Vec<String>,
     pub game_versions: Vec<String>,
@@ -80,6 +86,16 @@ pub enum HashAlgorithm {
     SHA1,
     #[serde(other)]
     Other,
+}
+
+impl std::fmt::Display for HashAlgorithm {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::SHA1 => write!(f, "sha1"),
+            Self::SHA512 => write!(f, "sha512"),
+            Self::Other => write!(f, "other"),
+        }
+    }
 }
 
 #[derive(Deserialize, Serialize, Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
@@ -116,12 +132,10 @@ pub enum Status {
 #[derive(Serialize, Deserialize, Clone, Copy, Debug, PartialEq, Eq)]
 #[serde(rename_all = "lowercase")]
 pub enum RequestedStatus {
-    Listed,
+    Approved,
     Archived,
-    Draft,
     Unlisted,
-    #[serde(other)]
-    Other,
+    Draft,
 }
 
 #[derive(Serialize, Deserialize, Clone, Copy, Debug, PartialEq, Eq)]

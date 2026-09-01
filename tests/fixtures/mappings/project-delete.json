@@ -1,0 +1,15 @@
+{
+    "priority": 1,
+    "request": {
+        "method": "DELETE",
+        "urlPath": "/project/test_project",
+        "headers": {
+            "Authorization": {
+                "equalTo": "token"
+            }
+        }
+    },
+    "response": {
+        "status": 204
+    }
+}

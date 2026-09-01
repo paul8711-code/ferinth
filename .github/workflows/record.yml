@@ -1,0 +1,58 @@
+name: Record Modrinth API
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "0 0 1 * *"
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Remove old stubs
+        run: rm -rf &{{ github.workspace }}/tests/fixtures/mappings/mapping-*.json
+
+      - name: Run WireMock Proxy & Recorder
+        run: |
+          docker run -d --name wiremock-recorder \
+            --user 1001:127 \
+            -p 8080:8080 \
+            -v ${{ github.workspace }}/tests/fixtures:/home/wiremock \
+            wiremock/wiremock:latest \
+            --proxy-all="https://api.modrinth.com/v2" \
+            --record-mappings
+
+      - name: Generate stubs
+        run: cargo test
+
+      - name: Remove error stubs
+        run: |
+          for file in tests/fixtures/mappings/*.json; do
+            status=$(jq -r '.response.status // empty' "$file")
+            if [ "$status" = "401" ] || [ "$status" = "404" ] || [ "$status" = "400" ]; then
+              echo "Removing error stub: $file (Status $status)"
+              rm "$file"
+            fi
+          done
+
+      - name: Stop WireMock Container
+        if: always()
+        run: docker stop wiremock-recorder && docker rm wiremock-recorder
+
+      - name: Commit new stubs
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "chore(test): auto-update recorded wiremock stubs"
+          file_pattern: "tests/fixtures/*"

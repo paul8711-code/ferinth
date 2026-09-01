@@ -1,0 +1,34 @@
+{
+    "priority": 1,
+    "request": {
+        "method": "POST",
+        "urlPath": "/project/test_project/gallery",
+        "queryParameters": {
+            "ext": {
+                "equalTo": "png"
+            },
+            "featured": {
+                "equalTo": "true"
+            },
+            "title": {
+                "equalTo": "test_image"
+            },
+            "description": {
+                "equalTo": "test image"
+            }
+        },
+        "headers": {
+            "Authorization": {
+                "equalTo": "token"
+            }
+        },
+        "bodyPatterns": [
+            {
+                "equalTo": "image data"
+            }
+        ]
+    },
+    "response": {
+        "status": 204
+    }
+}

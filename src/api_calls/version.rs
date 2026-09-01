@@ -49,7 +49,7 @@ impl Ferinth<Authenticated> {
     modrinth.version_schedule(
         "xuWxRZPd",
         &(Utc::now() + Duration::hours(3)),
-        &RequestedStatus::Listed
+        &RequestedStatus::Approved
     ).await?;
     # Ok::<_, ferinth::Error>(()) }).unwrap()
     ```
@@ -62,12 +62,11 @@ impl Ferinth<Authenticated> {
     ) -> Result<()> {
         check_id_slug(&[version_id])?;
         self.client
-            .post(
-                self.url
-                    .join_all(vec!["version", version_id, "schedule"])
-                    .with_query_json("time", time)?
-                    .with_query_json("requested_status", status)?,
-            )
+            .post(self.url.join_all(vec!["version", version_id, "schedule"]))
+            .json(&serde_json::json!({
+                "time": time,
+                "requested_status": status
+            }))
             .custom_send()
             .await?;
         Ok(())

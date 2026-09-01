@@ -1,6 +1,7 @@
 //! Models specified in the Modrinth documentation
 
 pub mod misc;
+pub mod notification;
 pub mod project;
 pub mod tag;
 pub mod thread;

@@ -1,0 +1,25 @@
+{
+    "priority": 1,
+    "request": {
+        "method": "PATCH",
+        "urlPath": "/project/test_project/icon",
+        "queryParameters": {
+            "ext": {
+                "equalTo": "png"
+            }
+        },
+        "headers": {
+            "Authorization": {
+                "equalTo": "token"
+            }
+        },
+        "bodyPatterns": [
+            {
+                "equalTo": "image data"
+            }
+        ]
+    },
+    "response": {
+        "status": 204
+    }
+}

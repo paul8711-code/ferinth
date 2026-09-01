@@ -1,0 +1,26 @@
+{
+    "priority": 1,
+    "request": {
+        "method": "PATCH",
+        "urlPath": "/project/test_project/gallery",
+        "queryParameters": {
+            "url": {
+                "equalTo": "https://example.com/"
+            },
+            "featured": {
+                "equalTo": "false"
+            },
+            "title": {
+                "equalTo": "modified_test_image"
+            }
+        },
+        "headers": {
+            "Authorization": {
+                "equalTo": "token"
+            }
+        }
+    },
+    "response": {
+        "status": 204
+    }
+}
