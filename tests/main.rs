@@ -5,6 +5,7 @@ use ferinth::{Authenticated, Ferinth};
 use url::Url;
 mod integration {
     mod misc;
+    mod notification;
     mod project;
     mod tag;
     mod thread;
