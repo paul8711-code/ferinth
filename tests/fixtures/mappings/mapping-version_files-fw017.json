@@ -1,0 +1,36 @@
+{
+  "id" : "2924cd7a-b54c-3d85-b87f-f028fc7d0562",
+  "request" : {
+    "url" : "/version_files?algorithm=sha1",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalToJson" : "{\"hashes\":[\"619e250c133106bacc3e3b560839bd4b324dfda8\",\"380e4a7aa7c746db8bd908991823c9f38b5569a4\"],\"algorithm\":\"sha1\"}",
+      "ignoreArrayOrder" : true,
+      "ignoreExtraElements" : true
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-version_files-fw017.json",
+    "headers" : {
+      "CF-RAY" : "a3463e01f85598db-VIE",
+      "Server" : "cloudflare",
+      "Access-Control-Allow-Origin" : "*",
+      "X-Ratelimit-Remaining" : "277",
+      "X-Content-Type-Options" : "nosniff",
+      "cf-cache-status" : "DYNAMIC",
+      "Access-Control-Allow-Headers" : "*",
+      "Date" : "Tue, 01 Sep 2026 18:12:16 GMT",
+      "Allow" : "*",
+      "X-Frame-Options" : "DENY",
+      "X-Ratelimit-Reset" : "4",
+      "X-Ratelimit-Limit" : "300",
+      "Strict-Transport-Security" : "max-age=15552000; includeSubDomains; preload",
+      "Vary" : [ "Accept-Encoding", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers", "accept-encoding" ],
+      "alt-svc" : "h3=\":443\"; ma=86400",
+      "Access-Control-Max-Age" : "86400",
+      "Content-Type" : "application/json"
+    }
+  },
+  "uuid" : "2924cd7a-b54c-3d85-b87f-f028fc7d0562"
+}

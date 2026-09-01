@@ -1,0 +1,31 @@
+{
+  "id" : "539d79af-3e71-35a1-912f-3c9227508ad7",
+  "request" : {
+    "url" : "/version_file/ea0f38408102e4d2efd53c2cc11b88b711996b48d8922f76ea6abf731219c5bd1efe39ddf9cce77c54d49a62ff10fb685c00d2e4c524ab99d20f6296677ab2c4?algorithm=sha512",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-version_file-ea0f38408102e4d2efd53c2cc11b88b711996b48d8922f76ea6abf731219c5bd1efe39ddf9cce77c54d49a62ff10fb685c00d2e4c524ab99d20f6296677ab2c4-fTa3s.json",
+    "headers" : {
+      "CF-RAY" : "a3463e01eada90c5-VIE",
+      "Server" : "cloudflare",
+      "Access-Control-Allow-Origin" : "*",
+      "X-Ratelimit-Remaining" : "280",
+      "X-Content-Type-Options" : "nosniff",
+      "cf-cache-status" : "DYNAMIC",
+      "Access-Control-Allow-Headers" : "*",
+      "Date" : "Tue, 01 Sep 2026 18:12:16 GMT",
+      "Allow" : "*",
+      "X-Frame-Options" : "DENY",
+      "X-Ratelimit-Reset" : "3",
+      "X-Ratelimit-Limit" : "300",
+      "Strict-Transport-Security" : "max-age=15552000; includeSubDomains; preload",
+      "Vary" : [ "Accept-Encoding", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers", "accept-encoding" ],
+      "alt-svc" : "h3=\":443\"; ma=86400",
+      "Access-Control-Max-Age" : "86400",
+      "Content-Type" : "application/json"
+    }
+  },
+  "uuid" : "539d79af-3e71-35a1-912f-3c9227508ad7"
+}
