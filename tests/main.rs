@@ -15,6 +15,24 @@ mod integration {
     mod version_file;
 }
 
+/*
+When running cargo test this Docker container must run in the directory of the project:
+```bash
+docker run -d --name wiremock-recorder \
+    --user $(id -u):$(id -g) \
+    -p 8080:8080 \
+    -v ./tests/fixtures:/home/wiremock \
+    wiremock/wiremock:latest \
+    --proxy-all="https://api.modrinth.com/v2" \
+    --record-mappings
+```
+
+When adding manually implemented fixtures the container must be restarted:
+`docker restart wiremock-recorder`
+Afterwards stop and remove it:
+`docker stop wiremock-recorder && docker rm wiremock-recorder`
+*/
+
 struct TestContext {
     modrinth: Ferinth<Authenticated>,
 }
