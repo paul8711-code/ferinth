@@ -1,0 +1,36 @@
+{
+  "id" : "7cda6961-e38c-3b16-b1c8-61581918cfa4",
+  "request" : {
+    "url" : "/projects",
+    "method" : "PATCH",
+    "bodyPatterns" : [ {
+      "equalToJson" : "{\"categories\":[\"fabric\",\"decoration\"],\"add_categories\":[],\"remove_categories\":[],\"additional_categories\":[],\"add_additional_categories\":[\"forge\",\"adventure\"],\"remove_additional_categories\":[],\"donation_urls\":[],\"add_donation_urls\":[],\"remove_donation_urls\":[{\"id\":\"patreon\",\"platform\":\"Patreon\",\"url\":\"https://www.patreon.com/my_user\"}],\"issues_url\":null,\"source_url\":null,\"wiki_url\":\"https://example.com\",\"discord_url\":null}",
+      "ignoreArrayOrder" : true,
+      "ignoreExtraElements" : true
+    } ]
+  },
+  "response" : {
+    "status" : 400,
+    "bodyFileName" : "body-projects-STiGd.json",
+    "headers" : {
+      "CF-RAY" : "a343bd8faeffbabc-VIE",
+      "Server" : "cloudflare",
+      "Access-Control-Allow-Origin" : "*",
+      "X-Ratelimit-Remaining" : "294",
+      "X-Content-Type-Options" : "nosniff",
+      "cf-cache-status" : "DYNAMIC",
+      "Access-Control-Allow-Headers" : "*",
+      "Date" : "Tue, 01 Sep 2026 10:55:03 GMT",
+      "Allow" : "*",
+      "X-Frame-Options" : "DENY",
+      "X-Ratelimit-Reset" : "1",
+      "X-Ratelimit-Limit" : "300",
+      "Strict-Transport-Security" : "max-age=15552000; includeSubDomains; preload",
+      "Vary" : [ "Accept-Encoding", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers", "accept-encoding" ],
+      "alt-svc" : "h3=\":443\"; ma=86400",
+      "Access-Control-Max-Age" : "86400",
+      "Content-Type" : "application/json"
+    }
+  },
+  "uuid" : "7cda6961-e38c-3b16-b1c8-61581918cfa4"
+}
