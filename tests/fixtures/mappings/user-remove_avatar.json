@@ -1,0 +1,15 @@
+{
+    "priority": 1,
+    "request": {
+        "method": "DELETE",
+        "urlPath": "/user/my_user/icon",
+        "headers": {
+            "Authorization": {
+                "equalTo": "token"
+            }
+        }
+    },
+    "response": {
+        "status": 204
+    }
+}
