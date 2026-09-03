@@ -429,7 +429,7 @@ pub struct SearchHit {
     pub environment: Vec<EnvironmentType>,
     pub disclosure_types: Vec<DisclosureType>,
     pub project_type: ProjectType,
-    pub all_project_types: ProjectType,
+    pub all_project_types: Vec<ProjectType>,
     pub downloads: Int,
     #[serde(deserialize_with = "deserialise_optional_url")]
     pub icon_url: Option<Url>,
