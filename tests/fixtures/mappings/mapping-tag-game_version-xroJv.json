@@ -1,0 +1,34 @@
+{
+  "id" : "fcaca019-ee18-3f9f-b209-899bc1f11e14",
+  "request" : {
+    "url" : "/tag/game_version",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-tag-game_version-xroJv.json",
+    "headers" : {
+      "CF-RAY" : "a353cbb3b9980b0f-VIE",
+      "Server" : "cloudflare",
+      "Access-Control-Allow-Origin" : "*",
+      "X-Ratelimit-Remaining" : "297",
+      "X-Content-Type-Options" : "nosniff",
+      "cf-cache-status" : "HIT",
+      "Access-Control-Allow-Headers" : "*",
+      "Date" : "Thu, 03 Sep 2026 09:40:55 GMT",
+      "Allow" : "*",
+      "X-Frame-Options" : "DENY",
+      "X-Ratelimit-Reset" : "0",
+      "last-modified" : "Thu, 03 Sep 2026 09:40:29 GMT",
+      "X-Ratelimit-Limit" : "300",
+      "Strict-Transport-Security" : "max-age=15552000; includeSubDomains; preload",
+      "Cache-Control" : "no-store",
+      "Vary" : [ "Accept-Encoding", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers", "accept-encoding" ],
+      "alt-svc" : "h3=\":443\"; ma=86400",
+      "Access-Control-Max-Age" : "86400",
+      "Age" : "26",
+      "Content-Type" : "application/json"
+    }
+  },
+  "uuid" : "fcaca019-ee18-3f9f-b209-899bc1f11e14"
+}
