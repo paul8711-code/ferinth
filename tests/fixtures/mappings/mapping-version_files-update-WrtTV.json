@@ -1,0 +1,36 @@
+{
+  "id" : "380c34a6-ab14-372e-991d-0eba8fde02c0",
+  "request" : {
+    "url" : "/version_files/update?algorithm=sha1",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalToJson" : "{\"hashes\":[\"619e250c133106bacc3e3b560839bd4b324dfda8\",\"380e4a7aa7c746db8bd908991823c9f38b5569a4\"],\"algorithm\":\"sha1\",\"loaders\":[\"fabric\"],\"game_versions\":[\"1.18\",\"1.18.1\"]}",
+      "ignoreArrayOrder" : true,
+      "ignoreExtraElements" : true
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-version_files-update-WrtTV.json",
+    "headers" : {
+      "CF-RAY" : "a353d682cf6d4f59-VIE",
+      "Server" : "cloudflare",
+      "Access-Control-Allow-Origin" : "*",
+      "X-Ratelimit-Remaining" : "275",
+      "X-Content-Type-Options" : "nosniff",
+      "cf-cache-status" : "DYNAMIC",
+      "Access-Control-Allow-Headers" : "*",
+      "Date" : "Thu, 03 Sep 2026 09:48:17 GMT",
+      "Allow" : "*",
+      "X-Frame-Options" : "DENY",
+      "X-Ratelimit-Reset" : "4",
+      "X-Ratelimit-Limit" : "300",
+      "Strict-Transport-Security" : "max-age=15552000; includeSubDomains; preload",
+      "Vary" : [ "Accept-Encoding", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers", "accept-encoding" ],
+      "alt-svc" : "h3=\":443\"; ma=86400",
+      "Access-Control-Max-Age" : "86400",
+      "Content-Type" : "application/json"
+    }
+  },
+  "uuid" : "380c34a6-ab14-372e-991d-0eba8fde02c0"
+}

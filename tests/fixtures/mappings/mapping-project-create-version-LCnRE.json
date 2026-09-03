@@ -1,0 +1,31 @@
+{
+  "id" : "f81cc07f-1c56-35e3-b766-8de372496cd2",
+  "request" : {
+    "url" : "/project/create/version?loaders=%5B%22neoforge%22%5D&game_versions=%5B%221.20.1%22%5D",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-project-create-version-LCnRE.json",
+    "headers" : {
+      "CF-RAY" : "a353d6823b22a2c1-VIE",
+      "Server" : "cloudflare",
+      "Access-Control-Allow-Origin" : "*",
+      "X-Ratelimit-Remaining" : "277",
+      "X-Content-Type-Options" : "nosniff",
+      "cf-cache-status" : "DYNAMIC",
+      "Access-Control-Allow-Headers" : "*",
+      "Date" : "Thu, 03 Sep 2026 09:48:17 GMT",
+      "Allow" : "*",
+      "X-Frame-Options" : "DENY",
+      "X-Ratelimit-Reset" : "4",
+      "X-Ratelimit-Limit" : "300",
+      "Strict-Transport-Security" : "max-age=15552000; includeSubDomains; preload",
+      "Vary" : [ "Accept-Encoding", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers", "accept-encoding" ],
+      "alt-svc" : "h3=\":443\"; ma=86400",
+      "Access-Control-Max-Age" : "86400",
+      "Content-Type" : "application/json"
+    }
+  },
+  "uuid" : "f81cc07f-1c56-35e3-b766-8de372496cd2"
+}

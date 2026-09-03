@@ -1,0 +1,31 @@
+{
+  "id" : "11778b3b-4ae8-36cc-a003-08c21f190031",
+  "request" : {
+    "url" : "/teams?ids=%5B%224reLOAKe%22%2C%22zftNHDXi%22%5D",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-teams-5eg0R.json",
+    "headers" : {
+      "CF-RAY" : "a353d681dfb5c289-VIE",
+      "Server" : "cloudflare",
+      "Access-Control-Allow-Origin" : "*",
+      "X-Ratelimit-Remaining" : "285",
+      "X-Content-Type-Options" : "nosniff",
+      "cf-cache-status" : "DYNAMIC",
+      "Access-Control-Allow-Headers" : "*",
+      "Date" : "Thu, 03 Sep 2026 09:48:17 GMT",
+      "Allow" : "*",
+      "X-Frame-Options" : "DENY",
+      "X-Ratelimit-Reset" : "2",
+      "X-Ratelimit-Limit" : "300",
+      "Strict-Transport-Security" : "max-age=15552000; includeSubDomains; preload",
+      "Vary" : [ "Accept-Encoding", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers", "accept-encoding" ],
+      "alt-svc" : "h3=\":443\"; ma=86400",
+      "Access-Control-Max-Age" : "86400",
+      "Content-Type" : "application/json"
+    }
+  },
+  "uuid" : "11778b3b-4ae8-36cc-a003-08c21f190031"
+}
