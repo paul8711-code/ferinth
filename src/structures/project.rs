@@ -203,6 +203,24 @@ pub enum EnvironmentType {
     Unknown,
 }
 
+impl fmt::Display for EnvironmentType {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let s = match self {
+            EnvironmentType::ClientOnly => "client_only",
+            EnvironmentType::ServerOnly => "server_only",
+            EnvironmentType::DedicatedServerOnly => "dedicated_server_only",
+            EnvironmentType::ClientAndServer => "client_and_server",
+            EnvironmentType::ServerOnlyClientOptional => "server_only_client_optional",
+            EnvironmentType::ClientOnlyServerOptional => "client_only_server_optional",
+            EnvironmentType::ClientOrServerPrefersBoth => "client_or_server_prefers_both",
+            EnvironmentType::ClientOrServer => "client_or_server",
+            EnvironmentType::SingleplayerOnly => "singleplayer_only",
+            EnvironmentType::Unknown => "unknown",
+        };
+        write!(f, "{s}")
+    }
+}
+
 #[derive(Deserialize, Serialize, Debug, Clone, Copy, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 pub enum ProjectType {
@@ -228,6 +246,57 @@ impl fmt::Display for ProjectType {
             ProjectType::Datapack => "datapack",
             ProjectType::MinecraftJavaServer => "minecraft_java_server",
             ProjectType::Other => "other",
+        };
+        write!(f, "{s}")
+    }
+}
+
+#[derive(Deserialize, Serialize, Debug, Clone, Copy, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+/// When using disclosure type filters, projects that match will be excluded.
+pub enum DisclosureType {
+    /// All types of AI-generated content
+    AiContent,
+    /// AI Code
+    AiContentCode,
+    /// AI Assets
+    AiContentAssets,
+    /// AI Text
+    AiContentText,
+    /// AI Functionality
+    AiContentFunctionality,
+    Advertisements,
+    /// Photosensitivity triggers
+    EpilepsyTriggers,
+    /// External system interactions
+    SystemInteractions,
+    Telemetry,
+    TelemetryOptIn,
+    TelemetryOptOut,
+    TelemetryAlwaysActive,
+    DerivativeWork,
+    PaidFeatures,
+    Archived,
+}
+
+impl fmt::Display for DisclosureType {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let s = match self {
+            DisclosureType::AiContent => "ai_content",
+            DisclosureType::AiContentCode => "ai_content_code",
+            DisclosureType::AiContentAssets => "ai_content_assets",
+            DisclosureType::AiContentText => "ai_content_text",
+            DisclosureType::AiContentFunctionality => "ai_content_functionality",
+            DisclosureType::Advertisements => "advertisements",
+            DisclosureType::EpilepsyTriggers => "epilepsy_triggers",
+            DisclosureType::SystemInteractions => "system_interactions",
+            DisclosureType::Telemetry => "telemetry",
+            DisclosureType::TelemetryOptIn => "telemetry_opt_in",
+            DisclosureType::TelemetryOptOut => "telemetry_opt_out",
+            DisclosureType::TelemetryAlwaysActive => "telemetry_always_active",
+            DisclosureType::DerivativeWork => "derivative_work",
+            DisclosureType::PaidFeatures => "paid_features",
+            DisclosureType::Archived => "archived",
         };
         write!(f, "{s}")
     }
@@ -283,17 +352,21 @@ impl std::fmt::Display for Sort {
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum Facet {
-    ProjectType(project::ProjectType),
+    ProjectType(ProjectType),
+    /// Matches against every project type on all project versions
+    AllProjectTypes(ProjectType),
     /// Mod loader or category to filter
     Categories(String),
     /// Game versions to filter
     Versions(String),
     OpenSource(bool),
+    Environment(EnvironmentType),
+    Disclosure(DisclosureType),
     /// License ID to filter
     License(String),
     /// A custom facet
     ///
-    /// [documentation](https://docs.modrinth.com/api-spec#tag/projects/operation/searchProjects)
+    /// [documentation](https://docs.modrinth.com/api/operations/searchprojects/)
     Custom {
         /// The type of metadata to filter
         _type: String,
@@ -315,9 +388,14 @@ impl Serialize for Facet {
             Facet::ProjectType(project_type) => {
                 format!("project_type:{project_type}")
             }
+            Facet::AllProjectTypes(project_type) => {
+                format!("all_project_types:{project_type}")
+            }
             Facet::Categories(category) => format!("categories:{category}"),
             Facet::Versions(version) => format!("versions:{version}"),
             Facet::OpenSource(bool) => format!("open_source:{bool}"),
+            Facet::Environment(environment_type) => format!("environment:{environment_type}"),
+            Facet::Disclosure(disclosure_type) => format!("disclosure_type!={disclosure_type}"),
             Facet::License(license_id) => format!("license:{license_id}"),
             Facet::Custom {
                 _type,
@@ -348,8 +426,10 @@ pub struct SearchHit {
     pub title: String,
     pub description: String,
     pub categories: Vec<String>,
-    pub environment: Vec<project::EnvironmentType>,
-    pub project_type: project::ProjectType,
+    pub environment: Vec<EnvironmentType>,
+    pub disclosure_types: Vec<DisclosureType>,
+    pub project_type: ProjectType,
+    pub all_project_types: ProjectType,
     pub downloads: Int,
     #[serde(deserialize_with = "deserialise_optional_url")]
     pub icon_url: Option<Url>,
@@ -357,15 +437,18 @@ pub struct SearchHit {
     pub color: Option<Int>,
     /// The ID of the moderation thread associated with this project
     pub thread_id: Option<ID>,
-    pub monetization_status: Option<project::MonetizationStatus>,
+    pub monetization_status: Option<MonetizationStatus>,
     pub project_id: ID,
     /// Username of the project's authour
     pub author: String,
+    pub author_id: Option<ID>,
+    pub organization: Option<String>,
+    pub organization_id: Option<ID>,
     /// A list of the project's primary/featured categories
     pub display_categories: Vec<String>,
     #[serde(rename = "versions")]
     /// A list of all of the game versions supported by the project
-    pub game_versions: Vec<String>,
+    pub versions: Vec<String>,
     pub follows: Int,
     pub date_created: UtcTime,
     pub date_modified: UtcTime,
