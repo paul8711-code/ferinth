@@ -115,4 +115,13 @@ impl Ferinth<Authenticated> {
             .custom_send_json()
             .await
     }
+
+    /// Remove the avatar of user of `user_id`
+    pub async fn user_remove_avatar(&self, user_id: &str) -> Result<()> {
+        self.client
+            .delete(self.url.join_all(vec!["user", user_id, "icon"]))
+            .custom_send()
+            .await?;
+        Ok(())
+    }
 }

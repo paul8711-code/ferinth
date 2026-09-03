@@ -30,6 +30,15 @@ async fn get_multiple() -> anyhow::Result<()> {
 }
 
 #[tokio::test]
+async fn remove_avatar() -> anyhow::Result<()> {
+    let ctx = TestContext::new().await?;
+
+    ctx.modrinth.user_remove_avatar("my_user").await?;
+
+    Ok(())
+}
+
+#[tokio::test]
 async fn list_projects() -> anyhow::Result<()> {
     let ctx = TestContext::new().await?;
 
