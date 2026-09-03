@@ -37,6 +37,8 @@ pub struct Project {
     pub downloads: Int,
     #[serde(deserialize_with = "deserialise_optional_url")]
     pub icon_url: Option<Url>,
+    #[serde(deserialize_with = "deserialise_optional_url")]
+    pub raw_icon_url: Option<Url>,
     /// The RGB color of the project, automatically generated from the project icon
     pub color: Option<Int>,
     /// The ID of the moderation thread associated with this project
