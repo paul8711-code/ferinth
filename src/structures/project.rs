@@ -90,7 +90,6 @@ pub struct DonationLink {
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GalleryItem {
     pub url: Url,
-    pub raw_url: Url,
     pub featured: bool,
     pub title: Option<String>,
     pub description: Option<String>,
