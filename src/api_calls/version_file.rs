@@ -7,23 +7,20 @@ use crate::structures::version::*;
 use std::collections::HashMap;
 
 impl Ferinth<Authenticated> {
-    /**
-    Delete the version file with the `hash`.
-    Optionally specify the version ID to delete the version file from, if multiple files of the same hash exist.
-
-    ```no_run
-    # use paul8711_ferinth as ferinth;
-    # tokio_test::block_on(async {
-    # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
-    #     env!("CARGO_CRATE_NAME"),
-    #     Some(env!("CARGO_PKG_VERSION")),
-    #     None,
-    #     "token",
-    # )?;
-    modrinth.version_file_delete_from_hash("795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf", ferinth::structures::version::ValidHashAlgorithm::SHA1, None).await?;
-    # Ok::<_, ferinth::Error>(()) }).unwrap()
-    ```
-    */
+    /// Delete the version file with the `hash`.
+    /// Optionally specify the version ID to delete the version file from, if multiple files of the same hash exist.
+    ///
+    /// ```no_run
+    /// # tokio_test::block_on(async {
+    /// # let modrinth = paul8711_ferinth::Ferinth::<paul8711_ferinth::Authenticated>::new(
+    /// #     env!("CARGO_CRATE_NAME"),
+    /// #     Some(env!("CARGO_PKG_VERSION")),
+    /// #     None,
+    /// #     "token",
+    /// # )?;
+    /// modrinth.version_file_delete_from_hash("795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf", paul8711_ferinth::structures::version::ValidHashAlgorithm::SHA1, None).await?;
+    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// ```
     pub async fn version_file_delete_from_hash(
         &self,
         hash: &str,
@@ -48,20 +45,17 @@ impl Ferinth<Authenticated> {
 }
 
 impl<T> Ferinth<T> {
-    /**
-    Get the version of the version file with `hash`.
-
-    ## Example
-    ```no_run
-    # use paul8711_ferinth as ferinth;
-    # tokio_test::block_on(async {
-    # let modrinth = ferinth::Ferinth::default();
-    // If a mod file has the hash `795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf`, we can get the version it belongs to
-    let sodium_version = modrinth.version_get_from_hash("795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf", ferinth::structures::version::ValidHashAlgorithm::SHA1).await?;
-    assert_eq!(sodium_version.project_id, "AANobbMI");
-    # Ok::<_, ferinth::Error>(()) }).unwrap()
-    ```
-    */
+    /// Get the version of the version file with `hash`.
+    ///
+    /// ## Example
+    /// ```no_run
+    /// # tokio_test::block_on(async {
+    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// // If a mod file has the hash `795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf`, we can get the version it belongs to
+    /// let sodium_version = modrinth.version_get_from_hash("795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf", paul8711_ferinth::structures::version::ValidHashAlgorithm::SHA1).await?;
+    /// assert_eq!(sodium_version.project_id, "AANobbMI");
+    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// ```
     pub async fn version_get_from_hash(
         &self,
         hash: &str,
@@ -81,28 +75,25 @@ impl<T> Ferinth<T> {
             .await
     }
 
-    /**
-    Get the versions of the version files with `hashes`
-
-    Returns a map where the keys are the hashes given.
-
-    ## Example
-    ```no_run
-    # use paul8711_ferinth as ferinth;
-    # tokio_test::block_on(async {
-    # let modrinth = ferinth::Ferinth::default();
-    let sodium_hash = "795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf";
-    let snwylvspls_hash = "994ee99d172a5950a51ec2d08c158d270722d871";
-    let versions = modrinth.version_get_from_multiple_hashes(&[
-        sodium_hash,
-        snwylvspls_hash,
-    ],
-    ferinth::structures::version::ValidHashAlgorithm::SHA1).await?;
-    assert_eq!(versions[sodium_hash].project_id, "AANobbMI");
-    assert_eq!(versions[snwylvspls_hash].project_id, "of7wIinq");
-    # Ok::<_, ferinth::Error>(()) }).unwrap()
-    ```
-    */
+    /// Get the versions of the version files with `hashes`
+    ///
+    /// Returns a map where the keys are the hashes given.
+    ///
+    /// ## Example
+    /// ```no_run
+    /// # tokio_test::block_on(async {
+    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// let sodium_hash = "795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf";
+    /// let create_hash = "0e97e49837bed766e6f28a4c95b04885d6acc353";
+    /// let versions = modrinth.version_get_from_multiple_hashes(&[
+    ///     sodium_hash,
+    ///     create_hash,
+    /// ],
+    /// paul8711_ferinth::structures::version::ValidHashAlgorithm::SHA1).await?;
+    /// assert_eq!(versions[sodium_hash].project_id, "AANobbMI");
+    /// assert_eq!(versions[create_hash].project_id, "of7wIinq");
+    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// ```
     pub async fn version_get_from_multiple_hashes(
         &self,
         hashes: &[&str],

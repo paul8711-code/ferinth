@@ -1,5 +1,3 @@
-//! [documentation](https://docs.modrinth.com/api-spec)
-
 pub mod misc;
 pub mod notification;
 pub mod project;
@@ -21,6 +19,7 @@ use crate::{
 pub fn check_id_slug<S: AsRef<str>>(inputs: &[S]) -> Result<()> {
     for input in inputs {
         // Regex from the [Modrinth documentation](https://docs.modrinth.com/api-spec/#tag/project_model)
+        // page doesnt exist anymore :(
         if !lazy_regex::regex_is_match!(r#"^[\w!@$()`.+,"\-']{3,64}$"#, input.as_ref()) {
             return Err(Error::InvalidIDorSlug);
         }

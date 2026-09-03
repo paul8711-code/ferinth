@@ -27,7 +27,7 @@ pub trait UrlWithQuery: Sized {
     /// Add the `name` and `value` query to `self` and return it
     fn with_query(self, name: impl AsRef<str>, value: impl ToString) -> Self;
 
-    /// Serialise and add the `name` and `value` query to `self` and return it
+    /// Serialize and add the `name` and `value` query to `self` and return it
     fn with_query_json(
         self,
         name: impl AsRef<str>,

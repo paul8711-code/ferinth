@@ -6,19 +6,16 @@ use super::*;
 use crate::structures::user::*;
 
 impl<T> Ferinth<T> {
-    /**
-    List the members of the team of the project of `project_id`
-
-    ## Example
-    ```no_run
-    # use paul8711_ferinth as ferinth;
-    # tokio_test::block_on(async {
-    # let modrinth = ferinth::Ferinth::default();
-    let saj_team = modrinth.team_list_project_members("stairautojump").await?;
-    assert_eq!(saj_team.len(), 2);
-    # Ok::<_, ferinth::Error>(()) }).unwrap()
-    ```
-    */
+    /// List the members of the team of the project of `project_id`
+    ///
+    /// ## Example
+    /// ```no_run
+    /// # tokio_test::block_on(async {
+    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// let create_team = modrinth.team_list_project_members("create").await?;
+    /// assert_eq!(create_team.len(), 2);
+    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// ```
     pub async fn team_list_project_members(&self, project_id: &str) -> Result<Vec<TeamMember>> {
         check_id_slug(&[project_id])?;
         self.client
@@ -27,19 +24,16 @@ impl<T> Ferinth<T> {
             .await
     }
 
-    /**
-    List the members of the team of `team_id`
-
-    ## Example
-    ```no_run
-    # use paul8711_ferinth as ferinth;
-    # tokio_test::block_on(async {
-    # let modrinth = ferinth::Ferinth::default();
-    let saj_team = modrinth.team_list_members("zftNHDXi").await?;
-    assert_eq!(saj_team.len(), 2);
-    # Ok::<_, ferinth::Error>(()) }).unwrap()
-    ```
-    */
+    /// List the members of the team of `team_id`
+    ///
+    /// ## Example
+    /// ```no_run
+    /// # tokio_test::block_on(async {
+    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// let team = modrinth.team_list_members("zftNHDXi").await?;
+    /// assert_eq!(team.len(), 2);
+    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// ```
     pub async fn team_list_members(&self, team_id: &str) -> Result<Vec<TeamMember>> {
         check_id_slug(&[team_id])?;
         self.client
@@ -48,24 +42,21 @@ impl<T> Ferinth<T> {
             .await
     }
 
-    /**
-    List the members of the teams of `team_ids`
-
-    ## Example
-    ```no_run
-    # use paul8711_ferinth as ferinth;
-    # tokio_test::block_on(async {
-    # let modrinth = ferinth::Ferinth::default();
-    let teams = modrinth.team_multiple_list_members(&[
-        "4reLOAKe",
-        "1HMZl6Mn",
-        "BZoBsPo6",
-        "peSx5UYg",
-    ]).await?;
-    assert_eq!(teams.len(), 4);
-    # Ok::<_, ferinth::Error>(()) }).unwrap()
-    ```
-    */
+    /// List the members of the teams of `team_ids`
+    ///
+    /// ## Example
+    /// ```no_run
+    /// # tokio_test::block_on(async {
+    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// let teams = modrinth.team_multiple_list_members(&[
+    ///     "4reLOAKe",
+    ///     "1HMZl6Mn",
+    ///     "BZoBsPo6",
+    ///     "peSx5UYg",
+    /// ]).await?;
+    /// assert_eq!(teams.len(), 4);
+    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// ```
     pub async fn team_multiple_list_members(
         &self,
         team_ids: &[&str],
@@ -83,22 +74,19 @@ impl<T> Ferinth<T> {
 }
 
 impl Ferinth<Authenticated> {
-    /**
-    Send an invite to the user of `user_id` to join the team of `team_id`
-
-    ```no_run
-    # use paul8711_ferinth as ferinth;
-    # tokio_test::block_on(async {
-    # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
-    #     env!("CARGO_CRATE_NAME"),
-    #     Some(env!("CARGO_PKG_VERSION")),
-    #     None,
-    #     "token",
-    # )?;
-    modrinth.team_add_user("XXXXXXXX", "YYYYYYYY").await?;
-    # Ok::<_, ferinth::Error>(()) }).unwrap()
-    ```
-    */
+    /// Send an invite to the user of `user_id` to join the team of `team_id`
+    ///
+    /// ```no_run
+    /// # tokio_test::block_on(async {
+    /// # let modrinth = paul8711_ferinth::Ferinth::<paul8711_ferinth::Authenticated>::new(
+    /// #     env!("CARGO_CRATE_NAME"),
+    /// #     Some(env!("CARGO_PKG_VERSION")),
+    /// #     None,
+    /// #     "token",
+    /// # )?;
+    /// modrinth.team_add_user("XXXXXXXX", "YYYYYYYY").await?;
+    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// ```
     pub async fn team_add_user(&self, team_id: &str, user_id: &str) -> Result<()> {
         #[derive(serde::Serialize)]
         struct Body<'a> {
@@ -113,22 +101,19 @@ impl Ferinth<Authenticated> {
         Ok(())
     }
 
-    /**
-    Accept an invite to join the team of `team_id`
-
-    ```no_run
-    # use paul8711_ferinth as ferinth;
-    # tokio_test::block_on(async {
-    # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
-    #     env!("CARGO_CRATE_NAME"),
-    #     Some(env!("CARGO_PKG_VERSION")),
-    #     None,
-    #     "token",
-    # )?;
-    modrinth.team_join("XXXXXXXX").await?;
-    # Ok::<_, ferinth::Error>(()) }).unwrap()
-    ```
-    */
+    /// Accept an invite to join the team of `team_id`
+    ///
+    /// ```no_run
+    /// # tokio_test::block_on(async {
+    /// # let modrinth = paul8711_ferinth::Ferinth::<paul8711_ferinth::Authenticated>::new(
+    /// #     env!("CARGO_CRATE_NAME"),
+    /// #     Some(env!("CARGO_PKG_VERSION")),
+    /// #     None,
+    /// #     "token",
+    /// # )?;
+    /// modrinth.team_join("XXXXXXXX").await?;
+    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// ```
     pub async fn team_join(&self, team_id: &str) -> Result<()> {
         self.client
             .post(self.url.join_all(vec!["team", team_id, "join"]))
@@ -137,22 +122,19 @@ impl Ferinth<Authenticated> {
         Ok(())
     }
 
-    /**
-    Remove the member of `user_id` from the team of `team_id`
-
-    ```no_run
-    # use paul8711_ferinth as ferinth;
-    # tokio_test::block_on(async {
-    # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
-    #     env!("CARGO_CRATE_NAME"),
-    #     Some(env!("CARGO_PKG_VERSION")),
-    #     None,
-    #     "token",
-    # )?;
-    modrinth.team_remove_member("XXXXXXXX", "YYYYYYYY").await?;
-    # Ok::<_, ferinth::Error>(()) }).unwrap()
-    ```
-    */
+    /// Remove the member of `user_id` from the team of `team_id`
+    ///
+    /// ```no_run
+    /// # tokio_test::block_on(async {
+    /// # let modrinth = paul8711_ferinth::Ferinth::<paul8711_ferinth::Authenticated>::new(
+    /// #     env!("CARGO_CRATE_NAME"),
+    /// #     Some(env!("CARGO_PKG_VERSION")),
+    /// #     None,
+    /// #     "token",
+    /// # )?;
+    /// modrinth.team_remove_member("XXXXXXXX", "YYYYYYYY").await?;
+    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// ```
     pub async fn team_remove_member(&self, team_id: &str, user_id: &str) -> Result<()> {
         self.client
             .delete(self.url.join_all(vec!["team", team_id, "members", user_id]))
@@ -161,22 +143,19 @@ impl Ferinth<Authenticated> {
         Ok(())
     }
 
-    /**
-    Transfer ownership of the team of `team_id` to the user of `user_id`
-
-    ```no_run
-    # use paul8711_ferinth as ferinth;
-    # tokio_test::block_on(async {
-    # let modrinth = ferinth::Ferinth::<ferinth::Authenticated>::new(
-    #     env!("CARGO_CRATE_NAME"),
-    #     Some(env!("CARGO_PKG_VERSION")),
-    #     None,
-    #     "token",
-    # )?;
-    modrinth.team_transfer_ownership("XXXXXXXX", "YYYYYYYY").await?;
-    # Ok::<_, ferinth::Error>(()) }).unwrap()
-    ```
-    */
+    /// Transfer ownership of the team of `team_id` to the user of `user_id`
+    ///
+    /// ```no_run
+    /// # tokio_test::block_on(async {
+    /// # let modrinth = paul8711_ferinth::Ferinth::<paul8711_ferinth::Authenticated>::new(
+    /// #     env!("CARGO_CRATE_NAME"),
+    /// #     Some(env!("CARGO_PKG_VERSION")),
+    /// #     None,
+    /// #     "token",
+    /// # )?;
+    /// modrinth.team_transfer_ownership("XXXXXXXX", "YYYYYYYY").await?;
+    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// ```
     pub async fn team_transfer_ownership(&self, team_id: &str, user_id: &str) -> Result<()> {
         #[derive(serde::Serialize)]
         struct Body<'a> {
