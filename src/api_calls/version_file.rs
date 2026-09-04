@@ -12,14 +12,14 @@ impl Ferinth<Authenticated> {
     ///
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::<paul8711_ferinth::Authenticated>::new(
+    /// # let modrinth = vektrace_ferinth::Ferinth::<vektrace_ferinth::Authenticated>::new(
     /// #     env!("CARGO_CRATE_NAME"),
     /// #     Some(env!("CARGO_PKG_VERSION")),
     /// #     None,
     /// #     "token",
     /// # )?;
-    /// modrinth.version_file_delete_from_hash("795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf", paul8711_ferinth::structures::version::ValidHashAlgorithm::SHA1, None).await?;
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// modrinth.version_file_delete_from_hash("795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf", vektrace_ferinth::structures::version::ValidHashAlgorithm::SHA1, None).await?;
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn version_file_delete_from_hash(
         &self,
@@ -50,11 +50,11 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// // If a mod file has the hash `795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf`, we can get the version it belongs to
-    /// let sodium_version = modrinth.version_get_from_hash("795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf", paul8711_ferinth::structures::version::ValidHashAlgorithm::SHA1).await?;
+    /// let sodium_version = modrinth.version_get_from_hash("795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf", vektrace_ferinth::structures::version::ValidHashAlgorithm::SHA1).await?;
     /// assert_eq!(sodium_version.project_id, "AANobbMI");
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn version_get_from_hash(
         &self,
@@ -82,17 +82,17 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let sodium_hash = "795d4c12bffdb1b21eed5ff87c07ce5ca3c0dcbf";
     /// let create_hash = "0e97e49837bed766e6f28a4c95b04885d6acc353";
     /// let versions = modrinth.version_get_from_multiple_hashes(&[
     ///     sodium_hash,
     ///     create_hash,
     /// ],
-    /// paul8711_ferinth::structures::version::ValidHashAlgorithm::SHA1).await?;
+    /// vektrace_ferinth::structures::version::ValidHashAlgorithm::SHA1).await?;
     /// assert_eq!(versions[sodium_hash].project_id, "AANobbMI");
     /// assert_eq!(versions[create_hash].project_id, "of7wIinq");
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn version_get_from_multiple_hashes(
         &self,

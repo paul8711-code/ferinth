@@ -13,19 +13,19 @@ impl Ferinth<Authenticated> {
     /// ## Example
     ///```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::<paul8711_ferinth::Authenticated>::new(
+    /// # let modrinth = vektrace_ferinth::Ferinth::<vektrace_ferinth::Authenticated>::new(
     /// #     env!("CARGO_CRATE_NAME"),
     /// #     Some(env!("CARGO_PKG_VERSION")),
     /// #     None,
     /// #     "token",
     /// # )?;
-    /// let report = modrinth.submit_report(&paul8711_ferinth::structures::thread::ReportSubmission {
+    /// let report = modrinth.submit_report(&vektrace_ferinth::structures::thread::ReportSubmission {
     ///     report_type: "other".to_string(),
     ///     item_id: "XXXXXXXX".to_string(),
-    ///     item_type: paul8711_ferinth::structures::thread::ReportItemType::User,
+    ///     item_type: vektrace_ferinth::structures::thread::ReportItemType::User,
     ///     body: "This is an example report".to_string(),
     /// }).await?;
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn submit_report(&self, report: &ReportSubmission) -> Result<Report> {
         check_id_slug(&[&report.item_id])?;

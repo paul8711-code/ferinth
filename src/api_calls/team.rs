@@ -11,10 +11,10 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let create_team = modrinth.team_list_project_members("create").await?;
     /// assert_eq!(create_team.len(), 2);
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn team_list_project_members(&self, project_id: &str) -> Result<Vec<TeamMember>> {
         check_id_slug(&[project_id])?;
@@ -29,10 +29,10 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let team = modrinth.team_list_members("zftNHDXi").await?;
     /// assert_eq!(team.len(), 2);
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn team_list_members(&self, team_id: &str) -> Result<Vec<TeamMember>> {
         check_id_slug(&[team_id])?;
@@ -47,7 +47,7 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let teams = modrinth.team_multiple_list_members(&[
     ///     "4reLOAKe",
     ///     "1HMZl6Mn",
@@ -55,7 +55,7 @@ impl<T> Ferinth<T> {
     ///     "peSx5UYg",
     /// ]).await?;
     /// assert_eq!(teams.len(), 4);
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn team_multiple_list_members(
         &self,
@@ -78,14 +78,14 @@ impl Ferinth<Authenticated> {
     ///
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::<paul8711_ferinth::Authenticated>::new(
+    /// # let modrinth = vektrace_ferinth::Ferinth::<vektrace_ferinth::Authenticated>::new(
     /// #     env!("CARGO_CRATE_NAME"),
     /// #     Some(env!("CARGO_PKG_VERSION")),
     /// #     None,
     /// #     "token",
     /// # )?;
     /// modrinth.team_add_user("XXXXXXXX", "YYYYYYYY").await?;
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn team_add_user(&self, team_id: &str, user_id: &str) -> Result<()> {
         #[derive(serde::Serialize)]
@@ -105,14 +105,14 @@ impl Ferinth<Authenticated> {
     ///
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::<paul8711_ferinth::Authenticated>::new(
+    /// # let modrinth = vektrace_ferinth::Ferinth::<vektrace_ferinth::Authenticated>::new(
     /// #     env!("CARGO_CRATE_NAME"),
     /// #     Some(env!("CARGO_PKG_VERSION")),
     /// #     None,
     /// #     "token",
     /// # )?;
     /// modrinth.team_join("XXXXXXXX").await?;
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn team_join(&self, team_id: &str) -> Result<()> {
         self.client
@@ -126,14 +126,14 @@ impl Ferinth<Authenticated> {
     ///
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::<paul8711_ferinth::Authenticated>::new(
+    /// # let modrinth = vektrace_ferinth::Ferinth::<vektrace_ferinth::Authenticated>::new(
     /// #     env!("CARGO_CRATE_NAME"),
     /// #     Some(env!("CARGO_PKG_VERSION")),
     /// #     None,
     /// #     "token",
     /// # )?;
     /// modrinth.team_remove_member("XXXXXXXX", "YYYYYYYY").await?;
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn team_remove_member(&self, team_id: &str, user_id: &str) -> Result<()> {
         self.client
@@ -147,14 +147,14 @@ impl Ferinth<Authenticated> {
     ///
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::<paul8711_ferinth::Authenticated>::new(
+    /// # let modrinth = vektrace_ferinth::Ferinth::<vektrace_ferinth::Authenticated>::new(
     /// #     env!("CARGO_CRATE_NAME"),
     /// #     Some(env!("CARGO_PKG_VERSION")),
     /// #     None,
     /// #     "token",
     /// # )?;
     /// modrinth.team_transfer_ownership("XXXXXXXX", "YYYYYYYY").await?;
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn team_transfer_ownership(&self, team_id: &str, user_id: &str) -> Result<()> {
         #[derive(serde::Serialize)]

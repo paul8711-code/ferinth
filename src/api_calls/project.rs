@@ -17,9 +17,9 @@ impl<T> Ferinth<T> {
     ///
     /// ## Example
     /// ```no_run
-    /// # use paul8711_ferinth::structures::project::{Sort, Facet};
+    /// # use vektrace_ferinth::structures::project::{Sort, Facet};
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// // When searching for 'sodium' and filtering by NeoForge mods
     /// let results = modrinth.project_search(
     ///     "sodium",
@@ -28,7 +28,7 @@ impl<T> Ferinth<T> {
     /// ).await?;
     /// // Sodium should be the result with the most downloads
     /// assert_eq!(results.hits[0].slug, Some("sodium".to_owned()));
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn project_search(
         &self,
@@ -58,9 +58,9 @@ impl<T> Ferinth<T> {
     ///
     /// ## Example
     /// ```no_run
-    /// # use paul8711_ferinth::structures::project::{Sort, Facet};
+    /// # use vektrace_ferinth::structures::project::{Sort, Facet};
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let results = modrinth.project_search_paged(
     ///     "sodium",
     ///     &Sort::Relevance,
@@ -71,7 +71,7 @@ impl<T> Ferinth<T> {
     /// ).await?;
     /// // The amount of hits returned should equal the limit provided
     /// assert_eq!(results.hits.len(), 12);
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn project_search_paged(
         &self,
@@ -102,7 +102,7 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// // Get a mod using its project ID
     /// let sodium = modrinth.project_get("AANobbMI").await?;
     /// assert_eq!(sodium.title, "Sodium");
@@ -110,7 +110,7 @@ impl<T> Ferinth<T> {
     /// // You can also use the project's slug, which is case-insensitive
     /// let fabric_api = modrinth.project_get("fAbRiC-aPi").await?;
     /// assert_eq!(fabric_api.title, "Fabric API");
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn project_get(&self, project_id: &str) -> Result<Project> {
         check_id_slug(&[project_id])?;
@@ -125,7 +125,7 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// // You can use both IDs and slugs
     /// let projects = modrinth.project_get_multiple(&[
     ///     "sodium",
@@ -134,7 +134,7 @@ impl<T> Ferinth<T> {
     ///     "gvQqBUqZ",
     /// ]).await?;
     /// assert_eq!(projects.len(), 4);
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn project_get_multiple(&self, project_ids: &[&str]) -> Result<Vec<Project>> {
         check_id_slug(project_ids)?;
@@ -153,10 +153,10 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let random_projects = modrinth.project_get_random(5).await?;
     /// assert_eq!(random_projects.len(), 5);
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn project_get_random(&self, count: Int) -> Result<Vec<Project>> {
         self.client
@@ -175,10 +175,10 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let project_id = modrinth.project_check_validity("sodium").await?;
     /// assert_eq!(project_id, "AANoobMI");
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn project_check_validity(&self, project_id: &str) -> Result<String> {
         #[derive(serde::Deserialize)]
@@ -199,11 +199,11 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let fabric_api = modrinth.project_get_dependencies("fabric-api").await?;
     /// // Fabric API should not have any dependencies
     /// assert!(fabric_api.projects.is_empty());
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn project_get_dependencies(&self, project_id: &str) -> Result<ProjectDependencies> {
         check_id_slug(&[project_id])?;
@@ -388,7 +388,7 @@ impl Ferinth<Authenticated> {
     ///
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::<paul8711_ferinth::Authenticated>::new(
+    /// # let modrinth = vektrace_ferinth::Ferinth::<vektrace_ferinth::Authenticated>::new(
     /// #     env!("CARGO_CRATE_NAME"),
     /// #     Some(env!("CARGO_PKG_VERSION")),
     /// #     None,
@@ -398,9 +398,9 @@ impl Ferinth<Authenticated> {
     /// modrinth.project_schedule(
     ///     "XXXXXXXX",
     ///     &(chrono::offset::Utc::now() + chrono::Duration::hours(3)),
-    ///     &paul8711_ferinth::structures::project::RequestedStatus::Approved
+    ///     &vektrace_ferinth::structures::project::RequestedStatus::Approved
     /// ).await?;
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn project_schedule(
         &self,

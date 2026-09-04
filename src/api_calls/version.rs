@@ -10,14 +10,14 @@ impl Ferinth<Authenticated> {
     ///
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::<paul8711_ferinth::Authenticated>::new(
+    /// # let modrinth = vektrace_ferinth::Ferinth::<vektrace_ferinth::Authenticated>::new(
     /// #     env!("CARGO_CRATE_NAME"),
     /// #     Some(env!("CARGO_PKG_VERSION")),
     /// #     None,
     /// #     "token",
     /// # )?;
     /// modrinth.version_delete("XXXXXXXX").await?;
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn version_delete(&self, version_id: &str) -> Result<()> {
         check_id_slug(&[version_id])?;
@@ -31,10 +31,10 @@ impl Ferinth<Authenticated> {
     /// Schedule changing the status of version of `version_id` to `requested_status` at `time`
     ///
     /// ```no_run
-    /// # use paul8711_ferinth::structures::version::RequestedStatus;
+    /// # use vektrace_ferinth::structures::version::RequestedStatus;
     /// # use chrono::{Duration, offset::Utc};
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::<paul8711_ferinth::Authenticated>::new(
+    /// # let modrinth = vektrace_ferinth::Ferinth::<vektrace_ferinth::Authenticated>::new(
     /// #     env!("CARGO_CRATE_NAME"),
     /// #     Some(env!("CARGO_PKG_VERSION")),
     /// #     None,
@@ -46,7 +46,7 @@ impl Ferinth<Authenticated> {
     ///     &(Utc::now() + Duration::hours(3)),
     ///     &RequestedStatus::Approved
     /// ).await?;
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn version_schedule(
         &self,
@@ -73,10 +73,10 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let sodium_versions = modrinth.version_list("AANobbMI").await?;
     /// sodium_versions.iter().for_each(|v| assert_eq!(v.project_id, "AANobbMI"));
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn version_list(&self, project_id: &str) -> Result<Vec<Version>> {
         check_id_slug(&[project_id])?;
@@ -92,7 +92,7 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let sodium_forge_versions = modrinth.version_list_filtered(
     ///     "AANobbMI",
     ///     Some(&["forge"]),
@@ -101,7 +101,7 @@ impl<T> Ferinth<T> {
     /// ).await?;
     /// // Sodium is not made for Forge
     /// assert!(sodium_forge_versions.is_empty());
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn version_list_filtered(
         &self,
@@ -129,10 +129,10 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let sodium_version = modrinth.version_get("xuWxRZPd").await?;
     /// assert_eq!(sodium_version.project_id, "AANobbMI");
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn version_get(&self, version_id: &str) -> Result<Version> {
         check_id_slug(&[version_id])?;
@@ -147,10 +147,10 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let version = modrinth.version_get_from_number("sodium", "mc1.17.1-0.3.2").await?;
     /// assert_eq!(version.id, "xuWxRZPd");
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn version_get_from_number(&self, project_id: &str, number: &str) -> Result<Version> {
         check_id_slug(&[project_id])?;
@@ -168,13 +168,13 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let versions = modrinth.version_get_multiple(&[
     ///     "UjX6dr61",
     ///     "n7NADxiG",
     /// ]).await?;
     /// versions.iter().for_each(|v| assert_eq!(v.project_id, "LNytGWDc"));
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn version_get_multiple(&self, version_ids: &[&str]) -> Result<Vec<Version>> {
         check_id_slug(version_ids)?;

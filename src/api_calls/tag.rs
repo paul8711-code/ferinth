@@ -11,9 +11,9 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let categories = modrinth.tag_list_categories().await?;
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn tag_list_categories(&self) -> Result<Vec<Category>> {
         self.client
@@ -27,9 +27,9 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let loaders = modrinth.tag_list_loaders().await?;
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn tag_list_loaders(&self) -> Result<Vec<Loader>> {
         self.client
@@ -43,9 +43,9 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let game_versions = modrinth.tag_list_game_versions().await?;
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn tag_list_game_versions(&self) -> Result<Vec<GameVersion>> {
         self.client
@@ -59,11 +59,11 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let license = modrinth.tag_license_text_and_title("MIT").await?;
     /// assert_eq!(license.title, "MIT License");
     /// assert!(license.body.contains("MIT License"));
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn tag_license_text_and_title(&self, id: &str) -> Result<License> {
         self.client
@@ -77,9 +77,9 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let donation_platforms = modrinth.tag_list_donation_platforms().await?;
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn tag_list_donation_platforms(&self) -> Result<Vec<DonationPlatform>> {
         self.client
@@ -93,9 +93,9 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let report_types = modrinth.tag_list_report_types().await?;
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn tag_list_report_types(&self) -> Result<Vec<String>> {
         self.client
@@ -109,9 +109,9 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let report_types = modrinth.tag_list_project_types().await?;
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn tag_list_project_types(&self) -> Result<Vec<String>> {
         self.client
@@ -125,9 +125,9 @@ impl<T> Ferinth<T> {
     /// ## Example
     /// ```no_run
     /// # tokio_test::block_on(async {
-    /// # let modrinth = paul8711_ferinth::Ferinth::default();
+    /// # let modrinth = vektrace_ferinth::Ferinth::default();
     /// let report_types = modrinth.tag_list_side_types().await?;
-    /// # Ok::<_, paul8711_ferinth::Error>(()) }).unwrap()
+    /// # Ok::<_, vektrace_ferinth::Error>(()) }).unwrap()
     /// ```
     pub async fn tag_list_side_types(&self) -> Result<Vec<String>> {
         self.client

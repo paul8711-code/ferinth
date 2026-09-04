@@ -67,13 +67,13 @@ pub type Result<T> = std::result::Result<T, Error>;
 /// This container will not have authentication.
 ///
 /// ```ignore
-/// let modrinth = paul8711_ferinth::Ferinth::default();
+/// let modrinth = vektrace_ferinth::Ferinth::default();
 /// ```
 ///
 /// Use the `new()` function to set a custom user agent and authentication token.
 ///
 /// ```ignore
-/// let modrinth = paul8711_ferinth::Ferinth::new(
+/// let modrinth = vektrace_ferinth::Ferinth::new(
 ///     env!("CARGO_CRATE_NAME"),
 ///     Some(env!("CARGO_PKG_VERSION")),
 ///     Some("contact@program.com"),

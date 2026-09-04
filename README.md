@@ -10,8 +10,6 @@ It uses [reqwest](https://docs.rs/reqwest) for sending requests and deserialisin
 
 This fork includes extra bug fixes, updated dependencies, and additional patch improvements over the original crate.
 
-It was mainly created to fix bugs I was encountering while developing [modrinth-cli](https://github.com/paul8711-code/modrinth-cli), but feel free to use it for your own projects as well.
-
 ## Features
 
 - Strongly typed structures for API responses

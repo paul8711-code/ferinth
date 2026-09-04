@@ -1,4 +1,4 @@
-use paul8711_ferinth as ferinth;
+use vektrace_ferinth as ferinth;
 
 use ferinth::structures::UtcTime;
 use ferinth::{Authenticated, Ferinth};

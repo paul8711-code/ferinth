@@ -1,15 +1,15 @@
 [package]
-name = "paul8711-ferinth"
+name = "vektrace-ferinth"
 # The major version specifies which version of the Modrinth API this supports
 version = "2.13.1"
 edition = "2021"
 authors = [
-    "Paul8711 <contact@paul8711.com>",
+    "Vektrace <contact@vektrace.com>",
     "Ilesh Thiada (theRookieCoder) <ileshkt@gmail.com>",
     "4JX",
 ]
 description = "A more maintained and well-tested fork of Ferinth, a Rust wrapper for the official Modrinth API"
-repository = "https://github.com/paul8711-code/ferinth"
+repository = "https://github.com/vektrace/ferinth"
 license = "MIT"
 publish = ["crates-io"]
 keywords = ["modrinth", "minecraft", "modding"]
